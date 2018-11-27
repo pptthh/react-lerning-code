@@ -28,6 +28,9 @@ const config = {
       '.tsx',
       '.ts'
     ]
+  },
+  devServer: {
+    contentBase: './dist'
   }
 }
 

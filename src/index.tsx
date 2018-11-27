@@ -1,15 +1,14 @@
-import * as React from 'react';
-import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { hot } from 'react-hot-loader'
 
-interface Props {
-   name: string
-}
-
-class App extends React.Component<Props> {
+class App extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
   }
 }
 
+const AppWithHot = hot(module)(App);
+
 var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Jane" />, mountNode);
+ReactDOM.render(<AppWithHot name="Jane" />, mountNode);
