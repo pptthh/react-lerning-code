@@ -11,7 +11,9 @@
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production",
     "start": "webpack-dev-server --hot --mode development",
-    "test": "",
+    "coverage": "npm run jest -- --coverage",
+    "test": "npm run jest --watch",
+    "jest":"jest",
     "tsc": "tsc"
   },
   "jest": {
