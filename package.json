@@ -12,7 +12,7 @@
     "build-prod": "webpack -p --mode production",
     "start": "webpack-dev-server --hot --mode development",
     "coverage": "npm run jest -- --coverage",
-    "test": "npm run jest --watch",
+    "test": "npm run jest -- --watch",
     "jest": "jest",
     "tsc": "tsc"
   },
@@ -20,18 +20,33 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
+      "!<rootDir>/public/"
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
       }
     },
     "coverageReporters": [
       "text"
+    ],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
