@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`describe Button renders correctly with Label only 1`] = `
+<button
+  title=""
+>
+  simple text22
+</button>
+`;
+
+exports[`describe Button shallow renders correctly with params 1`] = `
+<button
+  disabled={false}
+  name="name"
+  onClick={[Function]}
+  title=""
+>
+  btn
+</button>
+`;

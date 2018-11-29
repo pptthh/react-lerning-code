@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`describe Label Shallow render example 1`] = `
+<h1>
+  <Label>
+    simple text22
+  </Label>
+</h1>
+`;
+
+exports[`describe Label renders correctly with Text only 1`] = `
+<span
+  class=""
+  title=""
+>
+  simple text22
+</span>
+`;
+
+exports[`describe Label shallow renders correctly with params 1`] = `
+<span
+  className="elementClass"
+  onClick={[Function]}
+  title="tooltip"
+>
+  renders correctly with params
+</span>
+`;

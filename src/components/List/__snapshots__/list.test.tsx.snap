@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly List with Empty Array 1`] = `
+<ul
+  class="list"
+/>
+`;
+
+exports[`renders correctly List with correct data 1`] = `
+<ul
+  class="list"
+>
+  <li
+    class="ListItem"
+  >
+    test text
+  </li>
+  <li
+    class="ListItem"
+  >
+    test text2
+  </li>
+</ul>
+`;
