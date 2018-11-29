@@ -18,9 +18,10 @@
     "react-hot-loader": "^4.3.12"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.0.0",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "@types/node": "^10.12.10",
     "@types/react": "^16.4.16",
     "@types/react-dom": "^16.0.9",
     "babel-loader": "^8.0.4",
