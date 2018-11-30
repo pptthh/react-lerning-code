@@ -8,8 +8,8 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production",
+    "build-dev": "webpack -d --mode development --config webpack.dev.js",
+    "build-prod": "webpack -p --mode production --config webpack.prod.js",
     "start": "webpack-dev-server --hot --mode development",
     "coverage": "npm run jest -- --coverage",
     "test": "npm run jest -- --watch",
@@ -86,6 +86,7 @@
     "typescript": "^3.2.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
   }
 }
