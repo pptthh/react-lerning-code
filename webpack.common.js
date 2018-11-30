@@ -30,8 +30,9 @@ const config = {
     ]
   },
   devServer: {
-    contentBase: './dist'
-  }
+    contentBase: './dist',
+    hot: true,
+  },
 }
 
 module.exports = config;
