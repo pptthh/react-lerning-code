@@ -1,25 +1,93 @@
 {
-  "name": "new",
+  "name": "empty-project-react-typescript",
   "version": "1.0.0",
   "description": "",
+  "main": "src/index.tsx",
   "keywords": [],
-  "main": "src/index.jsx",
-  "dependencies": {
-    "react": "16.5.2",
-    "react-dom": "16.5.2",
-    "react-scripts": "2.0.3"
-  },
-  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development --config webpack.dev.js",
+    "build-prod": "webpack -p --mode production --config webpack.prod.js",
+    "start": "webpack-dev-server --hot --mode development",
+    "coverage": "npm run jest -- --coverage",
+    "test": "npm run jest -- --watch",
+    "jest": "jest",
+    "tsc": "tsc"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "jest": {
+    "bail": true,
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/public/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    },
+    "coverageDirectory": "./coverage/",
+    "coverageReporters": [
+      "text"
+    ],
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-hot-loader": "^4.3.12",
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.10",
+    "@types/react": "^16.7.10",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^6.0.10",
+    "@types/react-router": "^4.4.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "ts-loader": "^5.3.1",
+    "typescript": "^3.2.1",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
+  }
 }
