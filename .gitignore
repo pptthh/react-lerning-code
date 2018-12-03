@@ -1,7 +1,7 @@
 **/*.log
 **/*.tmp
 
-dist/bundle.js
+dist
 
 node_modules
 generated
