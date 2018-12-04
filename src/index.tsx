@@ -13,8 +13,7 @@ const AppWithHot = hot(module)(App);
 // fixme: find a proper soluton for testing the App whithout this setTimeout
 setTimeout(() => 
     ReactDOM.render(<AppWithHot/>, 
-        // document.getElementById("app")
-        document.getElementsByTagName("BODY")[0]
+        document.getElementById("root")
     ),
     0
 );

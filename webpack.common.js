@@ -1,5 +1,6 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const path = require('path');
 
 const config = {
@@ -37,10 +38,10 @@ const config = {
     plugins: [
       new CleanWebpackPlugin(['dist', 'coverage']),
       new HtmlWebpackPlugin({
-          favicon: 'public/movie.ico',
-          title :'React-Typescript Training App - Movie Search',
-          chunks: ['root'],
+            favicon: 'public/movie.ico',
+            title :'React-Typescript Training App - Movie Search',
       }),
+      new HtmlWebpackRootPlugin(),
     ],
 }
 
