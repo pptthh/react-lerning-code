@@ -39,6 +39,7 @@ const config = {
       new HtmlWebpackPlugin({
           favicon: 'public/movie.ico',
           title :'React-Typescript Training App - Movie Search',
+          chunks: ['root'],
       }),
     ],
 }
