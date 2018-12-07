@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Hello from "./components/Hello.jsx";
-import CreateElement from "./components/CreateElement.js";
-import ComponentExample from "./components/ComponentExample.jsx";
-import PureComponentExample from "./components/PureComponentExample.jsx";
+import Hello from "./components/Task1/Hello.jsx";
+import CreateElement from "./components/Task1/CreateElement.js";
+import ComponentExample from "./components/Task1/ComponentExample.jsx";
+import PureComponentExample from "./components/Task1/PureComponentExample.jsx";
 
 import "./styles.css";
 
