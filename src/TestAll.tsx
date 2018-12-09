@@ -9,6 +9,9 @@ import { ResultItemProps } from './scenes/SearchResults/Results/ResultItem';
 import SearchForm from './components/SearchForm/searchForm';
 import SearchSummary from './components/SearchSummary/searchSummary';
 import ResultSort from './components/SearchSummary/ResultSort';
+import ButtonBar from './components/ButtonBar/buttonBar';
+import RadioBar from './components/RadioBar/radioBar';
+import BuggyComp from './components/ErrorBoundary/BuggyComp';
 
 const getId = () => Math.random();
 const filmResult: ResultItemProps[] = [
@@ -22,14 +25,27 @@ const TestAll:React.SFC<object> = () =>
     <header className="App-title">
         <h1>Welcome to Movie search test component page</h1>
     </header>
+
+    <TestElement name='ErrorBoundary tester'>
+        <label>text</label>
+        <BuggyComp enable={true}/>
+    </TestElement>
+
     <TestElement name='Search Box'>
         <SearchForm/>
-        <hr></hr>
         <SearchSummary
             resultCount={filmResult.length}
             resultSort={ResultSort.RELEASE_DATE}
         />
-        <hr></hr>
+        <ButtonBar
+            labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}
+            selected={ResultSort.RELEASE_DATE}
+            onChange={console.log}
+        />
+        <RadioBar
+            labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}
+            name='radioBar'
+            />
     </TestElement>
     <TestElement name='Search result examples'>
         <Result result={filmResult}/>

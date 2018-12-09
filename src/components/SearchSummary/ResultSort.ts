@@ -1,6 +1,6 @@
 enum ResultSort{
-    RELEASE_DATE = 'RELEASE_DATE',
-    RATING = 'RATING',
+    RELEASE_DATE = 'release date',
+    RATING = 'rating',
 }
 
 export default ResultSort;
