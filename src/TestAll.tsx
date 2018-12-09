@@ -1,3 +1,4 @@
+// import './TestAll.css';
 import * as React from 'react';
 import TestElement from './TestItem';
 import Button from './components/Button/button';
@@ -21,15 +22,10 @@ const filmResult: ResultItemProps[] = [
 ];
 
 const TestAll:React.SFC<object> = () =>
-<div className="App">
+<div className="TestApp">
     <header className="App-title">
         <h1>Welcome to Movie search test component page</h1>
     </header>
-
-    <TestElement name='ErrorBoundary tester'>
-        <label>text</label>
-        <BuggyComponent enable={false}/>
-    </TestElement>
 
     <TestElement name='Search Box'>
         <SearchForm/>
@@ -51,12 +47,16 @@ const TestAll:React.SFC<object> = () =>
         <Result result={filmResult}/>
         <Result />
     </TestElement>
-    <TestElement name='components'>
+    <TestElement name='Simple Components'>
         <Footer/>
         <Header>Component Header Test</Header>
         <Label>simple label</Label>
         <Button label='Button' onClick={console.log}></Button>
     </TestElement>
+    <TestElement name='ErrorBoundary tester'>
+        <label></label>
+        <BuggyComponent enable={false}/>
+    </TestElement>
 </div>;
 
-export default TestAll; 
+export default TestAll;
