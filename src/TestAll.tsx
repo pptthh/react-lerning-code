@@ -5,9 +5,8 @@ import Button from './components/Button/button';
 import Label from './components/Label/label';
 import Header from './components/Header/header';
 import Footer from './components/Footer/footer';
-import Result from './scenes/SearchResults/Results';
-import { ResultItemProps } from './scenes/SearchResults/Results/ResultItem';
-import SearchForm from './components/SearchForm/searchForm';
+import FoundMovies from './scenes/SearchResults/FoundMovies';
+import { ResultItemProps } from './scenes/SearchResults/FoundMovies/ResultItem';
 import SearchSummary from './components/SearchSummary/searchSummary';
 import ResultSort from './components/SearchSummary/ResultSort';
 import ButtonBar from './components/ButtonBar/buttonBar';
@@ -47,8 +46,8 @@ const TestAll:React.SFC<object> = () =>
             />
     </TestElement>
     <TestElement name='Search result examples'>
-        <Result result={filmResult}/>
-        <Result />
+        <FoundMovies results={filmResult}/>
+        <FoundMovies results={[]}/>
     </TestElement>
     <TestElement name='Simple Components'>
         <Footer/>

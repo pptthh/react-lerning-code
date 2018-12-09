@@ -3,14 +3,14 @@ import Footer from '../../../components/Footer/footer';
 import ResultsBody from './ResultBody';
 import { ResultItemProps } from './ResultItem';
 
-const Result: React.SFC<{result?:ResultItemProps[]}> = ({result}: {result?:ResultItemProps[]}) =>
+const FoundMovies: React.SFC<{results:ResultItemProps[]}> = ({results}: {results:ResultItemProps[]}) =>
 <div>
     {
-        result === undefined || !result.length ?
+        results === undefined || !results.length ?
             <h1>No films found</h1> :
-            <ResultsBody result={result}/>
+            <ResultsBody result={results}/>
     }
     <Footer/>
 </div>;
 
-export default Result; 
+export default FoundMovies; 

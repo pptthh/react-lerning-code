@@ -1,28 +1,31 @@
 import * as React from 'react';
-import DetailedPanel from './DetailedPanel/detailedPanelProps';
 import SearchSummary, { SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
+import { ResultItemProps } from '../SearchResults/FoundMovies/ResultItem';
+import FoundMovies from '../SearchResults/FoundMovies';
+import DetailedPanel, { DetailedPanelProps } from './DetailedPanel/detailedPanelProps';
 
 interface DetailedViewProps {
-    detailedPanel?: DetailedViewProps;
-    searchResults?: SearchSummaryProps
+    detailedPanel?: DetailedPanelProps;
+    searchResults: SearchSummaryProps;
+    results: ResultItemProps[];
 }
 
-class DetailedView extends React.Component {
+class DetailedView extends React.Component<any, DetailedViewProps> {
     constructor(props: DetailedViewProps) {
         super(props);
         this.state = {
             detailedPanel: props.detailedPanel,
-            searchResults: props.searchResults,
+            searchResults: props.searchResults || [],
+            results: props.results,
         };
     }
   
     render() {
         return <div>
-            <label>detailedPanel</label>
-            <br/>
-            {/* {this.state.detailedPanel && <DetailedPanel {... this.state.detailedPanel}/>}
-            {this.state.searchResults && <SearchSummary {... this.state.searchResults}/>} */}
-            <label>searchResults</label>
+            {this.state.detailedPanel && <DetailedPanel {...this.state.detailedPanel}/>}
+            {this.state.searchResults && <SearchSummary {...this.state.searchResults}/>}
+            <FoundMovies results={this.state.results} />
+            <hr/>
         </div>;
     }
 }
