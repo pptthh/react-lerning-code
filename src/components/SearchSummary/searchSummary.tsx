@@ -2,7 +2,7 @@ import * as React from 'react';
 import Button from '../Button/button';
 import ResultSort from './ResultSort';
 
-interface SearchSummaryProps {
+export interface SearchSummaryProps {
     resultCount: number;
     resultSort: ResultSort;
 }
