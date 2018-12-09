@@ -11,7 +11,7 @@ import SearchSummary from './components/SearchSummary/searchSummary';
 import ResultSort from './components/SearchSummary/ResultSort';
 import ButtonBar from './components/ButtonBar/buttonBar';
 import RadioBar from './components/RadioBar/radioBar';
-import BuggyComp from './components/ErrorBoundary/BuggyComp';
+import BuggyComponent from './components/ErrorBoundary/buggyComponent';
 
 const getId = () => Math.random();
 const filmResult: ResultItemProps[] = [
@@ -28,7 +28,7 @@ const TestAll:React.SFC<object> = () =>
 
     <TestElement name='ErrorBoundary tester'>
         <label>text</label>
-        <BuggyComp enable={true}/>
+        <BuggyComponent enable={false}/>
     </TestElement>
 
     <TestElement name='Search Box'>
