@@ -3,7 +3,13 @@ import Header from '../Header/header';
 import TextInput from '../TextInput/textInput';
 import Button from '../Button/button';
 
-const SearchForm: React.SFC<object> = () =>
+export interface SearchFormProps {
+    searchField: string;
+    searchBy: string;
+    searchAction: () => void;
+}
+
+const SearchForm: React.SFC<SearchFormProps> = () =>
 <div>
     <Header>netflixroulette</Header>
     <div>FIND YOUR MOVIE</div>

@@ -25,6 +25,7 @@ const TestElement = ({name,  children}: TestElementProps): JSX.Element =>
 <div className="App-single-item-block">
     <div className="App-item-label">{name}</div>
     {listChildren(children, name)}
+    <hr/>
 </div>;
 
 export default TestElement;

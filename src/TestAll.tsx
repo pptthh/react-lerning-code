@@ -13,6 +13,7 @@ import ButtonBar from './components/ButtonBar/buttonBar';
 import RadioBar from './components/RadioBar/radioBar';
 import BuggyComponent from './components/ErrorBoundary/buggyComponent';
 import DetailedView from './scenes/DetaildView/detailedView';
+import Search from './scenes/SearchResults/search';
 
 const getId = () => Math.random();
 const filmResult: ResultItemProps[] = [
@@ -27,6 +28,9 @@ const TestAll:React.SFC<object> = () =>
         <h1>Welcome to Movie search test component page</h1>
     </header>
 
+    <TestElement name='Search Results'>
+        <Search/>
+    </TestElement>
     <TestElement name='detailed view'>
         <DetailedView/>
     </TestElement>
