@@ -1,4 +1,4 @@
-// import './TestAll.css';
+import './TestAll.css';
 import * as React from 'react';
 import TestElement from './TestItem';
 import Button from './components/Button/button';

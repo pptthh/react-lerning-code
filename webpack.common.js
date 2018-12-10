@@ -7,7 +7,7 @@ const config = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[hash].js'
     },
     module: {
         rules: [
@@ -20,6 +20,13 @@ const config = {
               test: /\.(ts|tsx)?$/,
               loader: 'ts-loader',
               exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             }
         ]
     },
@@ -36,12 +43,15 @@ const config = {
         hot: true,
     },
     plugins: [
-      new CleanWebpackPlugin(['dist', 'coverage']),
-      new HtmlWebpackPlugin({
+        new CleanWebpackPlugin(['dist', 'coverage']),
+        new HtmlWebpackPlugin({
             favicon: 'public/movie.ico',
             title :'React-Typescript Training App - Movie Search',
-      }),
-      new HtmlWebpackRootPlugin(),
+            // template: require('html-webpack-template'),
+            inject: false,
+            appMountId: 'app',
+        }),
+        new HtmlWebpackRootPlugin(),
     ],
 }
 
