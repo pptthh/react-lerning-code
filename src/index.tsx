@@ -1,19 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { hot } from 'react-hot-loader'
+import TestAll from "./TestAll";
 
-class App extends React.Component {
-  render() {
-    return <div>Hello Word! Juhuuu!</div>;
-  }
-}
 
-const AppWithHot = hot(module)(App);
+setTimeout(() => { // fixme: during TESTing find a solution to remove this dilay 
+    const AppWithHot = hot(module)(TestAll);
+    ReactDOM.render(<AppWithHot/>, document.getElementById("root"));
+}, 0);
 
-// fixme: find a proper soluton for testing the App whithout this setTimeout
-setTimeout(() => 
-  ReactDOM.render(<AppWithHot/>, document.getElementById("app")),
-  0
-);
-
-export default App;
+export default TestAll;
