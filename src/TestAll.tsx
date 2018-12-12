@@ -61,15 +61,20 @@ const TestAll:React.SFC<object> = () =>
         <Label>simple label</Label>
         <Button label='Button' onClick={console.log}></Button>
     </TestElement>
+    
     <TestElement name='ErrorBoundary tester'>
         <label></label>
         <BuggyComponent enable={enableBuggyComponent}/>
     </TestElement>
-    <TestElement name='ErrorBoundarySFC tester'>
+    
+    <TestElement
+        name='ErrorBoundarySFC tester'
+        disableErrorCatching={true}>
         <ErrorBoundary>
             <BuggyComponent enable={enableBuggyComponent}/>
         </ErrorBoundary>
-</TestElement>
+    </TestElement>
+    
 </div>;
 
 export default TestAll;

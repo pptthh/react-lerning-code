@@ -25,7 +25,7 @@ class ErrorBoundary extends React.Component<{}, State> {
     componentDidCatch(error: Error, info: ErrorInfo) {
         // You can also log the error to an error reporting service
         // logErrorToMyService(error, info);
-        console.log(error, info)
+        // console.log(error, info);
         this.setState({
             error,
             info,
@@ -33,9 +33,13 @@ class ErrorBoundary extends React.Component<{}, State> {
     }
     render() {
         return this.state.hasError ?
-            <h3>Rendering error happened:</h3>:
+            <h3>Rendering error happened</h3> :
             this.props.children;
+        //  {this.state.error}<br/>
+        //  <pre>{this.state.info}</pre>
+        
     }
 }
 
 export default ErrorBoundary;
+// https://dev.to/mildrenben/react-16-and-162-overview---fragments-portals-and-error-boundaries-49

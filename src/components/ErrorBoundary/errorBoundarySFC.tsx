@@ -6,13 +6,13 @@ interface Props{
 }
 
 //  fixme: add process.env to show debug info only on dev env
-const fallBackDefault = (e: Error) =>
-<>
-    <h3>{e.message}</h3>
-    <pre>{e.stack}</pre>
-</>;
+const fallBackDefault = (e: Error) => <h3>{e.message}</h3>;
+// <>
+//     <h3>{e.message}</h3>
+//     <pre>{e.stack}</pre>
+// </>;
 
-const ErrorBoundary = ({
+const ErrorBoundary:React.SFC<Props> = ({
     children,
     fallBack = fallBackDefault
 }: Props) => {
