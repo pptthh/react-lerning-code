@@ -4,6 +4,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'production',
+    output: {
+        filename: '[hash].js',
+    },
     optimization: {
         runtimeChunk: 'single',
         splitChunks: {
@@ -11,7 +14,7 @@ module.exports = merge(common, {
                 vendor: {
                     test: /[\\\/]node_modules[\\\/]/,
                     name: 'vendors',
-                    chunks: 'all'
+                    chunks: 'all',
                 }
             }
         },

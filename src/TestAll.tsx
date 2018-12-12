@@ -14,7 +14,9 @@ import RadioBar from './components/RadioBar/radioBar';
 import BuggyComponent from './components/ErrorBoundary/buggyComponent';
 import DetailedView from './scenes/DetaildView/detailedView';
 import Search from './scenes/SearchResults/search';
+import ErrorBoundary from './components/ErrorBoundary/errorBoundarySFC';
 
+const enableBuggyComponent = false;
 const getId = () => Math.random();
 const filmResult: ResultItemProps[] = [
     {title:'Title', date: '2000', gerne:'Action', key:getId()},
@@ -61,8 +63,13 @@ const TestAll:React.SFC<object> = () =>
     </TestElement>
     <TestElement name='ErrorBoundary tester'>
         <label></label>
-        <BuggyComponent enable={false}/>
+        <BuggyComponent enable={enableBuggyComponent}/>
     </TestElement>
+    <TestElement name='ErrorBoundarySFC tester'>
+        <ErrorBoundary>
+            <BuggyComponent enable={enableBuggyComponent}/>
+        </ErrorBoundary>
+</TestElement>
 </div>;
 
 export default TestAll;

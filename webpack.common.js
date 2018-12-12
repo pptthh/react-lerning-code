@@ -7,7 +7,6 @@ const config = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[hash].js'
     },
     module: {
         rules: [
@@ -42,9 +41,7 @@ const config = {
         new HtmlWebpackPlugin({
             favicon: 'public/movie.ico',
             title :'React-Typescript Training App - Movie Search',
-            // template: require('html-webpack-template'),
-            inject: false,
-            appMountId: 'app',
+            inject: true,
         }),
         new HtmlWebpackRootPlugin(),
     ],

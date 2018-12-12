@@ -34,7 +34,7 @@
     },
     "coverageDirectory": "./coverage/",
     "coverageReporters": [
-      "text"
+      "json", "lcov", "text", "clover"
     ],
     "roots": [
       "<rootDir>/src"
@@ -46,8 +46,6 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
-      "js",
-      "jsx",
       "json",
       "node"
     ],
@@ -87,7 +85,6 @@
     "enzyme-to-json": "^3.3.4",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-root-plugin": "^0.10.0",
-    "html-webpack-template": "^6.2.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "react-chartjs-2": "^2.7.4",
