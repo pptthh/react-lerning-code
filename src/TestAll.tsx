@@ -1,6 +1,6 @@
-import './TestAll.css';
 import * as React from 'react';
-import TestElement from './TestItem';
+import './TestAll.css';
+import TestElement from './TestElement';
 import Button from './components/Button/button';
 import Label from './components/Label/label';
 import Header from './components/Header/header';
