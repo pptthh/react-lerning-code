@@ -9,13 +9,13 @@ export interface TestElementProps {
 const listChildren = (children: JSX.Element | JSX.Element[], name: string) =>
 !Array.isArray(children) ? 
     <div className="App-item-content">
-        <ErrorBoundary errorMsg={`TestElement: ${name}`}>
+        <ErrorBoundary>
             {children}
         </ErrorBoundary>
     </div> :
     children.map((child, index): JSX.Element =>
         <div className="App-item-content" key={`${child.key}_${index}`}>
-            <ErrorBoundary errorMsg={`TestElement: ${name} in child #${index + 1}`}>
+            <ErrorBoundary>
                 {child}
             </ErrorBoundary>
         </div>
