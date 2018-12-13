@@ -2,12 +2,14 @@
 **/*.tmp
 
 dist
-
+examples
 node_modules
 generated
 coverage
 debug
 prod
+
+cypress/fixtures/example.json
 
 .env.local
 .env.development.local
