@@ -49,6 +49,7 @@
     "moduleFileExtensions": [
       "ts",
       "tsx",
+      "js",
       "json",
       "node"
     ],
