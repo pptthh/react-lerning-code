@@ -26,13 +26,14 @@ const filmResult: ResultItemProps[] = [
 
 const TestAll:React.SFC<object> = () =>
 <div className="TestApp">
-    <header className="App-title">
+    <header className="TestApp-title">
         <h1>Welcome to Movie search test component page</h1>
     </header>
 
     <TestElement name='Search Results'>
         <Search/>
     </TestElement>
+
     <TestElement name='detailed view'>
         <DetailedView/>
     </TestElement>

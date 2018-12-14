@@ -1,41 +1,40 @@
-.TestApp {
-    text-align: center;
-}
-
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 25px;
-}
-
-.App-header {
-    background-color: #222;
-    padding: 10px;
-    color: white;
-}
-
-.App-title {
-    font-size: 1.5em;
-}
-
-.App-intro {
-    font-size: large;
-}
-
-.App-single-component-block {
-    display: flex;
-    border: 1px solid #777;
-    min-height: 100px;
-}
-
-.App-component-label {
-    width: 200px;
-    border-right: 2px solid #777;
-    text-align: center;
-    padding: 10px;
-    font-weight: bold;
-}
-
-.App-component-content {
+body {
+    background-color: #000;
+    margin: 5px;
     padding: 5px;
-    border-left:1px solid #000;
+}
+
+.TestApp {
+    background-color: #777;
+    color: #FFF;
+}
+
+.TestApp-title{
+    background-color: #000;
+    text-align: center;
+    padding: 10px;
+}
+
+.TestElement {
+    align-items: stretch;
+    align-content: flex-start;
+    border-top: 1px solid #000;
+    display: flex;
+    flex-direction: row;
+}
+
+.TestElement .title {
+    border-right: 1px solid #000;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: right;
+    padding: 10px;
+    width: 200px;
+}
+
+.TestElement .content {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right:1px solid #000;
 }

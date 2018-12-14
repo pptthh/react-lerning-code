@@ -9,20 +9,19 @@ export interface TestElementProps {
 
 const listChildren = (children: JSX.Element | JSX.Element[], name: string, disableErrorCatching = false) =>
 !Array.isArray(children) ? 
-    <div className="App-item-content">
+    <div className="content">
         {disableErrorCatching ? children : <ErrorBoundary>{children}</ErrorBoundary>}
     </div> :
     children.map((child, index): JSX.Element =>
-        <div className="App-item-content" key={`${child.key}_${index}`}>
+        <div className="content" key={`${child.key}_${index}`}>
             {disableErrorCatching ? children : <ErrorBoundary>{children}</ErrorBoundary>}
         </div>
     );
 
 const TestElement = ({name,  children}: TestElementProps): JSX.Element =>
-<div className="App-single-item-block">
-    <div className="App-item-label">{name}</div>
+<div className="TestElement">
+    <div className="title">{name}</div>
     {listChildren(children, name)}
-    <hr/>
 </div>;
 
 export default TestElement;
