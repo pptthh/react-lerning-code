@@ -41,10 +41,6 @@ const TestAll:React.SFC<object> = () =>
             resultCount={filmResult.length}
             resultSort={ResultSort.RELEASE_DATE}
         />
-        <RadioBar
-            labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}
-            name='radioBar'
-            />
     </TestElement>
     <TestElement name='Search result examples'>
         <FoundMovies results={filmResult}/>
