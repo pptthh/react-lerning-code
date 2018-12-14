@@ -2,6 +2,8 @@ import * as React from 'react';
 import Header from '../Header/header';
 import TextInput from '../TextInput/textInput';
 import Button from '../Button/button';
+import RadioBar from '../RadioBar/radioBar';
+import ResultSort from '../SearchSummary/ResultSort';
 
 export interface SearchFormProps {
     searchField: string;
@@ -13,15 +15,22 @@ const SearchForm: React.SFC<SearchFormProps> = () =>
 <div>
     <Header>netflixroulette</Header>
     <div>FIND YOUR MOVIE</div>
-    <TextInput/>
+    <TextInput
+        className='search-input-field'
+        placeholder='search'
+    />
     <div>
         <span>
             SEARCH BY
-            <Button label='TITLE' onClick={console.log}/>
-            <Button label='GERNE' onClick={console.log}/>
+            <RadioBar
+                className='movie-sort-by'
+                labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}
+                selected={ResultSort.RELEASE_DATE}
+                name='radioBar'                
+            />
         </span>
             &nbsp;
-        <span>
+        <span className='search-button'>
             <Button label='SEARCH' onClick={console.log}/>
         </span>
     </div>

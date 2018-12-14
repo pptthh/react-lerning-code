@@ -3,9 +3,11 @@ import * as React from 'react';
 interface RadioBarProps{
     labels: string[];
     name: string;
+    selected?: string;
+    className?: string;
 }
 
-const RadioBar = ({labels, name}:RadioBarProps) =>
+const RadioBar = ({labels, name, selected, className}: RadioBarProps) =>
 <>
 {
     labels.map(
@@ -16,7 +18,8 @@ const RadioBar = ({labels, name}:RadioBarProps) =>
                 id={label}
                 name={name}
                 value={label}
-                title='1234'
+                className={className}
+                defaultChecked={selected === label}
                 >
             </input>
             {label}
