@@ -19,8 +19,22 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
 .ResultsBody .ResultItem {
     border: 1px solid #FFF;
     min-width: 150px;
+}
+.ResultsBody .item-data{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.ResultsBody .item-title{
+    text-transform: uppercase;
+}
+.ResultsBody .item-date{
+    border: 1px solid #CCC;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 10pt
 }
