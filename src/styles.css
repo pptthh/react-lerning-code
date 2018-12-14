@@ -1,3 +1,14 @@
 body {
-  font-family: sans-serif;
+    font-family: sans-serif;
+}
+
+.SearchForm .search-input-field {
+    min-width: 350px;
+    width: 100%;
+}
+
+.SearchForm .properties {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
 }

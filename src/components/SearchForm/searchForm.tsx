@@ -12,14 +12,14 @@ export interface SearchFormProps {
 }
 
 const SearchForm: React.SFC<SearchFormProps> = () =>
-<div>
+<div className='SearchForm'>
     <Header>netflixroulette</Header>
     <div>FIND YOUR MOVIE</div>
     <TextInput
         className='search-input-field'
         placeholder='search'
     />
-    <div>
+    <div className='properties'>
         <span>
             SEARCH BY
             <RadioBar
@@ -29,10 +29,7 @@ const SearchForm: React.SFC<SearchFormProps> = () =>
                 name='radioBar'                
             />
         </span>
-            &nbsp;
-        <span className='search-button'>
-            <Button label='SEARCH' onClick={console.log}/>
-        </span>
+        <Button label='SEARCH' onClick={console.log}/>
     </div>
 </div>;
 
