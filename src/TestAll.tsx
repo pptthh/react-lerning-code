@@ -9,7 +9,6 @@ import FoundMovies from './scenes/SearchResults/FoundMovies';
 import { ResultItemProps } from './scenes/SearchResults/FoundMovies/ResultItem';
 import SearchSummary from './components/SearchSummary/searchSummary';
 import ResultSort from './components/SearchSummary/ResultSort';
-import ButtonBar from './components/ButtonBar/buttonBar';
 import RadioBar from './components/RadioBar/radioBar';
 import BuggyComponent from './components/ErrorBoundary/buggyComponent';
 import DetailedView from './scenes/DetaildView/detailedView';
@@ -41,11 +40,6 @@ const TestAll:React.SFC<object> = () =>
         <SearchSummary
             resultCount={filmResult.length}
             resultSort={ResultSort.RELEASE_DATE}
-        />
-        <ButtonBar
-            labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}
-            selected={ResultSort.RELEASE_DATE}
-            onChange={console.log}
         />
         <RadioBar
             labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}

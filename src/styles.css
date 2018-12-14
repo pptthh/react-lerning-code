@@ -30,11 +30,26 @@ body {
 }
 .ResultsBody .item-title{
     text-transform: uppercase;
+    padding-left: 5px;
 }
 .ResultsBody .item-date{
     border: 1px solid #CCC;
     margin-right: 5px;
+    padding: 5px;
     padding-left: 5px;
     padding-right: 5px;
     font-size: 10pt
+}
+.ResultsBody .item-gerne{
+    padding: 5px;
+}
+.SearchSummary {
+    background: #EEE;
+    color: #333;
+    padding: 5px;
+    font-weight: bold;
+    min-height: 20px;
+    min-width: 600px;
+    display: flex;
+    justify-content: space-between;
 }
