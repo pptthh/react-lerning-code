@@ -7,6 +7,8 @@ generated
 coverage
 debug
 prod
+cypress/videos/
+cypress/screenshots/
 
 .env.local
 .env.development.local

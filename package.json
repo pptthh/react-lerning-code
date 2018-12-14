@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "clean": "rm dist coverage -rf",
+    "clean": "rm dist coverage cypress/videos cypress/screenshots -rf",
     "build": "webpack -p --mode production --config webpack.prod.js",
     "build-dev": "webpack -d --mode development --config webpack.dev.js",
     "start": "webpack-dev-server --hot --mode development --config webpack.dev.js",
@@ -15,6 +15,8 @@
     "test": "npm run jest -- --watch",
     "jest": "jest",
     "cypress": "cypress",
+    "e2e": "npm run cypress run",
+    "e2e:open": "npm run cypress open",
     "tsc": "tsc"
   },
   "jest": {
