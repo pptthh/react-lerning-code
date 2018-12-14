@@ -9,7 +9,7 @@ export interface ResultItemProps{
 }
 
 const ResultItem: React.SFC<ResultItemProps> = ({src='movie.ico', title, date, gerne, key}: ResultItemProps) =>
-<span key={key}>
+<span className='ResultItem' key={key}>
     <img src={src} width={100}/>
     <div>{title}</div>
     <div>{date}</div>

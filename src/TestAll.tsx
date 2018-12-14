@@ -54,7 +54,6 @@ const TestAll:React.SFC<object> = () =>
     </TestElement>
     <TestElement name='Search result examples'>
         <FoundMovies results={filmResult}/>
-        <FoundMovies results={[]}/>
     </TestElement>
     <TestElement name='Simple Components'>
         <Footer/>
