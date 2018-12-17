@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Button from '../Button/button';
 import ResultSort from './ResultSort';
 import RadioBar from '../RadioBar/radioBar';
 

@@ -28,10 +28,11 @@ describe('Input fields tests', () => {
     it('search field', () => {
         cy.get('.search-input-field')
         .type('Quentin Tarantino')
-        // .should('include', 'Quentin Tarantino');
+        // .should('include', 'Quentin Tarantino')
         // .should('have.string','search')
         // .should('have.attr', 'placeholder', 'Email')
-        // .should('have.string','Quentin Tarantino');
+        // .should('have.string','Quentin Tarantino')
+        // .should('be.undefined')
         .type('{enter}')
     })
 })
