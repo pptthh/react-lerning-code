@@ -2,12 +2,13 @@
 **/*.tmp
 
 dist
-
 node_modules
 generated
 coverage
 debug
 prod
+cypress/videos/
+cypress/screenshots/
 
 .env.local
 .env.development.local

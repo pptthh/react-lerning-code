@@ -1,4 +1,55 @@
-.App {
-  font-family: sans-serif;
-  text-align: left;
+body {
+    font-family: sans-serif;
+}
+
+.SearchForm .search-input-field {
+    min-width: 400px;
+    width: 100%;
+}
+
+.SearchForm .properties {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.ResultsBody {
+    min-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.ResultsBody .ResultItem {
+    border: 1px solid #FFF;
+    min-width: 150px;
+}
+.ResultsBody .item-data{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.ResultsBody .item-title{
+    text-transform: uppercase;
+    padding-left: 5px;
+}
+.ResultsBody .item-date{
+    border: 1px solid #CCC;
+    margin-right: 5px;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 10pt
+}
+.ResultsBody .item-gerne{
+    padding: 5px;
+}
+.SearchSummary {
+    background: #EEE;
+    color: #333;
+    padding: 5px;
+    font-weight: bold;
+    min-height: 20px;
+    min-width: 600px;
+    display: flex;
+    justify-content: space-between;
 }

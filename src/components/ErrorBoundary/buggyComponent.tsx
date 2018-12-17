@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { throwError } from '../../utils';
 
-const BuggyComponent = ({enable = true}: {enable:boolean}) => {
-    if (enable)
-        throw new Error('BuggyComp is rendering');
-    return <label>BuggyComp is not enabled</label>
-}
+const BuggyComponent:React.SFC<{enable:boolean}> =
+({enable = true}: {enable:boolean}) =>
+    enable ? 
+        throwError('BuggyComp is rendering') :
+        <label>BuggyComp is not enabled</label>
+
 
 export default BuggyComponent;
