@@ -10,8 +10,8 @@ import { ResultItemProps } from './components/FoundMovies/ResultItem';
 import SearchSummary from './components/SearchSummary/searchSummary';
 import ResultSort from './components/SearchSummary/ResultSort';
 import BuggyComponent from './components/ErrorBoundary/buggyComponent';
-import DetailedView from './scenes/DetaildView/detailedView';
-import Search from './scenes/SearchResults/search';
+import DetailedView from './scenes/DetaildView/detailedViewUI';
+import Search from './scenes/SearchResults/searchResultsUI';
 import ErrorBoundary from './components/ErrorBoundary/errorBoundarySFC';
 import App from './app';
 
