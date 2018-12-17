@@ -4,9 +4,11 @@ import { hot } from 'react-hot-loader'
 import TestAll from "./TestAll";
 import './styles.css';
 
-setTimeout(() => { // fixme: during TESTing find a solution to remove this dilay 
-    const AppWithHot = hot(module)(TestAll);
-    ReactDOM.render(<AppWithHot/>, document.getElementById("root"));
-}, 0);
+const rootDiv = document.getElementById("root");
+const AppWithHot = hot(module)(TestAll);
+const DomRender = () => ReactDOM.render(<AppWithHot/>, rootDiv);
 
-export default TestAll;
+// fixme: during TESTing find a solution to remove this dilay 
+setTimeout(DomRender, 0);
+
+export default AppWithHot;

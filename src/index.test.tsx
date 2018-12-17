@@ -3,9 +3,9 @@ import * as ReactDOM from 'react-dom';
 import App from '.';
 
 describe('describe Application', () => {
-    it('renders without crashing', () => {
+    it('renders TestAll without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
+        ReactDOM.render(<App/>, div);
         ReactDOM.unmountComponentAtNode(div);
     });
 });
