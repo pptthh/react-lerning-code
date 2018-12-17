@@ -13,6 +13,7 @@ import BuggyComponent from './components/ErrorBoundary/buggyComponent';
 import DetailedView from './scenes/DetaildView/detailedView';
 import Search from './scenes/SearchResults/search';
 import ErrorBoundary from './components/ErrorBoundary/errorBoundarySFC';
+import App from './app';
 
 const enableBuggyComponent = false;
 const getId = () => Math.random();
@@ -27,7 +28,9 @@ const TestAll:React.SFC<object> = () =>
     <header className="TestApp-title">
         <h1>Welcome to Movie search test component page</h1>
     </header>
-
+    <div>
+        <App/>
+    </div>
     <TestElement name='Search Results'>
         <Search/>
     </TestElement>
