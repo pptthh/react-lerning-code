@@ -1,8 +1,8 @@
 import * as React from 'react';
 import SearchSummary, { SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
-import { ResultItemProps } from './FoundMovies/ResultItem';
+import { ResultItemProps } from '../../components/FoundMovies/ResultItem';
 import SearchForm, { SearchFormProps } from '../../components/SearchForm/searchForm';
-import FoundMovies from './FoundMovies';
+import FoundMovies from '../../components/FoundMovies';
 
 interface SearchProps {
     searchForm: SearchFormProps;

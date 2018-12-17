@@ -1,8 +1,8 @@
 import * as React from 'react';
 import SearchSummary, { SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
-import { ResultItemProps } from '../SearchResults/FoundMovies/ResultItem';
-import FoundMovies from '../SearchResults/FoundMovies';
-import DetailedPanel, { DetailedPanelProps } from './DetailedPanel/detailedPanelProps';
+import { ResultItemProps } from '../../components/FoundMovies/ResultItem';
+import FoundMovies from '../../components/FoundMovies';
+import DetailedPanel, { DetailedPanelProps } from '../../components/DetailedPanel/detailedPanelProps';
 
 interface DetailedViewProps {
     detailedPanel?: DetailedPanelProps;

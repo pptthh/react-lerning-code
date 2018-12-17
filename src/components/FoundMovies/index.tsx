@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Footer from '../../../components/Footer/footer';
+import Footer from '../Footer/footer';
 import ResultsBody from './ResultBody';
 import { ResultItemProps } from './ResultItem';
 
