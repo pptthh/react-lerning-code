@@ -1,6 +1,5 @@
+enum SearchResultActions {
+    INIT_SEARCH = 'initSearch',
+}
 
-enum ActionTypes {
-    
-};
-
-export default ActionTypes;
+export default SearchResultActions;

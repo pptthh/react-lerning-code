@@ -31,13 +31,13 @@ const TestAll:React.SFC<object> = () =>
     <div>
         <App/>
     </div>
-    <TestElement name='Search Results'>
+{/*    <TestElement name='Search Results'>
         <Search/>
     </TestElement>
 
-    <TestElement name='detailed view'>
+    <TestElement name='Detailed View'>
         <DetailedView/>
-    </TestElement>
+    </TestElement> {/**/}
     <TestElement name='Search Box'>
         <SearchSummary
             resultCount={filmResult.length}

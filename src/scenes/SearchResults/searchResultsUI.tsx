@@ -3,30 +3,19 @@ import SearchSummary, { SearchSummaryProps } from '../../components/SearchSummar
 import { ResultItemProps } from '../../components/FoundMovies/ResultItem';
 import SearchForm, { SearchFormProps } from '../../components/SearchForm/searchForm';
 import FoundMovies from '../../components/FoundMovies';
+import SearchResultState from './srState';
 
-interface SearchProps {
+interface Props extends SearchResultState {
     searchForm: SearchFormProps;
     searchResults: SearchSummaryProps;
     results: ResultItemProps[];
 }
 
-class Search extends React.Component<any, SearchProps> {
-    constructor(props: SearchProps) {
-        super(props);
-        this.state = {
-            searchForm: props.searchForm,
-            searchResults: props.searchResults || [],
-            results: props.results,
-        };
-    }
-  
-    render() {
-        return <div>
-            <SearchForm {...this.state.searchForm}/>
-            {this.state.searchResults && <SearchSummary {...this.state.searchResults}/>}
-            <FoundMovies results={this.state.results} />
-        </div>;
-    }
-}
+const searchResultsUI = (props: Props) =>
+<div>
+    <SearchForm {...props.searchForm}/>
+    {props.searchResults && <SearchSummary {...props.searchResults}/>}
+    <FoundMovies results={props.results} />
+</div>;
 
-export default Search;
+export default searchResultsUI;

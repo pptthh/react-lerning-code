@@ -3,30 +3,19 @@ import SearchSummary, { SearchSummaryProps } from '../../components/SearchSummar
 import { ResultItemProps } from '../../components/FoundMovies/ResultItem';
 import FoundMovies from '../../components/FoundMovies';
 import DetailedPanel, { DetailedPanelProps } from '../../components/DetailedPanel/detailedPanelProps';
+import DetailedViewState from './dvState';
 
-interface DetailedViewProps {
+export interface DetailedViewProps extends DetailedViewState {
     detailedPanel?: DetailedPanelProps;
     searchResults: SearchSummaryProps;
     results: ResultItemProps[];
 }
 
-class DetailedView extends React.Component<any, DetailedViewProps> {
-    constructor(props: DetailedViewProps) {
-        super(props);
-        this.state = {
-            detailedPanel: props.detailedPanel,
-            searchResults: props.searchResults || [],
-            results: props.results,
-        };
-    }
-  
-    render() {
-        return <div>
-            {this.state.detailedPanel && <DetailedPanel {...this.state.detailedPanel}/>}
-            {this.state.searchResults && <SearchSummary {...this.state.searchResults}/>}
-            <FoundMovies results={this.state.results} />
-        </div>;
-    }
-}
+const DetailedViewUI = (props: DetailedViewProps) =>
+<div>
+    {props.detailedPanel && <DetailedPanel {...props.detailedPanel}/>}
+    {props.searchResults && <SearchSummary {...props.searchResults}/>}
+    <FoundMovies results={props.results} />
+</div>;
 
-export default DetailedView;
+export default DetailedViewUI;

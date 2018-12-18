@@ -1,8 +1,10 @@
 import { createStore } from 'redux';
-import rootReducer from './rootReducer';
+import RootReducer from './rootReducer';
+
+// tslint:disable-next-line
 const win = window as any;
 const store = createStore(
-    rootReducer,
+    RootReducer,
     win.__REDUX_DEVTOOLS_EXTENSION__ &&
     win.__REDUX_DEVTOOLS_EXTENSION__()
 );

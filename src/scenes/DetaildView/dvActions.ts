@@ -1,5 +1,5 @@
-enum detailedViewActionTypes {
-    INIT_DETAILED_VIEW = 'INIT_DETAILED_VIEW',
+enum DetailedViewActions {
+    INIT_DETAILED_VIEW = 'initDetailedView',
 }
 
-export default detailedViewActionTypes;
+export default DetailedViewActions;
