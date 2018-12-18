@@ -7,7 +7,7 @@ export interface SearchSummaryProps {
     resultSort?: SortBy;
 }
 export interface SearchSummaryAction {
-    onChange: (e: any) => void;
+    onChange: (e: unknown) => void;
 }
 const moviesFound: React.SFC<number> = (n:number) =>
 n === 1 ? <>1 movie found</> :

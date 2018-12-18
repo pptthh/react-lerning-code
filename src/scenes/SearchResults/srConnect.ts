@@ -1,16 +1,15 @@
 import { connect } from "react-redux";
-import searchResultsUI from "./srUI";
+import searchResultsUI, { SearchResultsUIAction } from "./srUI";
 import RootState from "../../services/rootState";
 import SearchResultState from "./srState";
+import SearchResultActions from "./srActions";
 
-const mapDispatchToProps = (dispatch: Function) => ({
-
+const mapDispatchToProps = ():SearchResultsUIAction => ({
+    changeSearchBy: (e:unknown) => ({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
+    changeSearchText: (e:unknown) => ({type:SearchResultActions.CHANGE_SEARCH_TEXT, payload:e}),
+    clickSearch: (e:unknown) => ({type:SearchResultActions.CLICK_SEARCH, payload:e}),
+    clickResults: (e:unknown) => ({type:SearchResultActions.CLICK_RESULTS, payload:e}),
 });
-/*
-const mapDispatchToProps = (dispatch: Function) => ({
-    done: (data: number) => dispatch(Action.done(data)),
-    edit: (data: number) => dispatch(Action.edit(data)),
-});/* */
 
 const mapSubdictsToProps =
     (state: RootState): SearchResultState =>

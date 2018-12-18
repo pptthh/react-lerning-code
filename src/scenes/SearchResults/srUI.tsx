@@ -4,11 +4,15 @@ import SearchForm, { SearchFormActions, SearchFormProps } from '../../components
 import FoundMovies from '../../components/FoundMovies';
 import SearchResultState from './srState';
 
-interface Props extends SearchResultState {
-    searchForm: SearchFormActions & SearchFormProps;
-    searchResults: SearchSummaryAction & SearchSummaryProps;
-    // results: ResultItemAction[];
+
+export interface SearchResultsUIAction {
+    changeSearchBy: (e:unknown)=> void,
+    changeSearchText: (e:unknown) => void,
+    clickSearch: (e:unknown) => void,
+    clickResults: (e:unknown) => void,
 }
+
+interface Props extends SearchResultState, SearchResultsUIAction{}
 
 const searchResultsUI = (props: Props) =>
 <div>
