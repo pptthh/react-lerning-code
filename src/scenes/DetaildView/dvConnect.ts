@@ -1,27 +1,34 @@
 import { connect } from "react-redux";
-import DetailedViewUI from "./detailedViewUI";
+import DetailedViewUI from "./dvUI";
 import RootState from "../../services/rootState";
 import DetailedViewState from "./dvState";
 
-const mapDispatchToProps: DetailedViewState = {}
 
-const mapSubdictsToProps = (state: RootState): DetailedViewState => ({
+// const mapSubdictsToProps = (state: RootState): DetailedViewState => ({
+    // results: ResultItemProps[],
     // selectedDiskData1: state.serverDiff.selectedItem1!.serverState!.diskData.map(
-    //     (d) => prepareDiskData(d, true)
-    // ),
-    // selectedDiskData2 : state.serverDiff.selectedItem2!.serverState!.diskData.map(
-    //     (d) => prepareDiskData(d, false)
-    // ),
-})
+        //     (d) => prepareDiskData(d, true)
+        // ),
+        // selectedDiskData2 : state.serverDiff.selectedItem2!.serverState!.diskData.map(
+            //     (d) => prepareDiskData(d, false)
+            // ),
+// })
 
-const mapStateToProps = (state: RootState, ownprops: any) => mapSubdictsToProps(state);
+const mapDispatchToProps: DetailedViewState = {
+    results:[],
+}
+const mapSubdictsToProps =
+    (state: RootState): DetailedViewState =>
+        state.detailedViewState;
 
-export default connect(
+const mapStateToProps = (state: RootState) => mapSubdictsToProps(state);
+
+const DetailedView = connect(
     mapStateToProps,
     mapDispatchToProps
 )(DetailedViewUI);
 
-
+export default DetailedView 
 
 // import { connect } from "react-redux";
 // import searchResultsUI from "./searchResultsUI";

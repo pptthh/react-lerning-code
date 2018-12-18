@@ -8,10 +8,8 @@ import Footer from './components/Footer/footer';
 import FoundMovies from './components/FoundMovies';
 import { ResultItemProps } from './components/FoundMovies/ResultItem';
 import SearchSummary from './components/SearchSummary/searchSummary';
-import ResultSort from './components/SearchSummary/ResultSort';
+import SortBy from './components/SearchSummary/sortBy';
 import BuggyComponent from './components/ErrorBoundary/buggyComponent';
-import DetailedView from './scenes/DetaildView/detailedViewUI';
-import Search from './scenes/SearchResults/searchResultsUI';
 import ErrorBoundary from './components/ErrorBoundary/errorBoundarySFC';
 import App from './app';
 
@@ -41,7 +39,8 @@ const TestAll:React.SFC<object> = () =>
     <TestElement name='Search Box'>
         <SearchSummary
             resultCount={filmResult.length}
-            resultSort={ResultSort.RELEASE_DATE}
+            resultSort={SortBy.RELEASE_DATE}
+            onChange={console.log}
         />
     </TestElement>
     <TestElement name='Search result examples'>

@@ -6,15 +6,17 @@ import DetailedPanel, { DetailedPanelProps } from '../../components/DetailedPane
 import DetailedViewState from './dvState';
 
 export interface DetailedViewProps extends DetailedViewState {
-    detailedPanel?: DetailedPanelProps;
-    searchResults: SearchSummaryProps;
-    results: ResultItemProps[];
+}
+interface Props extends DetailedViewState {
+    // detailedPanel?: DetailedPanelAction;
+    // searchResults: SearchSummaryAction;
+    // results: ResultItemAction[];
 }
 
-const DetailedViewUI = (props: DetailedViewProps) =>
+const DetailedViewUI = (props: Props) =>
 <div>
     {props.detailedPanel && <DetailedPanel {...props.detailedPanel}/>}
-    {props.searchResults && <SearchSummary {...props.searchResults}/>}
+    {/*props.searchResults && <SearchSummary {...props.searchResults}/>/**/}
     <FoundMovies results={props.results} />
 </div>;
 

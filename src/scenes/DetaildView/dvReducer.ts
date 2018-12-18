@@ -3,12 +3,11 @@ import DetailedViewState from "./dvState";
 import DetailedViewActions from "./dvActions";
 
 const stateInit: DetailedViewState = {
-    prop: '',
+    results: [],
 };
 
 const initDetailedView = ({state, payload}: ICase<DetailedViewState>): DetailedViewState => ({
         ...state,
-    prop: payload,
 });
 
 const SWITCH: ISwitch<DetailedViewState> = {
