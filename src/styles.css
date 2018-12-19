@@ -21,10 +21,12 @@ body {
 }
 .ResultsBody .ResultItem {
     border: 1px solid #FFF;
+    margin: 10px;
     width: 180px;
 }
 .ResultsBody .item-data{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 }
@@ -36,12 +38,15 @@ body {
 }
 .ResultsBody .item-date{
     border: 1px solid #CCC;
-    font-size: 10px;
-    margin-right: 5px;
-    padding: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 10pt
+    font-size: 7pt;
+    font-weight: bold;
+    margin: 2px;
+    padding: 2px;
+
+    /* margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 2px;
+    padding-right: 2px; */
 }
 .ResultsBody .item-gerne{
     font-size: 10px;
@@ -51,9 +56,24 @@ body {
     background: #EEE;
     color: #333;
     padding: 5px;
+    font-size: 8pt;
     font-weight: bold;
     min-height: 20px;
     min-width: 600px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.SearchSummary input[type=radio] ~ label{
+    border: 1px solid #CCC;
+    padding: 2px;
+}
+.SearchSummary input[type=radio]:checked ~ label{
+    border: 1px solid #F33;
+    color: #F33;
+}
+.SearchSummary input[type=radio].sort-by{
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
 }

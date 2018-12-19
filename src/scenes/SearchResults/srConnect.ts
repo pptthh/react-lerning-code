@@ -4,6 +4,8 @@ import RootState from "../../services/rootState";
 import SearchResultState from "./srState";
 import SearchResultActions from "./srActions";
 import { IActions } from "../../services/rootActions";
+import { Movie } from "../../services/rest/movie";
+import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
 
 const mapDispatchToProps = (dispatch: (a:IActions<unknown>) => void):SearchResultsActions => ({
     searchSummaryAction: {
@@ -26,6 +28,12 @@ const mapSubdictsToProps =
             resultCount: !state.searchResult.moviesData ? 0 :
                     state.searchResult.moviesData.total,
         },
+        results: state.detailedView.moviesData.data.map(
+            (item: Movie):ResultItemProps => ({
+                ...item,
+                releaseYear: item.release_date.substring(0,4),
+            })
+        ),
     });
 
 const mapStateToProps = (state: RootState) => mapSubdictsToProps(state);

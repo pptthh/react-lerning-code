@@ -14,8 +14,6 @@ export interface SearchResultsActions {
     // clickResults: (e:unknown) => void,
 }
 
-// interface Props extends SearchResultState, SearchResultsUIActions{}
-
 const searchResultsUI = (props: SearchResultState & SearchResultsActions) =>
 <div>
     <SearchForm 

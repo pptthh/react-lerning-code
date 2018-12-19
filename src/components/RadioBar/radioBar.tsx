@@ -21,21 +21,26 @@ const RadioBar = ({
 <>
 {
     labels.map(
-        (label: string) =>
-        <label
-            key={label}
-            className={className}>
+        (value: string) =>
+        <span>
             <input
                 type="radio"
-                id={label}
+                id={value}
+                key={value}
                 name={name}
-                value={label}
+                value={value}
                 className={className}
-                defaultChecked={selected === label}
+                defaultChecked={selected === value}
                 onChange={onChange}
                 />
-            {labelTransform(label)}
-        </label>
+            <label
+                key={value}
+                htmlFor={value}
+                className={className}
+                >
+                {labelTransform(value)}
+            </label>
+        </span>
     )
 }
 </>
