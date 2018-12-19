@@ -9,11 +9,11 @@ import DetailedViewReducer from '../scenes/DetaildView/dvReducer';
 */
 
 // export const rootReducer: Reducer<AppState> = combineReducers(appState);
-const rootState:ReducersMapObject = {
+const rootReducers:ReducersMapObject = {
     detailedView: DetailedViewReducer,
     searchResult: SearchResultReducer,
 }
-const RootReducer: Reducer<RootState> = combineReducers(rootState);
+const RootReducer: Reducer<RootState> = combineReducers(rootReducers);
 export default RootReducer;
 
 /**

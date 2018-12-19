@@ -11,9 +11,9 @@ export interface SearchFormProps {
 }
 
 export interface SearchFormActions {
-    searchFieldAction: (e: any) => void;
-    searchByAction: (e: any) => void;
-    searchAction: (e: any) => void;
+    searchFieldAction: (e: unknown) => void;
+    searchByAction: (e: unknown) => void;
+    searchAction: (e: unknown) => void;
 }
 
 const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
