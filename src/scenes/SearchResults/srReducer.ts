@@ -4,6 +4,7 @@ import SearchResultActions from "./srActions";
 import SearchBy from "../../components/SearchForm/searchBy";
 import RootActions from "../../services/rootActions";
 import Movies, { EmptyMovieList } from "../../services/rest/movie";
+import { EVENT_VALUE } from "../../utils";
 
 const stateInit: SearchResultState = {
     searchForm: {
@@ -24,7 +25,15 @@ const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultSta
     moviesData : payload as Movies,
 });
 
+const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+    ...state,
+    searchForm: {
+        ... state.searchForm,
+        searchField: EVENT_VALUE(payload),
+    }
+});
 const SWITCH: ISwitch<SearchResultState> = {
+    [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [RootActions.INIT]: rootInit,
 };

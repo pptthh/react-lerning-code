@@ -10,3 +10,13 @@ export const ECHO = <T>(value:T) => value;
 export const CLONE = <T>(value:T) => ({
     ... value
 })
+
+export const EVENT_VALUE = (event:unknown):string => (
+    typeof event === 'object' &&
+    Object(event).hasOwnProperty('target') &&
+    Object(event)['target'] ?
+        Object(event)['target']['value'] :
+        '>>> Something went wrong !!! <<<'
+);
+
+export const DBG = ():boolean => {debugger; return true;}
