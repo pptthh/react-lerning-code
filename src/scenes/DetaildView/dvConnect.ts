@@ -11,18 +11,12 @@ const mapDispatchToProps: DetailedViewState = {
 }
 const mapSubdictsToProps = (state: RootState): DetailedViewState => ({
     ... state.detailedView,
-    results: state.detailedView.moviesData ?
-        state.detailedView.moviesData.data.map(
-            (item: Movie):ResultItemProps => ({
-                ...item,
-                title: item.title,
-                gernes: item.genres,
-                key: item.id,
-                src: item.poster_path,
-                releaseYear: item.release_date.substring(0,4),
-            })
-        ) :
-        [],
+    results: state.detailedView.moviesData.data.map(
+        (item: Movie):ResultItemProps => ({
+            ...item,
+            releaseYear: item.release_date.substring(0,4),
+        })
+    ),
 });
 
 const mapStateToProps = (state: RootState) => mapSubdictsToProps(state);

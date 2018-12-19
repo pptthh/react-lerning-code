@@ -16,9 +16,9 @@ import App from './app';
 const enableBuggyComponent = false;
 const getId = () => Math.random();
 const filmResult: ResultItemProps[] = [
-    {title:'Title', releaseYear: '2000', gernes:['Action'], key:getId()},
-    {title:'Title 1', releaseYear: '2001', gernes:['Drama'], key:getId()},
-    {title:'Title 2', releaseYear: '2002', gernes:['Action', 'Drama'], key:getId(), src:''},
+    {title:'Title', releaseYear: '2000', genres:['Action'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
+    {title:'Title 1', releaseYear: '2001', genres:['Drama'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
+    {title:'Title 2', releaseYear: '2002', genres:['Action', 'Drama'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
 ];
 
 const TestAll:React.SFC<object> = () =>
