@@ -11,7 +11,7 @@ export interface SearchFormProps {
 }
 
 export interface SearchFormActions {
-    searchFieldAction: (e: unknown) => void;
+    searchFieldTypeAction: (e: unknown) => void;
     searchByAction: (e: unknown) => void;
     searchAction: (e: unknown) => void;
 }
@@ -19,7 +19,7 @@ export interface SearchFormActions {
 const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
     searchBy,
     searchField,
-    searchFieldAction,
+    searchFieldTypeAction,
     searchByAction,
     searchAction,
 }) =>
@@ -30,7 +30,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
         value={searchField}
         className='search-input-field'
         placeholder='search'
-        onChange={searchFieldAction}
+        onChange={searchFieldTypeAction}
     />
     <div className='properties'>
         <span>

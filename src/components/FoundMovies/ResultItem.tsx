@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { Movie } from '../../services/rest/movie';
 
-export interface ResultItemProps{
+export interface ResultItemProps 
+// extends Movie
+{
     src?: string;
     title: string;
     date: string;

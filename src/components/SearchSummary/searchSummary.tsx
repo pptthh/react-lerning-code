@@ -7,7 +7,7 @@ export interface SearchSummaryProps {
     resultSort?: SortBy;
 }
 export interface SearchSummaryAction {
-    onChange: (e: unknown) => void;
+    changeSortBy: (e: unknown) => void;
 }
 const moviesFound: React.SFC<number> = (n:number) =>
 n === 1 ? <>1 movie found</> :
@@ -16,7 +16,7 @@ n === 1 ? <>1 movie found</> :
 const SearchSummary: React.SFC<SearchSummaryProps & SearchSummaryAction> = ({
     resultCount,
     resultSort = SortBy.RELEASE_DATE,
-    onChange,
+    changeSortBy,
 }: SearchSummaryProps & SearchSummaryAction) =>
 !resultCount ? <div className='SearchSummary'/> :
 <div className='SearchSummary'>
@@ -29,7 +29,7 @@ const SearchSummary: React.SFC<SearchSummaryProps & SearchSummaryAction> = ({
         <RadioBar
             name='SearchSummaryResultSort'
             className='sort-by'
-            onChange={onChange}
+            onChange={changeSortBy}
             selected={resultSort}
             labels={[
                 SortBy.RELEASE_DATE,

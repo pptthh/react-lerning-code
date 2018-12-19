@@ -40,7 +40,7 @@ const TestAll:React.SFC<object> = () =>
         <SearchSummary
             resultCount={filmResult.length}
             resultSort={SortBy.RELEASE_DATE}
-            onChange={console.log}
+            changeSortBy={console.log}
         />
     </TestElement>
     <TestElement name='Search result examples'>

@@ -15,15 +15,3 @@ const rootReducers:ReducersMapObject = {
 }
 const RootReducer: Reducer<RootState> = combineReducers(rootReducers);
 export default RootReducer;
-
-/**
-import {combineReducers, Reducer, ReducersMapObject} from "redux";
-import {AppState} from "../services/StoreDomain";
-
-const appState: ReducersMapObject = {
-    ediTcList: ediTcListReducer as any,
-    view: appViewReducer as any,
-    serverDiff: serverDiffReducer
-};
-
-/**/
