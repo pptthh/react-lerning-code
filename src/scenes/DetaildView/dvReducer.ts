@@ -2,10 +2,11 @@ import RootActions from "../../services/rootActions";
 import createReducer, { ICase, ISwitch } from "../../utils/createReducer";
 import DetailedViewActions from "./dvActions";
 import DetailedViewState from "./dvState";
-import Movies from "../../services/rest/movie";
+import Movies, { EmptyMovieList } from "../../services/rest/movie";
 
 const stateInit: DetailedViewState = {
     results: [],
+    moviesData: EmptyMovieList,
 };
 
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({

@@ -16,9 +16,9 @@ import App from './app';
 const enableBuggyComponent = false;
 const getId = () => Math.random();
 const filmResult: ResultItemProps[] = [
-    {title:'Title', date: '2000', gerne:'Action', key:getId()},
-    {title:'Title 1', date: '2001', gerne:'Drama', key:getId()},
-    {title:'Title 2', date: '2002', gerne:'Action', key:getId(), src:''},
+    {title:'Title', releaseYear: '2000', gernes:['Action'], key:getId()},
+    {title:'Title 1', releaseYear: '2001', gernes:['Drama'], key:getId()},
+    {title:'Title 2', releaseYear: '2002', gernes:['Action', 'Drama'], key:getId(), src:''},
 ];
 
 const TestAll:React.SFC<object> = () =>

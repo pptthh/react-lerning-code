@@ -7,6 +7,6 @@ interface DetailedViewState {
     detailedPanel?: DetailedPanelProps;
     // searchResults: SearchSummaryProps;
     results: ResultItemProps[];
-    moviesData?: Movies;
+    moviesData: Movies;
 }
 export default DetailedViewState;

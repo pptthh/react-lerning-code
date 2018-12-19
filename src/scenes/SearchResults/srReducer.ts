@@ -3,7 +3,7 @@ import SearchResultState from "./srState";
 import SearchResultActions from "./srActions";
 import SearchBy from "../../components/SearchForm/searchBy";
 import RootActions from "../../services/rootActions";
-import Movies from "../../services/rest/movie";
+import Movies, { EmptyMovieList } from "../../services/rest/movie";
 
 const stateInit: SearchResultState = {
     searchForm: {
@@ -12,10 +12,11 @@ const stateInit: SearchResultState = {
     },
     searchSummary: {resultCount: 0},
     results: [],
+    moviesData: EmptyMovieList,
 };
 
 const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
-        ...state,
+    ...state
 });
 
 const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({

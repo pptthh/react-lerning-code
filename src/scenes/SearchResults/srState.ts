@@ -5,11 +5,9 @@ import Movies from "../../services/rest/movie";
 import SearchBy from "../../components/SearchForm/searchBy";
 
 interface SearchResultState {
-    searchForm: SearchFormProps;
-    // searchFormActions: SearchFormActions;
     searchSummary: SearchSummaryProps;
-    // searchSummaryAction: SearchSummaryAction;
+    searchForm: SearchFormProps;
     results: ResultItemProps[];
-    moviesData?: Movies;
+    moviesData: Movies;
 }
 export default SearchResultState;
