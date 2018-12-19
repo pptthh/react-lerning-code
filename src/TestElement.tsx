@@ -7,17 +7,17 @@ export interface TestElementProps {
     children?: JSX.Element[] | JSX.Element;
 }
 
-const listChildren = ({children, name, disableErrorCatching}: TestElementProps) =>
-    !children ? <></> :
-    !Array.isArray(children) ? showChild(children, name, disableErrorCatching) :
-    showChildren(children, name, disableErrorCatching);
+const listChildren = (props: TestElementProps) =>
+    !props.children ? <></> :
+    !Array.isArray(props.children) ? showChild(props) :
+        showChildren(props.children, props.disableErrorCatching);
 
-const showChild = (children: JSX.Element, name: string, disableErrorCatching = false) =>
+const showChild = ({children, disableErrorCatching = false}:TestElementProps) =>
 <div className="content">
     {disableErrorCatching ? children : <ErrorBoundary>{children}</ErrorBoundary>}
 </div>
 
-const showChildren = (children: JSX.Element[], name: string, disableErrorCatching = false) =>
+const showChildren = (children:JSX.Element[], disableErrorCatching=false) =>
 children.map((child, index): JSX.Element =>
     <div className="content" key={`${child.key}_${index}`}>
         {disableErrorCatching ? children : <ErrorBoundary>{children}</ErrorBoundary>}
@@ -26,7 +26,7 @@ children.map((child, index): JSX.Element =>
 
 const TestElement = (props: TestElementProps): JSX.Element =>
 <div className="TestElement">
-    <div className="title">{name}</div>
+    <div className="title">{props.name}</div>
     {listChildren(props)}
 </div>;
 
