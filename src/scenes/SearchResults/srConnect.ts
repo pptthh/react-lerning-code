@@ -13,15 +13,10 @@ const mapDispatchToProps = ():SearchResultsActions => ({
         searchByAction: (e:unknown) => ({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
         searchFieldAction: (e:unknown) => ({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
     }
-    // changeSearchBy: (e:unknown) => ({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
-    // changeSearchText: (e:unknown) => ({type:SearchResultActions.CHANGE_SEARCH_TEXT, payload:e}),
-    // clickSearch: (e:unknown) => ({type:SearchResultActions.CLICK_SEARCH, payload:e}),
-    // clickResults: (e:unknown) => ({type:SearchResultActions.CLICK_RESULTS, payload:e}),
 });
 
 const mapSubdictsToProps =
-    (state: RootState): SearchResultState =>
-        state.searchResultState;
+    (state: RootState): SearchResultState => state.searchResult;
 
 const mapStateToProps = (state: RootState) => mapSubdictsToProps(state);
 
