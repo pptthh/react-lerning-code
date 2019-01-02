@@ -3,6 +3,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 
 export interface TestElementProps {
     name: string;
+    disableContent?:boolean;
     disableErrorCatching?: boolean;
     children?: JSX.Element[] | JSX.Element;
 }
@@ -27,7 +28,7 @@ children.map((child, index): JSX.Element =>
 const TestElement = (props: TestElementProps): JSX.Element =>
 <div className="TestElement">
     <div className="title">{props.name}</div>
-    {listChildren(props)}
+    {!props.disableContent && listChildren(props)}
 </div>;
 
 export default TestElement;
