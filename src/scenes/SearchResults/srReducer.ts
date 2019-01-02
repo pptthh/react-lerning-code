@@ -5,6 +5,7 @@ import SearchBy from "../../components/SearchForm/searchBy";
 import RootActions from "../../services/rootActions";
 import Movies, { EmptyMovieList } from "../../services/rest/movie";
 import { EVENT_VALUE } from "../../utils";
+import FetchMovies from "../../services/rest/FetchMovies";
 
 const stateInit: SearchResultState = {
     searchForm: {
@@ -41,7 +42,14 @@ const changeSearchBy = ({ state, payload }: ICase<SearchResultState>): SearchRes
     }
 });
 
-const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+    FetchMovies({
+       request: 'http://react-cdp-api.herokuapp.com/movies'+
+                '?search=' + state.searchForm.searchField +
+                '&searchBy=' + state.searchForm.searchBy +
+                (state.searchSummary.resultSort && '&sortBy=' + state.searchSummary.resultSort) +
+                '',
+    }),{
     ... state,
     searchForm: {
         ... state.searchForm,

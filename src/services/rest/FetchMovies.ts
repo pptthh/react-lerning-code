@@ -1,13 +1,9 @@
 import { LOG_WARNING, LOG_ERROR } from "../../utils";
 import Movies from "./movie";
 import NetUtils from "../../utils/NetUtils";
+import FetchProps from "./FetchProps";
 
-export interface FetchPanelProps {
-    success?: (data: Movies) => void;
-    fauil?: (... msg: unknown[]) => void;
-    request: string;
-}
-const FetchMovies = ({success = LOG_WARNING, fauil = LOG_ERROR, request}: FetchPanelProps) => {
+const FetchMovies = ({success = LOG_WARNING, fauil = LOG_ERROR, request}: FetchProps<Movies>) => {
     const requestInit: RequestInit = {
         method: 'GET',
         headers: {
