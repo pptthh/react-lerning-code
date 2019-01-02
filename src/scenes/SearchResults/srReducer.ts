@@ -29,11 +29,21 @@ const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchR
     ...state,
     searchForm: {
         ... state.searchForm,
-        searchField: EVENT_VALUE(payload),
+        searchField: EVENT_VALUE(payload) as string,
     }
 });
+
+const changeSearchBy =  ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+    ... state,
+    searchForm: {
+        ... state.searchForm,
+        searchBy: EVENT_VALUE(payload) as SearchBy,
+    }
+});
+
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
+    [SearchResultActions.CHANGE_SEARCH_BY]: changeSearchBy,
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [RootActions.INIT]: rootInit,
 };

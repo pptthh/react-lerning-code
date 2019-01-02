@@ -11,7 +11,7 @@ export const CLONE = <T>(value:T) => ({
     ... value
 })
 
-export const EVENT_VALUE = (event:unknown):string => (
+export const EVENT_VALUE = (event:unknown):unknown => (
     typeof event === 'object' &&
     Object(event).hasOwnProperty('target') &&
     Object(event)['target'] ?
