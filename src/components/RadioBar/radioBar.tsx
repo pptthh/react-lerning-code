@@ -21,12 +21,11 @@ const RadioBar = ({
 <>
 {
     labels.map(
-        (value: string) =>
-        <span>
+        (value, i) =>
+        <span key={value}>
             <input
                 type="radio"
                 id={value}
-                key={value}
                 name={name}
                 value={value}
                 className={className}
