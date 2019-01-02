@@ -4,7 +4,8 @@ enum SearchResultActions {
     CHANGE_SEARCH_BY = 'changeSearchBy',
     CHANGE_SORT_BY = 'changeSorthBy',
     CLICK_SEARCH = 'clickSearch',
-    CLICK_RESULTS = 'clickResults',
+    CLICK_SEARCH_SUCCESS = 'searchSuccess',
+    CLICK_SEARCH_FAILED = 'searchFail',
 }
 
 export default SearchResultActions;

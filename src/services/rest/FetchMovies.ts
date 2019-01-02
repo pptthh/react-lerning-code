@@ -3,7 +3,11 @@ import Movies from "./movie";
 import NetUtils from "../../utils/NetUtils";
 import FetchProps from "./FetchProps";
 
-const FetchMovies = ({success = LOG_WARNING, fauil = LOG_ERROR, request}: FetchProps<Movies>) => {
+const FetchMovies = ({
+    success = LOG_WARNING,
+    fail = LOG_ERROR,
+    request,
+}: FetchProps<Movies>) => {
     const requestInit: RequestInit = {
         method: 'GET',
         headers: {
@@ -16,7 +20,7 @@ const FetchMovies = ({success = LOG_WARNING, fauil = LOG_ERROR, request}: FetchP
     .then(NetUtils.checkStatus)
     .then(NetUtils.getJsonResponse)
     .then(data => success(data))
-    .catch(e => (fauil(e), e));
+    .catch(e => (fail(e), e));
 };
 
 export default FetchMovies;
