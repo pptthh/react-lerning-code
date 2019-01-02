@@ -1,5 +1,5 @@
-import DetailedViewActions from "../scenes/DetaildView/dvActions";
-import SearchResultActions from "../scenes/SearchResults/srActions";
+import DetailedViewActions from "../DetaildView/dvActions";
+import SearchResultActions from "../SearchResults/srActions";
 
 export interface IActions<T> {
     type: RootActions | DetailedViewActions | SearchResultActions;

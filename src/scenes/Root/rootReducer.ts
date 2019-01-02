@@ -1,7 +1,7 @@
 import { combineReducers, Reducer, ReducersMapObject } from 'redux';
 import RootState from './rootState';
-import SearchResultReducer from '../scenes/SearchResults/srReducer';
-import DetailedViewReducer from '../scenes/DetaildView/dvReducer';
+import SearchResultReducer from '../SearchResults/srReducer';
+import DetailedViewReducer from '../DetaildView/dvReducer';
 
 /**
  * WARNING!!! Redux MAGIC: reducer naming must be in sync with State property names!!!

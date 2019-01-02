@@ -1,4 +1,4 @@
-import RootActions from "../../services/rootActions";
+import RootActions from "../Root/rootActions";
 import createReducer, { ICase, ISwitch } from "../../utils/createReducer";
 import DetailedViewActions from "./dvActions";
 import DetailedViewState from "./dvState";

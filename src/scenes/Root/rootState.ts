@@ -1,5 +1,5 @@
-import SearchResultState from "../scenes/SearchResults/srState";
-import DetailedViewState from "../scenes/DetaildView/dvState";
+import SearchResultState from "../SearchResults/srState";
+import DetailedViewState from "../DetaildView/dvState";
 
 interface RootState {
     searchResult: SearchResultState;

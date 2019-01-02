@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import DetailedViewUI from "./dvUI";
-import RootState from "../../services/rootState";
+import RootState from "../Root/rootState";
 import DetailedViewState from "./dvState";
 import { Movie } from "../../services/rest/movie";
 import { ResultItemProps } from "../../components/FoundMovies/ResultItem";

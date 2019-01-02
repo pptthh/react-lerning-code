@@ -2,7 +2,7 @@ import createReducer, { ISwitch, ICase } from "../../utils/createReducer";
 import SearchResultState from "./srState";
 import SearchResultActions from "./srActions";
 import SearchBy from "../../components/SearchForm/searchBy";
-import RootActions from "../../services/rootActions";
+import RootActions from "../Root/rootActions";
 import Movies, { EmptyMovieList } from "../../services/rest/movie";
 import { EVENT_VALUE } from "../../utils";
 import FetchMovies from "../../services/rest/FetchMovies";

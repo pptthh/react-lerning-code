@@ -1,4 +1,4 @@
-import { IActions } from "../services/rootActions";
+import { IActions } from "../scenes/Root/rootActions";
 
 export interface ICase<T> {
     state: T;

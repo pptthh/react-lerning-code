@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import searchResultsUI, { SearchResultsActions } from "./srUI";
-import RootState from "../../services/rootState";
+import RootState from "../Root/rootState";
 import SearchResultState from "./srState";
 import SearchResultActions from "./srActions";
-import { IActions } from "../../services/rootActions";
+import { IActions } from "../Root/rootActions";
 import Movies, { Movie } from "../../services/rest/movie";
 import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
 import FetchProps from "../../services/rest/FetchProps";
