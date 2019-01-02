@@ -8,6 +8,7 @@ import SearchBy from './searchBy';
 export interface SearchFormProps {
     searchBy: SearchBy;
     searchField: string;
+    searchDisabled?: boolean;
 }
 
 export interface SearchFormActions {
@@ -19,6 +20,7 @@ export interface SearchFormActions {
 const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
     searchBy,
     searchField,
+    searchDisabled = false,
     searchFieldTypeAction,
     searchByAction,
     searchAction,
@@ -43,7 +45,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
                 name='radioBar'
             />
         </span>
-        <Button label='SEARCH' onClick={searchAction}/>
+        <Button label='SEARCH' onClick={searchAction} disabled={searchDisabled}/>
     </div>
 </div>;
 

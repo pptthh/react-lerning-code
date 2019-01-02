@@ -1,7 +1,12 @@
 // tslint:disable-next-line
 export const NOOP = () => {};
 
-export const LOG = console.log;
+const cnsl = console;
+export const LOG = cnsl.log; // (msg: any) => { return; };
+export const LOG_DEBUG = cnsl.debug;
+export const LOG_INFO = cnsl.info;
+export const LOG_WARNING = cnsl.warn;
+export const LOG_ERROR = cnsl.error;
 
 export const throwError = (message?: string): any => { throw new Error(message); };
 

@@ -33,7 +33,7 @@ const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchR
     }
 });
 
-const changeSearchBy =  ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+const changeSearchBy = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
     searchForm: {
         ... state.searchForm,
@@ -41,9 +41,18 @@ const changeSearchBy =  ({ state, payload }: ICase<SearchResultState>): SearchRe
     }
 });
 
+const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+    ... state,
+    searchForm: {
+        ... state.searchForm,
+        searchDisabled: true,
+    }
+});
+
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
     [SearchResultActions.CHANGE_SEARCH_BY]: changeSearchBy,
+    [SearchResultActions.CLICK_SEARCH]: clickSearch,
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [RootActions.INIT]: rootInit,
 };
