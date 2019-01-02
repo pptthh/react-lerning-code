@@ -24,7 +24,7 @@ const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultSta
 
 const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ...state,
-    moviesData : payload as Movies,
+    moviesData: payload as Movies,
 });
 
 const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
@@ -67,7 +67,7 @@ const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): Searc
         searchDisabled: false,
     },
 });
-    
+
 const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
     moviesData: EmptyMovieList,
@@ -76,7 +76,7 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
         searchDisabled: false,
     }
 });
-    
+
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
     [SearchResultActions.CHANGE_SEARCH_BY]: changeSearchBy,

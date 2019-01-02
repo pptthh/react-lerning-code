@@ -8,7 +8,7 @@ import RootActions from './services/rootActions';
 import TestData from './services/rest/testData';
 
 store.subscribe(console.log);
-store.dispatch({type: RootActions.INIT, payload: TestData});
+// store.dispatch({type: RootActions.INIT, payload: TestData});
 const App = () =>
 <>
 <TestElement name='Search Results'>
