@@ -5,6 +5,8 @@ export interface dpActions{
     clickSearch: (event: unknown) => void;
 }
 
+export interface DetailedPanelProps{}
+
 const DetailedPanel = (props: Movie & dpActions) =>
 <>
     <label onClick={props.clickSearch}>DetailedPanel is comming here:</label>
