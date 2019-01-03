@@ -3,15 +3,13 @@ import SearchSummary, { SearchSummaryAction, SearchSummaryProps } from '../../co
 import SearchForm, { SearchFormActions, SearchFormProps } from '../../components/SearchForm/searchForm';
 import FoundMovies from '../../components/FoundMovies';
 import SearchResultState from './srState';
+import { ResultItemActions } from '../../components/FoundMovies/ResultItem';
 
 
 export interface SearchResultsActions {
     searchFormActions: SearchFormActions;
     searchSummaryAction: SearchSummaryAction;
-    // changeSearchBy: (e:unknown)=> void,
-    // changeSearchText: (e:unknown) => void,
-    // clickSearch: (e:unknown) => void,
-    // clickResults: (e:unknown) => void,
+    resultsItemAction: ResultItemActions;
 }
 
 const searchResultsUI = (props: SearchResultState & SearchResultsActions) =>
@@ -24,7 +22,10 @@ const searchResultsUI = (props: SearchResultState & SearchResultsActions) =>
         {...props.searchSummary}
         {...props.searchSummaryAction}
     />}
-    <FoundMovies results={props.results} />
+    <FoundMovies
+        results={props.results}
+        actions={props.resultsItemAction}
+    />
 </div>;
 
 export default searchResultsUI;

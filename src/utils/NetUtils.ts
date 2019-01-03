@@ -7,7 +7,9 @@ const NetUtils = {
             return response;
         }
         throw new Error('missing status code');
-    }
+    },
+
+    MOVIES:'http://react-cdp-api.herokuapp.com/movies',
 };
 
 export default NetUtils;

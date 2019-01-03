@@ -1,9 +1,15 @@
 import * as React from 'react';
-import ResultItem, { ResultItemProps } from './ResultItem';
+import ResultItem, { ResultItemProps, ResultItemActions } from './ResultItem';
 
-const ResultsBody: React.SFC<{result:ResultItemProps[]}> = ({result}: {result:ResultItemProps[]}) =>
+export interface IResultsBody {
+    results:ResultItemProps[],
+    actions:ResultItemActions,
+}
+
+const ResultsBody: React.SFC<IResultsBody> =
+(props:IResultsBody) =>
 <div className='ResultsBody'>
-    {result.map(item => ResultItem(item))}
+    {props.results.map(item => ResultItem({... item, ... props.actions}))}
 </div>;
 
 export default ResultsBody;
