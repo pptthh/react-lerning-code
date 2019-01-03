@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { Movie } from '../../services/rest/movie';
 
-export interface DetailedPanelProps{
-    cover: string; // url
-    title: string;
-    rating: number;
-    duration: number;
-    release: number;
-    description: string;
+export interface dpActions{
+    clickSearch: (event: unknown) => void;
 }
 
-const DetailedPanel = (props: Movie) =>
+const DetailedPanel = (props: Movie & dpActions) =>
 <>
-    <label>DetailedPanel is comming here:</label>
+    <label onClick={props.clickSearch}>DetailedPanel is comming here:</label>
     {JSON.stringify(props)}
 </>;
 export default DetailedPanel

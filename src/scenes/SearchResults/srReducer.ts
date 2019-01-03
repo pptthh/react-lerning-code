@@ -81,7 +81,7 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
 
 const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
-    details: payload as number,
+    details: payload == undefined ? undefined : payload as number,
 });
 
 const SWITCH: ISwitch<SearchResultState> = {
@@ -92,6 +92,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CLICK_SEARCH_FAILED]: clickSearchFailed,
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
+    [DetailedViewActions.SEARCH_CLICKED]: movieClicked,
     [RootActions.INIT]: rootInit,
 };
 

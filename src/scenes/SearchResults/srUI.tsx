@@ -9,13 +9,13 @@ import store from '../Root/rootStore';
 import DetailedView from '../DetaildView/dvConnect';
 
 
-export interface SearchResultsActions {
+export interface srUIActions {
     searchFormActions: SearchFormActions;
     searchSummaryAction: SearchSummaryAction;
     resultsItemAction: ResultItemActions;
 }
 
-const searchResultsUI = (props: SearchResultState & SearchResultsActions) =>
+const searchResultsUI = (props: SearchResultState & srUIActions) =>
 <div>
     {props.details ?
         <Provider store={store}>

@@ -1,14 +1,17 @@
 import * as React from 'react';
-import DetailedPanel from '../../components/DetailedPanel/detailedPanelProps';
+import DetailedPanel, { dpActions } from '../../components/DetailedPanel/detailedPanelProps';
 import DetailedViewState from './dvState';
 
-// export interface DetailedViewActions {
-//     actions: ResultItemActions;
-// }
+export interface dvUIActions {
+    actions: dpActions;
+}
 
-const DetailedViewUI = (props: DetailedViewState) =>
+const DetailedViewUI = (props: DetailedViewState & dvUIActions) =>
 <div>
-    {props.detailedPanel && <DetailedPanel {...props.detailedPanel}/>}
+    {props.detailedPanel && <DetailedPanel
+        {...props.detailedPanel}
+        {... props.actions}
+        />}
 </div>;
 
 export default DetailedViewUI;

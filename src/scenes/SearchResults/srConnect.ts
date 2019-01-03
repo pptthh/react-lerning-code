@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
-import searchResultsUI, { SearchResultsActions } from "./srUI";
+import searchResultsUI, { srUIActions } from "./srUI";
 import RootState from "../Root/rootState";
 import SearchResultState from "./srState";
 import SearchResultActions from "./srActions";
-import RootActions, { IActions } from "../Root/rootActions";
+import { IActions } from "../Root/rootActions";
 import Movies, { Movie } from "../../services/rest/movie";
 import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
 import FetchProps from "../../services/rest/FetchProps";
 import DetailedViewActions from "../DetaildView/dvActions";
 
-const mapDispatchToProps = (dispatch: (a:IActions) => void):SearchResultsActions => ({
+const mapDispatchToProps = (dispatch: (a:IActions) => void):srUIActions => ({
     searchSummaryAction: {
         changeSortBy: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SORT_BY, payload:e}),
     },
