@@ -5,13 +5,8 @@ import SearchResults from '../SearchResults/srConnect';
 import DetailedView from '../DetaildView/dvConnect';
 
 const Root = () =>
-<>
     <Provider store={store}>
         <SearchResults/>
-    </Provider>
-    <Provider store={store}>
-        <DetailedView/>
-    </Provider>
-</>;
+    </Provider>;
 
 export default Root;

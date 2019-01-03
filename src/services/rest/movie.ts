@@ -5,6 +5,7 @@ export interface Movie {
     vote_average: number, // 6.2,
     vote_count: number, // 327,
     release_date: string,// "1986-12-12",
+    // release_year?: string,// "1986",
     poster_path: string, // "https://image.tmdb.org/t/p/w500/zuTwahw966MoFwD7B2SFujaT5yp.jpg",
     overview: string, // "Three unemployed actors accept an invitation to a Mexican village to replay their bandit fighter roles, unaware that it is the real thing.",
     budget: number, // 25000000,

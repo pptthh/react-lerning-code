@@ -1,9 +1,12 @@
 import * as React from 'react';
-import SearchSummary, { SearchSummaryAction, SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
-import SearchForm, { SearchFormActions, SearchFormProps } from '../../components/SearchForm/searchForm';
+import SearchSummary, { SearchSummaryAction } from '../../components/SearchSummary/searchSummary';
+import SearchForm, { SearchFormActions } from '../../components/SearchForm/searchForm';
 import FoundMovies from '../../components/FoundMovies';
 import SearchResultState from './srState';
 import { ResultItemActions } from '../../components/FoundMovies/ResultItem';
+import { Provider } from 'react-redux';
+import store from '../Root/rootStore';
+import DetailedView from '../DetaildView/dvConnect';
 
 
 export interface SearchResultsActions {
@@ -14,10 +17,16 @@ export interface SearchResultsActions {
 
 const searchResultsUI = (props: SearchResultState & SearchResultsActions) =>
 <div>
-    <SearchForm 
-        {...props.searchForm}
-        {...props.searchFormActions}
-    />
+    {props.details ?
+        <Provider store={store}>
+            <DetailedView />
+        </Provider> :
+        <SearchForm 
+            {...props.searchForm}
+            {...props.searchFormActions}
+        />
+    }
+
     {props.searchSummary && <SearchSummary
         {...props.searchSummary}
         {...props.searchSummaryAction}

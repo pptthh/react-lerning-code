@@ -8,6 +8,7 @@ import { EVENT_VALUE } from "../../utils";
 import FetchMovies from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
+import DetailedViewActions from "../DetaildView/dvActions";
 
 const stateInit: SearchResultState = {
     searchForm: {
@@ -78,6 +79,11 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
     }
 });
 
+const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+    ... state,
+    details: payload as number,
+});
+
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
     [SearchResultActions.CHANGE_SEARCH_BY]: changeSearchBy,
@@ -85,6 +91,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CLICK_SEARCH_SUCCESS]: clickSearchSuccess,
     [SearchResultActions.CLICK_SEARCH_FAILED]: clickSearchFailed,
     [SearchResultActions.INIT_SEARCH]: initSearch,
+    [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [RootActions.INIT]: rootInit,
 };
 
