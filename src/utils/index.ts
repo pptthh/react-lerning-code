@@ -1,7 +1,8 @@
 // tslint:disable-next-line
 export const NOOP = () => {};
-
-const cnsl = console;
+// export const PROD = process.env.NODE_ENV === 'poduction';
+export const DEV = process.env.NODE_ENV === 'development';
+const cnsl = DEV ? console : {log:NOOP,debug:NOOP,info:NOOP,warn:NOOP,error:NOOP};
 export const LOG = cnsl.log; // (msg: any) => { return; };
 export const LOG_DEBUG = cnsl.debug;
 export const LOG_INFO = cnsl.info;
@@ -24,4 +25,4 @@ export const EVENT_VALUE = (event:unknown):unknown => (
         '>>> Something went wrong !!! <<<'
 );
 
-export const DBG = ():boolean => {debugger; return true;}
+export const DBG = ():boolean => {if (DEV) debugger; return true;}

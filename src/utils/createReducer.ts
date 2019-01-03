@@ -12,7 +12,6 @@ export interface ISwitch<T> {
 export const createReducer =
     <T>(Switch: ISwitch<T>, stateInit: T) => 
         (state: T = stateInit, {type, payload}: IActions<unknown>): T => (
-            console.log('\tswitch',type, payload),
             Switch.hasOwnProperty(type) ? Switch[type]({state, payload}) :
                 state
         );
