@@ -9,6 +9,7 @@ export interface DetailedPanelProps{}
 
 const DetailedPanel = (props: Movie & dpActions) =>
 <>
+    <h3>DetailedPanel:</h3>
     <label onClick={props.clickSearch}>DetailedPanel is comming here:</label>
     {JSON.stringify(props)}
 </>;

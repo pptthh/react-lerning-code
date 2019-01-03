@@ -11,7 +11,7 @@ const DetailedViewUI = (props: DetailedViewState & dvUIActions) =>
     {props.detailedPanel && <DetailedPanel
         {...props.detailedPanel}
         {... props.actions}
-        />}
+    />}
 </div>;
 
 export default DetailedViewUI;

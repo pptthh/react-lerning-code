@@ -9,6 +9,7 @@ import FetchMovies from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
 import DetailedViewActions from "../DetaildView/dvActions";
+import DetailedView from "../DetaildView/dvConnect";
 
 const stateInit: SearchResultState = {
     searchForm: {
@@ -60,6 +61,10 @@ FetchMovies({
         searchDisabled: true,
     }
 });
+>>>>>>>>>>>>>>>>>>>
+folytatas: 
+DetailedView.data = moviesData
+>>>>>>>>>>>>>>>>>>>
 
 const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
@@ -81,7 +86,7 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
 
 const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
-    details: payload == undefined ? undefined : payload as number,
+    details: payload === undefined ? undefined : payload as number,
 });
 
 const SWITCH: ISwitch<SearchResultState> = {
@@ -92,7 +97,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CLICK_SEARCH_FAILED]: clickSearchFailed,
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
-    [DetailedViewActions.SEARCH_CLICKED]: movieClicked,
+    [DetailedViewActions.HIDE_DETAILS]: movieClicked,
     [RootActions.INIT]: rootInit,
 };
 
