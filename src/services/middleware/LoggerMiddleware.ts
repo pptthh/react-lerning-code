@@ -8,12 +8,12 @@ import { LOG_DEBUG } from "../../utils";
 export default (store: unknown) =>
     (next: Dispatch<AnyAction>) =>
         (action: IActions) => {
-            LOG_DEBUG('\t\t\tWill dispatch', action);
-            
             // dispatch to the next reducer
             const nextAction = next(action);
-            LOG_DEBUG('\t\t\tState after dispatch', (store as Store).getState());
-
+            LOG_DEBUG('\t\t',
+                'Action:',action,'\n\t\t',
+                ' State:',(store as Store).getState()
+            );
             // This will likely be the action itself, unless
             // a middleware further in chain changed it.
             return nextAction;
