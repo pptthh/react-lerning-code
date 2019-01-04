@@ -1,9 +1,20 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { offline } from '@redux-offline/redux-offline';
+import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import RootReducer from './rootReducer';
 import LoggerMiddleware from '../../services/middleware/LoggerMiddleware';
 import { DEV } from '../../utils';
 
-const createDevStore = () => {    //  dev env
+const createStore4Prod = () =>
+createStore(
+    RootReducer,
+    compose(
+        applyMiddleware(),
+        offline(offlineConfig)
+    )
+);
+
+const createStore4Dev = () => {
     // tslint:disable-next-line
     const win = window as any;
     const composeEnhancers =
@@ -18,14 +29,13 @@ const createDevStore = () => {    //  dev env
         composeEnhancers(
             applyMiddleware(
                 LoggerMiddleware,
-            )
+            ),
+            offline(offlineConfig),
         )
     );
 }
 
-const store = !DEV ?
-    createStore(RootReducer) :
-    createDevStore();
+const store = DEV ? createStore4Dev() : createStore4Prod();
 
 export default store;
 

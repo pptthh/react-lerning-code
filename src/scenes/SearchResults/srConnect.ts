@@ -8,22 +8,41 @@ import Movies, { Movie } from "../../services/rest/movie";
 import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
 import FetchProps from "../../services/rest/FetchProps";
 import DetailedViewActions from "../DetaildView/dvActions";
+import NetUtils from "../../utils/NetUtils";
 
 const fetchMovies = (dispatch:Function): FetchProps<Movies> => ({
-    request: 'request is comming here',
+    request: NetUtils.MOVIES_URL,
     success: (data: Movies) => dispatch({type:SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
     fail: (e: unknown) => dispatch({type:SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
 });
-
+const offlineActions = {
+    searchAction: (dispatch: (a:IActions) => void):IActions<FetchProps<Movies>> => ({
+        type: SearchResultActions.CLICK_SEARCH,
+        payload: fetchMovies(dispatch),
+        meta:{
+            offline:{
+                effect:{
+                    url: NetUtils.MOVIES_URL,
+                    method: 'GET',
+                },
+                commit:{
+                    type: SearchResultActions.CLICK_SEARCH_SUCCESS,
+                },
+                rollback:{
+                    type: SearchResultActions.CLICK_SEARCH_FAILED,
+                }
+            }
+        }
+    }),
+};
 const mapDispatchToProps = (dispatch: (a:IActions) => void):srUIActions => ({
     searchSummaryAction: {
         changeSortBy: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SORT_BY, payload:e}),
     },
     searchFormActions: {
-        searchAction: (e:unknown) => dispatch({
-            type: SearchResultActions.CLICK_SEARCH,
-            payload: fetchMovies(dispatch),
-        }),
+        searchAction: (e:unknown) => dispatch(
+            offlineActions.searchAction(dispatch)
+        ),
         searchByAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
         searchFieldTypeAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_TEXT, payload:e}),
     },

@@ -62,7 +62,7 @@ const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResult
 const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
 FetchMovies({
     ... payload,
-    request: NetUtils.MOVIES +
+    request: NetUtils.MOVIES_URL +
         '?search=' + state.searchForm.searchField +
         '&searchBy=' + state.searchForm.searchBy +
         '&sortBy=' + SortByRestTranslator[state.searchSummary.resultSort] +
