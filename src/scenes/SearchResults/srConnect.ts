@@ -9,6 +9,12 @@ import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
 import FetchProps from "../../services/rest/FetchProps";
 import DetailedViewActions from "../DetaildView/dvActions";
 
+const fetchMovies = (dispatch:Function): FetchProps<Movies> => ({
+    request: 'request is comming here',
+    success: (data: Movies) => dispatch({type:SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
+    fail: (e: unknown) => dispatch({type:SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
+});
+
 const mapDispatchToProps = (dispatch: (a:IActions) => void):srUIActions => ({
     searchSummaryAction: {
         changeSortBy: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SORT_BY, payload:e}),
@@ -16,11 +22,7 @@ const mapDispatchToProps = (dispatch: (a:IActions) => void):srUIActions => ({
     searchFormActions: {
         searchAction: (e:unknown) => dispatch({
             type: SearchResultActions.CLICK_SEARCH,
-            payload: {
-                request: 'request',
-                success: (data: Movies) => dispatch({type:SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
-                fail:  (e: Error) => dispatch({type:SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
-            } as FetchProps<Movies>
+            payload: fetchMovies(dispatch),
         }),
         searchByAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
         searchFieldTypeAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_TEXT, payload:e}),
