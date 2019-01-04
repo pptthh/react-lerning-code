@@ -10,6 +10,7 @@ import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
 import DetailedViewActions from "../DetaildView/dvActions";
 import DetailedView from "../DetaildView/dvConnect";
+import SortBy from "../../components/SearchSummary/sortBy";
 
 const stateInit: SearchResultState = {
     searchSummary: {resultCount: 0},
@@ -44,6 +45,14 @@ const changeSearchBy = ({ state, payload }: ICase<SearchResultState>): SearchRes
     searchForm: {
         ... state.searchForm,
         searchBy: EVENT_VALUE(payload) as SearchBy,
+    }
+});
+
+const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
+    ...state,
+    searchSummary: {
+        ...state.searchSummary,
+        resultSort: EVENT_VALUE(payload) as SortBy,
     }
 });
 
@@ -92,6 +101,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CLICK_SEARCH]: clickSearch,
     [SearchResultActions.CLICK_SEARCH_SUCCESS]: clickSearchSuccess,
     [SearchResultActions.CLICK_SEARCH_FAILED]: clickSearchFailed,
+    [SearchResultActions.CHANGE_SORT_BY]: changeSorthBy,
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,

@@ -31,3 +31,5 @@ export default store;
 
 //  https://github.com/xgrommx/awesome-redux
 //  redux-persist-store
+
+// https://github.com/redux-offline/redux-offline
