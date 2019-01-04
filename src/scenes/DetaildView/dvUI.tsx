@@ -1,5 +1,5 @@
 import * as React from 'react';
-import DetailedPanel, { dpActions } from '../../components/DetailedPanel/detailedPanelProps';
+import DetailedPanel, { dpActions } from '../../components/DetailedPanel/detailedPanel';
 import DetailedViewState from './dvState';
 
 export interface dvUIActions {
