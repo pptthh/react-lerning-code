@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { LOG, LOG_WARNING } from '../../utils';
 
-const ENTER = 'Enter';
+enum KeyCodes {
+    ALT = 'Alt',
+    CONTROL = 'Control',
+    ENTER = 'Enter',
+    SHIFT = 'Shift',
+}
 
 export interface ITextInput {
     name?: string;
@@ -12,19 +17,14 @@ export interface ITextInput {
     placeholder?: string;
 }
 
-const checkEnter = (
-    event: React.KeyboardEvent<HTMLInputElement>,
-    onEnter?:() => void
-) => {
-    if (event.key === ENTER && onEnter)
-    {
-        onEnter();
-    }
-}
+const onKeyUp = (event: React.KeyboardEvent<HTMLInputElement>, props: ITextInput) =>
+    event.key === KeyCodes.ENTER && props.onEnter ?
+        props.onEnter() :
+        undefined;
 
-const TextInput = (props: ITextInput): JSX.Element =>
+const TextInput: React.SFC<ITextInput> = (props: ITextInput): JSX.Element =>
     <input type='text' {...props}
-        onKeyUp={(e) => checkEnter(e, props.onEnter)}
+        onKeyUp={(e) => onKeyUp(e, props)}
     />;
 
 export default TextInput;
