@@ -17,9 +17,9 @@ import { LOG } from './utils';
 const enableBuggyComponent = false;
 const getId = () => Math.random();
 const filmResult = [
-    {title:'Title', releaseYear: '2000', genres:['Action'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
-    {title:'Title 1', releaseYear: '2001', genres:['Drama'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
-    {title:'Title 2', releaseYear: '2002', genres:['Action', 'Drama'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
+    {title:'Title', release_year: '2000', genres:['Action'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
+    {title:'Title 1', release_year: '2001', genres:['Drama'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
+    {title:'Title 2', release_year: '2002', genres:['Action', 'Drama'], id:getId(), poster_path:'', budget:0, vote_count:0, tagline:'', runtime:0, revenue:0, release_date:'', overview:'', vote_average:0},
 ];
 const filmResultAction: ResultItemActions = {itemClick:(id:number) => {LOG(id)}};
 

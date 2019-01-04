@@ -37,12 +37,7 @@ const mapSubdictsToProps =
             resultCount: !state.searchResult.moviesData ? 0 :
                     state.searchResult.moviesData.total,
         },
-        results: state.searchResult.moviesData.data.map(
-            (item: Movie):ResultItemProps => ({
-                ...item,
-                releaseYear: item.release_date.substring(0,4),
-            })
-        ),
+        results: state.searchResult.moviesData.data,
     });
 
 const mapStateToProps = (state: RootState) => mapSubdictsToProps(state);

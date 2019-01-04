@@ -1,5 +1,5 @@
 import { LOG_WARNING, LOG_ERROR } from "../../utils";
-import Movies from "./movie";
+import Movies, { validateMovies, transformMoviesData } from "./movie";
 import NetUtils from "../../utils/NetUtils";
 import FetchProps from "./FetchProps";
 
@@ -19,6 +19,8 @@ const FetchMovies = ({
     fetch(request, requestInit)
     .then(NetUtils.checkStatus)
     .then(NetUtils.getJsonResponse)
+    .then(transformMoviesData)
+    .then(validateMovies)
     .then(data => success(data))
     .catch(e => (fail(e), e));
 };
