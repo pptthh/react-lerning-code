@@ -44,7 +44,12 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
                 name='radioBar'
             />
         </span>
-        <Button label='SEARCH' onClick={searchAction} disabled={searchDisabled}/>
+        <Button
+            className='searchButton'
+            label='SEARCH'
+            onClick={searchAction}
+            disabled={searchDisabled}
+        />
     </div>
 </div>;
 

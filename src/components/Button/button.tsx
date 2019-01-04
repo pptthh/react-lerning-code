@@ -9,7 +9,7 @@ export interface IButton {
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button = ({disabled=false, name, label, onClick, className, tooltip=''}: IButton) =>
+const Button = ({disabled=false, name, label, onClick, className, tooltip}: IButton) =>
     <button
         className={className}
         name={name}

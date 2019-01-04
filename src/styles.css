@@ -2,6 +2,10 @@ body {
     font-family: sans-serif;
 }
 
+.SearchForm{
+    font-size: 8pt;
+    font-weight: bold;
+}
 .SearchForm .search-input-field {
     min-width: 400px;
     width: 100%;
@@ -10,7 +14,36 @@ body {
 .SearchForm .properties {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
     padding-top: 10px;
+}
+
+.SearchForm .searchButton,
+.SearchForm input[type=radio] ~ label{
+    border: none;
+    background: #333;
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 5px;
+    text-transform: uppercase;
+}
+.SearchForm .searchButton,
+.SearchForm input[type=radio]:checked ~ label{
+    background-color: #F66;
+    color: #FFF;
+}
+.SearchForm input[type=radio].search-by{
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+}
+.SearchForm .searchButton{
+    font-size: 8pt;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .header{
@@ -76,6 +109,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .SearchSummary input[type=radio] ~ label{
     border: 1px solid #CCC;
     padding: 2px;
