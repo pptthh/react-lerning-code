@@ -7,6 +7,8 @@ import { ResultItemActions } from '../../components/FoundMovies/ResultItem';
 import { Provider } from 'react-redux';
 import store from '../Root/rootStore';
 import DetailedView from '../DetaildView/dvConnect';
+import Header from '../../components/Header/header';
+import Button from '../../components/Button/button';
 
 
 export interface srUIActions {
@@ -17,6 +19,15 @@ export interface srUIActions {
 
 const searchResultsUI = (props: SearchResultState & srUIActions) =>
 <div>
+    <Header>
+        netflixroulette
+        {props.details &&
+            <Button
+                label='SEARCH'
+                onClick={() => props.resultsItemAction.itemClick(0)}
+            />
+        }
+    </Header>
     {props.details ?
         <Provider store={store}>
             <DetailedView />

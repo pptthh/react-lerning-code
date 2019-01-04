@@ -12,13 +12,14 @@ import DetailedViewActions from "../DetaildView/dvActions";
 import DetailedView from "../DetaildView/dvConnect";
 
 const stateInit: SearchResultState = {
+    searchSummary: {resultCount: 0},
     searchForm: {
         searchField: '',
         searchBy: SearchBy.TITLE,
     },
-    searchSummary: {resultCount: 0},
     results: [],
     moviesData: EmptyMovieList,
+    details: 0,
 };
 
 const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
@@ -61,10 +62,6 @@ FetchMovies({
         searchDisabled: true,
     }
 });
->>>>>>>>>>>>>>>>>>>
-folytatas: 
-DetailedView.data = moviesData
->>>>>>>>>>>>>>>>>>>
 
 const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
@@ -86,7 +83,7 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
 
 const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
-    details: payload === undefined ? undefined : payload as number,
+    details: payload as number,
 });
 
 const SWITCH: ISwitch<SearchResultState> = {

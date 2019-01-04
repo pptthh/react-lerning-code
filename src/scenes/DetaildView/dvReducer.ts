@@ -1,7 +1,8 @@
 import createReducer, { ICase, ISwitch } from "../../utils/createReducer";
 import DetailedViewActions from "./dvActions";
 import DetailedViewState from "./dvState";
-import { Movie } from "../../services/rest/movie";
+import Movies, { Movie } from "../../services/rest/movie";
+import SearchResultActions from "../SearchResults/srActions";
 
 const stateInit: DetailedViewState = {
     data:[],
@@ -19,9 +20,15 @@ const movieClicked = ({ state, payload }: ICase<DetailedViewState>): DetailedVie
         ),
 });
 
+const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
+    ... state,
+    data: (payload as Movies).data,
+});
+
 const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.INIT_DETAILED_VIEW]: initDetailedView,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
+    [SearchResultActions.CLICK_SEARCH_SUCCESS]: clickSearchSuccess,
 };
 
 const DetailedViewReducer = createReducer(SWITCH, stateInit);

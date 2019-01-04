@@ -8,6 +8,6 @@ interface SearchResultState {
     searchForm: SearchFormProps;
     results: ResultItemProps[];
     moviesData: Movies;
-    details?: number;
+    details: number;
 }
 export default SearchResultState;

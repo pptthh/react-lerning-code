@@ -26,7 +26,6 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
     searchAction,
 }) =>
 <div className='SearchForm'>
-    <Header>netflixroulette</Header>
     <div>FIND YOUR MOVIE</div>
     <TextInput
         value={searchField}
