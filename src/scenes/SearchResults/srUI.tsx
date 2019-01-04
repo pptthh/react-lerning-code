@@ -21,8 +21,10 @@ const searchResultsUI = (props: SearchResultState & srUIActions) =>
 <div>
     <Header>
         netflixroulette
-        {props.details &&
+        {!props.details ? <></> :
             <Button
+                className='showSearch'
+                tooltip='Show Search Form'
                 label='SEARCH'
                 onClick={() => props.resultsItemAction.itemClick(0)}
             />
