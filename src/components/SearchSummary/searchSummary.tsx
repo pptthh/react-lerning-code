@@ -4,7 +4,7 @@ import RadioBar from '../RadioBar/radioBar';
 
 export interface SearchSummaryProps {
     resultCount: number;
-    resultSort?: SortBy;
+    resultSort: SortBy;
 }
 export interface SearchSummaryAction {
     changeSortBy: (e: unknown) => void;
@@ -15,7 +15,7 @@ n === 1 ? <>1 movie found</> :
 
 const SearchSummary: React.SFC<SearchSummaryProps & SearchSummaryAction> = ({
     resultCount,
-    resultSort = SortBy.RELEASE_DATE,
+    resultSort,
     changeSortBy,
 }: SearchSummaryProps & SearchSummaryAction) =>
 !resultCount ? <div className='SearchSummary'/> :

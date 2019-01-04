@@ -10,10 +10,13 @@ import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
 import DetailedViewActions from "../DetaildView/dvActions";
 import DetailedView from "../DetaildView/dvConnect";
-import SortBy from "../../components/SearchSummary/sortBy";
+import SortBy, { SortByRestTranslator } from "../../components/SearchSummary/sortBy";
 
 const stateInit: SearchResultState = {
-    searchSummary: {resultCount: 0},
+    searchSummary: {
+        resultSort: SortBy.RELEASE_DATE,
+        resultCount: 0,
+    },
     searchForm: {
         searchField: '',
         searchBy: SearchBy.TITLE,
@@ -62,7 +65,9 @@ FetchMovies({
     request: NetUtils.MOVIES +
         '?search=' + state.searchForm.searchField +
         '&searchBy=' + state.searchForm.searchBy +
-        (!state.searchSummary.resultSort ? '' : '&sortBy=' + state.searchSummary.resultSort) +
+        '&sortBy=' + SortByRestTranslator[state.searchSummary.resultSort] +
+        '&sortOrder=desc' +
+        
         '',
 } as FetchProps<Movies>),
 {   ... state,

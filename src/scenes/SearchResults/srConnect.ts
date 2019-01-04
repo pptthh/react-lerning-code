@@ -36,6 +36,7 @@ const mapSubdictsToProps =
     (state: RootState): SearchResultState => ({
         ...state.searchResult,
         searchSummary: {
+            ... state.searchResult.searchSummary,
             resultCount: !state.searchResult.moviesData ? 0 :
                     state.searchResult.moviesData.total,
         },
