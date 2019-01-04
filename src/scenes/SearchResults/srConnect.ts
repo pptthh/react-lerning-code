@@ -9,18 +9,27 @@ import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
 import FetchProps from "../../services/rest/FetchProps";
 import DetailedViewActions from "../DetaildView/dvActions";
 
+const fetchMovies = (dispatch:Function): FetchProps<Movies> => ({
+    request: 'request',
+    success: (data: Movies) => dispatch({type:SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
+    fail: (e: unknown) => dispatch({type:SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
+})
+
 const mapDispatchToProps = (dispatch: (a:IActions) => void):srUIActions => ({
     searchSummaryAction: {
         changeSortBy: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SORT_BY, payload:e}),
     },
     searchFormActions: {
-        searchAction: (e:unknown) => dispatch({
+        searchKeyUpAction: (e: React.KeyboardEvent<HTMLInputElement>) => dispatch({
             type: SearchResultActions.CLICK_SEARCH,
             payload: {
-                request: 'request',
-                success: (data: Movies) => dispatch({type:SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
-                fail:  (e: Error) => dispatch({type:SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
-            } as FetchProps<Movies>
+                key: e.key,
+                action: fetchMovies(dispatch),
+            }
+        }),
+        searchAction: (e:unknown) => dispatch({
+            type: SearchResultActions.CLICK_SEARCH,
+            payload: fetchMovies(dispatch),
         }),
         searchByAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_BY, payload:e}),
         searchFieldTypeAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_TEXT, payload:e}),

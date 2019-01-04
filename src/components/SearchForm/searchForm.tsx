@@ -15,6 +15,7 @@ export interface SearchFormActions {
     searchFieldTypeAction: (e: unknown) => void;
     searchByAction: (e: unknown) => void;
     searchAction: (e: unknown) => void;
+    searchKeyUpAction: (e: React.KeyboardEvent<HTMLInputElement>) => void,
 }
 
 const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
@@ -24,6 +25,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
     searchFieldTypeAction,
     searchByAction,
     searchAction,
+    searchKeyUpAction,
 }) =>
 <div className='SearchForm'>
     <div>FIND YOUR MOVIE</div>
@@ -32,7 +34,8 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
         className='search-input-field'
         placeholder='search'
         onChange={searchFieldTypeAction}
-        checkEnter={searchAction}
+        onKeyUp={searchKeyUpAction}
+        disabled={searchDisabled}
     />
     <div className='properties'>
         <span>

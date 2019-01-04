@@ -86,6 +86,15 @@ const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResul
     details: payload as number,
 });
 
+const keyUpOnSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState =>
+    typeof payload  === 'object' &&
+    Object(payload).hasOwnProperty('key') &&
+    Object(payload).hasOwnProperty('action') &&
+    typeof Object(payload).action === 'function'  &&
+    Object(payload)['key'] ?
+        clickSearch({state, payload: Object(payload).action()}) :
+        state;
+
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
     [SearchResultActions.CHANGE_SEARCH_BY]: changeSearchBy,
@@ -93,6 +102,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CLICK_SEARCH_SUCCESS]: clickSearchSuccess,
     [SearchResultActions.CLICK_SEARCH_FAILED]: clickSearchFailed,
     [SearchResultActions.INIT_SEARCH]: initSearch,
+    [SearchResultActions.KEY_UP_ON_SEARCH_TEXT]:keyUpOnSearchText,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
     [RootActions.INIT]: rootInit,
