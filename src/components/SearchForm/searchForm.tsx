@@ -32,6 +32,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
         className='search-input-field'
         placeholder='search'
         onChange={searchFieldTypeAction}
+        onEnter={searchAction}
     />
     <div className='properties'>
         <span>
