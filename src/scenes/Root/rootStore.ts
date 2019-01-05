@@ -3,7 +3,7 @@ import { offline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 import RootReducer from './rootReducer';
 import LoggerMiddleware from '../../services/middleware/LoggerMiddleware';
-import { DEV } from '../../utils';
+import { DEV, TEST, PROD } from '../../utils';
 
 const createStore4Prod = () =>
 createStore(
@@ -11,6 +11,14 @@ createStore(
     compose(
         applyMiddleware(),
         offline(offlineConfig)
+    )
+);
+
+const createStore4Test = () =>
+createStore(
+    RootReducer,
+    compose(
+        applyMiddleware(LoggerMiddleware),
     )
 );
 
@@ -27,15 +35,16 @@ const createStore4Dev = () => {
     return createStore(
         RootReducer,
         composeEnhancers(
-            applyMiddleware(
-                LoggerMiddleware,
-            ),
+            applyMiddleware(LoggerMiddleware),
             offline(offlineConfig),
         )
     );
 }
 
-const store = DEV ? createStore4Dev() : createStore4Prod();
+const store =
+    DEV ? createStore4Dev() :
+    TEST ? createStore4Test() :
+    createStore4Prod();
 
 export default store;
 
