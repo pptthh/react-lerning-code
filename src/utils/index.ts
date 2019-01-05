@@ -1,7 +1,10 @@
 // tslint:disable-next-line
 export const NOOP = () => {};
-// export const PROD = process.env.NODE_ENV === 'poduction';
+
+export const TEST = process.env.NODE_ENV === 'test';
+export const PROD = process.env.NODE_ENV === 'poduction';
 export const DEV = process.env.NODE_ENV === 'development';
+
 const cnsl = DEV ? console : {log:NOOP,debug:NOOP,info:NOOP,warn:NOOP,error:NOOP};
 export const LOG = cnsl.log; // (msg: any) => { return; };
 export const LOG_DEBUG = cnsl.debug;

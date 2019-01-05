@@ -16,5 +16,4 @@ export const createReducer =
                 state
         );
 
-
 export default createReducer;
