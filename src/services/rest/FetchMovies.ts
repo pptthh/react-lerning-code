@@ -1,4 +1,4 @@
-import { LOG_WARNING, LOG_ERROR } from "../../utils";
+import { LOG_WARNING, LOG_ERROR, TEST } from "../../utils";
 import Movies, { validateMovies, transformMoviesData } from "./movie";
 import NetUtils from "../../utils/NetUtils";
 import FetchProps from "./FetchProps";
@@ -16,6 +16,8 @@ const FetchMovies = ({
         },
     };
     
+    // fix me: remove next line find a solutom to test Reducer:CLICK_SEARCH
+    TEST ? undefined :
     fetch(request, requestInit)
     .then(NetUtils.checkStatus)
     .then(NetUtils.getJsonResponse)

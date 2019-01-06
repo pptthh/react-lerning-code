@@ -67,7 +67,6 @@ FetchMovies({
         '&searchBy=' + state.searchForm.searchBy +
         '&sortBy=' + SortByRestTranslator[state.searchSummary.resultSort] +
         '&sortOrder=desc' +
-        
         '',
 } as FetchProps<Movies>),
 {   ... state,

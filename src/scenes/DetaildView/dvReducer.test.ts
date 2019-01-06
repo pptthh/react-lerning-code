@@ -3,7 +3,7 @@ import { ICase } from "../../utils/createReducer";
 import DetailedViewState from "./dvState";
 import DetailedViewActions from "./dvActions";
 import SearchResultActions from "../SearchResults/srActions";
-import RootActions, { IActions } from "../Root/rootActions";
+import RootActions from "../Root/rootActions";
 import { createReducerTestRunner, ReducerTest } from "../../utils/index.test";
 
 describe('DetailedViewReducer', () => {

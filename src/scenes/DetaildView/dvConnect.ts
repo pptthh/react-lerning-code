@@ -4,8 +4,9 @@ import RootState from "../Root/rootState";
 import DetailedViewState from "./dvState";
 import { IActions } from "../Root/rootActions";
 import DetailedViewActions from "./dvActions";
+import { Dispatch } from "redux";
 
-const mapDispatchToProps = (dispatch: (a:IActions) => void):dvUIActions => ({
+const mapDispatchToProps = (dispatch: Dispatch):dvUIActions => ({
     actions: {
         clickSearch: () => dispatch({type: DetailedViewActions.MOVIE_CLICKED}),
     },
