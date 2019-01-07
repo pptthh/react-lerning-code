@@ -10,7 +10,6 @@ import DetailedView from '../DetaildView/dvConnect';
 import Header from '../../components/Header/header';
 import Button from '../../components/Button/button';
 
-
 export interface srUIActions {
     searchFormActions: SearchFormActions;
     searchSummaryAction: SearchSummaryAction;
