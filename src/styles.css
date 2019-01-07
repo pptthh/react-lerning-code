@@ -100,6 +100,7 @@ body {
     font-size: 10px;
     padding: 5px;
 }
+.genreListHeader,
 .SearchSummary {
     background: #EEE;
     color: #333;
@@ -111,6 +112,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.genreListHeader{
+    padding-left: 80px;
 }
 
 .SearchSummary input[type=radio] ~ label{
@@ -163,10 +168,4 @@ body {
 #fimlDescription {
     color: #CCC;
     font-size: 10pt;
-}
-
-.genreListHeader{
-    font-size: 8pt;
-    font-weight: bold;
-    padding-left: 80px;
 }

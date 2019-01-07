@@ -3,10 +3,9 @@ import Footer from '../Footer/footer';
 import ResultsBody, { IResultsBody } from './ResultBody';
 
 const FoundMovies: React.SFC<IResultsBody> = (props: IResultsBody) =>
+!props.results.length ? <><h1>No films found</h1><Footer/></> :
 <div>
-    {!props.results.length ? <h1>No films found</h1> :
-        <ResultsBody {... props}/>
-    }
+    <ResultsBody {... props}/>
     <Footer/>
 </div>;
 

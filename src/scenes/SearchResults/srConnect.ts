@@ -37,6 +37,7 @@ const offlineActions = {
         }
     }),
 };
+
 const mapDispatchToProps = (dispatch: Dispatch):srUIActions => ({
     searchSummaryAction: {
         changeSortBy: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SORT_BY, payload:e}),

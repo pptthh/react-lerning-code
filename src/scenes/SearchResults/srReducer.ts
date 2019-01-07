@@ -5,7 +5,7 @@ import SearchBy from "../../components/SearchForm/searchBy";
 import RootActions from "../Root/rootActions";
 import Movies, { EmptyMovieList } from "../../services/rest/movie";
 import { EVENT_VALUE } from "../../utils";
-import FetchMovies from "../../services/rest/FetchMovies";
+import FetchMovies, { getRequest4Genre, getRequest } from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
 import DetailedViewActions from "../DetaildView/dvActions";
@@ -62,12 +62,7 @@ const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResult
 const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
 FetchMovies({
     ... payload,
-    request: NetUtils.MOVIES_URL +
-        '?search=' + state.searchForm.searchField +
-        '&searchBy=' + state.searchForm.searchBy +
-        '&sortBy=' + SortByRestTranslator[state.searchSummary.resultSort] +
-        '&sortOrder=desc' +
-        '',
+    request: getRequest(state),
 } as FetchProps<Movies>),
 {   ... state,
     searchForm: {

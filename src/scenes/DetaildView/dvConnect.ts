@@ -5,11 +5,20 @@ import DetailedViewState from "./dvState";
 import { IActions } from "../Root/rootActions";
 import DetailedViewActions from "./dvActions";
 import { Dispatch } from "redux";
+import NetUtils from "../../utils/NetUtils";
+import Movies from "../../services/rest/movie";
+import FetchProps from "../../services/rest/FetchProps";
+
+const fetchMovies = (dispatch:Dispatch): FetchProps<Movies> => ({
+    request: NetUtils.MOVIES_URL,
+    success: (data: Movies) => dispatch({type:DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
+    fail: (e: unknown) => dispatch({type:DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
+});
 
 const mapDispatchToProps = (dispatch: Dispatch):dvUIActions => ({
-    actions: {
-        clickSearch: () => dispatch({type: DetailedViewActions.MOVIE_CLICKED}),
-    },
+    resultsItemAction: {
+        itemClick: (id: number) => dispatch({type:DetailedViewActions.MOVIE_CLICKED, payload: id}),
+    }
 })
 
 const mapSubdictsToProps = (state: RootState): DetailedViewState => ({

@@ -3,21 +3,37 @@ import DetailedViewActions from "./dvActions";
 import DetailedViewState from "./dvState";
 import Movies, { Movie } from "../../services/rest/movie";
 import SearchResultActions from "../SearchResults/srActions";
+import FetchMovies, { getRequest4Genre } from "../../services/rest/FetchMovies";
+import FetchProps from "../../services/rest/FetchProps";
+import { object } from "prop-types";
+import { throwError } from "../../utils";
 
 const stateInit: DetailedViewState = {
     data:[],
+    results:[],
 };
 
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
 });
 
-const movieClicked = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
+const matchId = (id:number) => (movie:Movie) => movie.id === id;
+const getId = (p:unknown):number =>
+    typeof p === 'object' &&
+    Object(p).hasOwnproperty('id') ?
+    Object(p).id :
+    throwError('does not contains id property' + p);
+
+const movieClicked = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
+FetchMovies({
+    ... payload,
+    request: getRequest4Genre(state),
+} as FetchProps<Movies>),
+{
     ...state,
     detailedPanel:
-        state.data.find(
-            (movie:Movie) => movie.id === payload
-        ),
+        state.data.find(matchId(getId(payload))) ||
+        state.results.find(matchId(getId(payload))),
 });
 
 const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({

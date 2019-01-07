@@ -2,13 +2,9 @@ import * as React from 'react';
 import { Movie } from '../../services/rest/movie';
 import Label from '../Label/label';
 
-export interface dpActions{
-    clickSearch: (event: unknown) => void;
-}
-
 export interface DetailedPanelProps{}
 
-const DetailedPanel = (props: Movie & dpActions) =>
+const DetailedPanel = (props: Movie) =>
 <div className='DetailedPanel'>
     <img src={props.poster_path} />
     <div className='fimlData'>
