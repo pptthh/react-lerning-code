@@ -10,13 +10,13 @@ describe('SearchResultReducer', () => {
         {action:{type: RootActions.INIT}, skip: false},
         {action:{type:SearchResultActions.CHANGE_SEARCH_TEXT}},
         {action:{type:SearchResultActions.CHANGE_SEARCH_BY}},
-        {action:{type:SearchResultActions.CLICK_SEARCH,payload:{request: '',}}},
+        {action:{type:SearchResultActions.CLICK_SEARCH,payload:{request: ''}}},
         {action:{type:SearchResultActions.CLICK_SEARCH_SUCCESS}},
         {action:{type:SearchResultActions.CLICK_SEARCH_FAILED}},
         {action:{type:SearchResultActions.CHANGE_SORT_BY}},
         {action:{type:SearchResultActions.INIT_SEARCH}},
-        {action:{type:DetailedViewActions.MOVIE_CLICKED}},
-        {action:{type:DetailedViewActions.HIDE_DETAILS}},
+        {action:{type:DetailedViewActions.MOVIE_CLICKED,payload:{id: 0}}},
+        {action:{type:DetailedViewActions.HIDE_DETAILS,payload:{id: 0}}},
     ];
     tests.map(createReducerTestRunner(SearchResultReducer))
 });

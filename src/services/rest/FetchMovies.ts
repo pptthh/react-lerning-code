@@ -15,9 +15,8 @@ NetUtils.MOVIES_URL +
 '&sortOrder=desc' +
 '';
 export const getRequest4Genre = (state:DetailedViewState) => 
-!state.detailedPanel ? '' :
 NetUtils.MOVIES_URL +
-'?search=' + state.detailedPanel.genres[0] +
+'?search=' + (state.detailedPanel && state.detailedPanel.genres[0]) +
 '&searchBy=' + SearchBy.GERNE +
 '&sortBy=' + SortByRestTranslator[SortBy.RATING] +
 '&sortOrder=desc' +
@@ -36,7 +35,7 @@ const FetchMovies = ({
         },
     };
     
-    // fix me: remove next line find a solutom to test Reducer:CLICK_SEARCH
+    // fix me: remove next line find a solutom to testing Reducers
     TEST ? undefined :
     fetch(request, requestInit)
     .then(NetUtils.checkStatus)

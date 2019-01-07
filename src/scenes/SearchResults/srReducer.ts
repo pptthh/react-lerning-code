@@ -4,7 +4,7 @@ import SearchResultActions from "./srActions";
 import SearchBy from "../../components/SearchForm/searchBy";
 import RootActions from "../Root/rootActions";
 import Movies, { EmptyMovieList } from "../../services/rest/movie";
-import { EVENT_VALUE, GET_ID } from "../../utils";
+import { EVENT_VALUE, GET_ID, DBG } from "../../utils";
 import FetchMovies, { getRequest4Genre, getRequest } from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
@@ -80,7 +80,7 @@ const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): Searc
     },
 });
 
-const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (DBG(),{
     ... state,
     moviesData: EmptyMovieList,
     searchForm: {
