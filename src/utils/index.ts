@@ -20,12 +20,13 @@ export const CLONE = <T>(value:T) => ({
     ... value
 })
 
+export const EVENT_VALUE_ERROR:string = '>>> Something went wrong !!! <<<';
 export const EVENT_VALUE = (event:unknown):unknown => (
     typeof event === 'object' &&
     Object(event).hasOwnProperty('target') &&
     Object(event)['target'] ?
         Object(event)['target']['value'] :
-        '>>> Something went wrong !!! <<<'
+        EVENT_VALUE_ERROR
 );
 
 export const DBG = ():boolean => {if (DEV) debugger; return true;}

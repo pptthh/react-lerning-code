@@ -1,4 +1,4 @@
-import { NOOP, throwError } from ".";
+import { NOOP, throwError, EVENT_VALUE, EVENT_VALUE_ERROR, CLONE, DBG, LOG } from ".";
 import { IActions } from "../scenes/Root/rootActions";
 
 export interface ReducerTest <State = unknown>{
@@ -29,5 +29,35 @@ describe('utils testing', () => {
 
     it('throwError throws an Error', () => {
         expect(throwError).toThrowError();
+    });
+
+    it('EVENT_VALUE', () => {
+        expect(EVENT_VALUE({}))
+            .toEqual(EVENT_VALUE_ERROR);
+        const readedValue = 0;
+        expect(EVENT_VALUE({target:{value:readedValue}}))
+            .toEqual(readedValue)
+    });
+
+    it('CLONE', () => {
+        const obj = {value:'value'};
+        expect(CLONE(obj)).toEqual(obj);
+        expect(CLONE(obj) === obj).toEqual(false);
+    });
+
+    it('EVENT_VALUE', () => {
+        expect(EVENT_VALUE({}))
+            .toEqual(EVENT_VALUE_ERROR);
+        const readedValue = 0;
+        expect(EVENT_VALUE({target:{value:readedValue}}))
+            .toEqual(readedValue)
+    });
+
+    it('DBG', () => {
+        expect(DBG()).toEqual(true);
+    });
+
+    it('console', () => {
+        expect(LOG('console.log')).toBeUndefined();
     });
 });
