@@ -15,7 +15,7 @@ const DetailedPanel = (props: Movie & dpActions) =>
         <div>
             <Label id='filmTitle'>{props.title}</Label>
             {!props.vote_average ? <></> :
-                <Label id='filmRating'>{props.vote_average}</Label>
+                <Label id='filmRating'>{props.vote_average.toPrecision(2)}</Label>
             }
         </div>
         <span>&nbsp;</span>
