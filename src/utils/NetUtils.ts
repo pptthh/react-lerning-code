@@ -6,7 +6,7 @@ const NetUtils = {
         if (Number.isInteger(response.status)) {
             return response;
         }
-        throw new Error('missing status code');
+        throw Error('missing status code');
     },
 
     MOVIES_URL:'http://react-cdp-api.herokuapp.com/movies',
