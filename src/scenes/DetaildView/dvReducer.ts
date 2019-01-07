@@ -6,7 +6,7 @@ import SearchResultActions from "../SearchResults/srActions";
 import FetchMovies, { getRequest4Genre } from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
 import { object } from "prop-types";
-import { throwError } from "../../utils";
+import { throwError, DBG } from "../../utils";
 
 const stateInit: DetailedViewState = {
     data:[],
@@ -32,7 +32,7 @@ FetchMovies({
 {
     ...state,
     detailedPanel:
-        state.data.find(matchId(getId(payload))) ||
+        DBG && state.data.find(matchId(getId(payload))) ||
         state.results.find(matchId(getId(payload))),
 });
 
