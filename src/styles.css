@@ -164,3 +164,9 @@ body {
     color: #CCC;
     font-size: 10pt;
 }
+
+.genreListHeader{
+    font-size: 8pt;
+    font-weight: bold;
+    padding-left: 80px;
+}

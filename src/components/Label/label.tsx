@@ -5,7 +5,7 @@ export interface ILabel {
     id?: string;
     tooltip?: string;
     children: string | number;
-    elementClass?: string;
+    className?: string;
     onClick?: React.MouseEventHandler<HTMLSpanElement>;
 }
 
@@ -15,10 +15,10 @@ const Label = ({
     onClick,
     tooltip,
     children,
-    elementClass,
+    className,
 }: ILabel): JSX.Element =>
 <span id={id}
-    className={elementClass}
+    className={className}
     title={tooltip}
     onClick={onClick}>{children}
 </span>;

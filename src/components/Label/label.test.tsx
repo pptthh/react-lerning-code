@@ -16,7 +16,7 @@ describe('describe Label', () => {
     it('shallow renders correctly with params', () => {
         let clickCounter = 0;
         const tree = shallow(
-            <Label tooltip={'tooltip'} elementClass={'elementClass'} onClick={() => clickCounter++}>
+            <Label tooltip={'tooltip'} className={'elementClass'} onClick={() => clickCounter++}>
                 renders correctly with params
             </Label>);
 

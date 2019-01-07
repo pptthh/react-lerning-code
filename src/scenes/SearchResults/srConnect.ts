@@ -16,6 +16,7 @@ const fetchMovies = (dispatch:Dispatch): FetchProps<Movies> => ({
     success: (data: Movies) => dispatch({type:SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
     fail: (e: unknown) => dispatch({type:SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
 });
+
 const offlineActions = {
     searchAction: (dispatch: Dispatch):IActions<FetchProps<Movies>> => ({
         type: SearchResultActions.CLICK_SEARCH,
