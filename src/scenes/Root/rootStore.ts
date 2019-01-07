@@ -36,7 +36,7 @@ const createStore4Dev = () => {
         RootReducer,
         composeEnhancers(
             applyMiddleware(LoggerMiddleware),
-            // offline(offlineConfig),
+            offline(offlineConfig),
         )
     );
 }

@@ -12,7 +12,7 @@ const AppWithHot = hot(module)(
 );
 const DomRender = () => ReactDOM.render(<AppWithHot/>, rootDiv);
 
-// fixme: during TESTing find a solution to remove this dilay 
+// fixme: during TESTing find a solution to remove this delay 
 setTimeout(DomRender, 0);
 
 export default AppWithHot;
