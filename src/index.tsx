@@ -8,9 +8,6 @@ import App from "./app";
 
 const rootDiv = document.getElementById("root");
 const AppWithHot = hot(module)(
-    PROD ? App :
-    TEST ? TestAll :
-    DEV ? TestAll :
     App
 );
 const DomRender = () => ReactDOM.render(<AppWithHot/>, rootDiv);
