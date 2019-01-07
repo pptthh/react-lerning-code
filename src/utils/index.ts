@@ -29,4 +29,10 @@ export const EVENT_VALUE = (event:unknown):unknown => (
         EVENT_VALUE_ERROR
 );
 
+export const GET_ID = (p:unknown):number =>
+    typeof p === 'object' &&
+    Object(p).hasOwnProperty('id') ?
+        Object(p).id :
+        throwError('does not contains id property' + p);
+
 export const DBG = ():boolean => {if (DEV) debugger; return true;}

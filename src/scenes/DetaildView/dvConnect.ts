@@ -9,7 +9,7 @@ import NetUtils from "../../utils/NetUtils";
 import Movies from "../../services/rest/movie";
 import FetchProps from "../../services/rest/FetchProps";
 
-const fetchMovies = (dispatch:Dispatch, id:number): FetchProps<Movies> => ({
+export const fetchGenre = (dispatch:Dispatch, id:number): FetchProps<Movies> => ({
     request: NetUtils.MOVIES_URL,
     success: (data: Movies) => dispatch({type:DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
     fail: (e: unknown) => dispatch({type:DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch: Dispatch):dvUIActions => ({
         itemClick: (id: number) =>
             dispatch({
                 type:DetailedViewActions.MOVIE_CLICKED,
-                payload: fetchMovies(dispatch, id),
+                payload: fetchGenre(dispatch, id),
             }),
     }
 })

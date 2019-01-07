@@ -10,6 +10,7 @@ import FetchProps from "../../services/rest/FetchProps";
 import DetailedViewActions from "../DetaildView/dvActions";
 import NetUtils from "../../utils/NetUtils";
 import { Dispatch } from "redux";
+import { fetchGenre } from "../DetaildView/dvConnect";
 
 const fetchMovies = (dispatch:Dispatch): FetchProps<Movies> => ({
     request: NetUtils.MOVIES_URL,
@@ -50,8 +51,11 @@ const mapDispatchToProps = (dispatch: Dispatch):srUIActions => ({
         searchFieldTypeAction: (e:unknown) => dispatch({type:SearchResultActions.CHANGE_SEARCH_TEXT, payload:e}),
     },
     resultsItemAction: {
-        itemClick: (id: number) => dispatch({type:DetailedViewActions.MOVIE_CLICKED, payload: id}),
-    }
+        itemClick: (id: number) => dispatch({
+            type:DetailedViewActions.MOVIE_CLICKED, 
+            payload: fetchGenre(dispatch,id),
+        }),
+    },
 });
 
 const mapSubdictsToProps =

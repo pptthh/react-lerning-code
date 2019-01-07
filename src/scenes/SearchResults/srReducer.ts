@@ -4,7 +4,7 @@ import SearchResultActions from "./srActions";
 import SearchBy from "../../components/SearchForm/searchBy";
 import RootActions from "../Root/rootActions";
 import Movies, { EmptyMovieList } from "../../services/rest/movie";
-import { EVENT_VALUE } from "../../utils";
+import { EVENT_VALUE, GET_ID } from "../../utils";
 import FetchMovies, { getRequest4Genre, getRequest } from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
 import NetUtils from "../../utils/NetUtils";
@@ -91,7 +91,7 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
 
 const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ... state,
-    details: payload as number,
+    details: GET_ID(payload),
 });
 
 const SWITCH: ISwitch<SearchResultState> = {
