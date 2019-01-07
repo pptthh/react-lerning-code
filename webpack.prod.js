@@ -19,11 +19,12 @@ module.exports = merge(common, {
             }
         },
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            })
+            // fix me: with this it does not bulds :( temporary removed
+            // new UglifyJsPlugin({
+            //     cache: true,
+            //     parallel: true,
+            //     sourceMap: true,
+            // })
         ]
     },
 });
