@@ -1,5 +1,8 @@
 body {
+    background-color: #000;
     font-family: sans-serif;
+    margin: 5px;
+    padding: 5px;
 }
 
 .SearchForm{
@@ -50,7 +53,6 @@ body {
 }
 
 .header{
-    border: 1px solid #000;
     color: #F00;
     width: 100%;
 }

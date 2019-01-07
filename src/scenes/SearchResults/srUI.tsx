@@ -17,27 +17,29 @@ export interface srUIActions {
 }
 
 const searchResultsUI = (props: SearchResultState & srUIActions) =>
-<div>
+props.details ?
+<>
+    <Header>
+    netflixroulette
+        <Button
+            className='showSearch'
+            tooltip='Show Search Form'
+            label='SEARCH'
+            onClick={() => props.resultsItemAction.itemClick(0)}
+        />
+    </Header>
+    <Provider store={store}>
+        <DetailedView />
+    </Provider>
+</> :
+<>
     <Header>
         netflixroulette
-        {!props.details ? <></> :
-            <Button
-                className='showSearch'
-                tooltip='Show Search Form'
-                label='SEARCH'
-                onClick={() => props.resultsItemAction.itemClick(0)}
-            />
-        }
     </Header>
-    {props.details ?
-        <Provider store={store}>
-            <DetailedView />
-        </Provider> :
-        <SearchForm 
-            {...props.searchForm}
-            {...props.searchFormActions}
-        />
-    }
+    <SearchForm 
+        {...props.searchForm}
+        {...props.searchFormActions}
+    />
 
     {props.searchSummary && <SearchSummary
         {...props.searchSummary}
@@ -47,6 +49,6 @@ const searchResultsUI = (props: SearchResultState & srUIActions) =>
         results={props.results}
         actions={props.resultsItemAction}
     />
-</div>;
+</>;
 
 export default searchResultsUI;

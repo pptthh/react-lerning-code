@@ -5,7 +5,7 @@ import Movies, { Movie } from "../../services/rest/movie";
 import SearchResultActions from "../SearchResults/srActions";
 import FetchMovies, { getRequest4Genre } from "../../services/rest/FetchMovies";
 import FetchProps from "../../services/rest/FetchProps";
-import { throwError, DBG, GET_ID } from "../../utils";
+import { DBG, GET_ID } from "../../utils";
 
 const stateInit: DetailedViewState = {
     data:[],
