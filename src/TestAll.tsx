@@ -9,8 +9,6 @@ import FoundMovies from './components/FoundMovies';
 import { ResultItemProps, ResultItemActions } from './components/FoundMovies/ResultItem';
 import SearchSummary from './components/SearchSummary/searchSummary';
 import SortBy from './components/SearchSummary/sortBy';
-import BuggyComponent from './components/ErrorBoundary/buggyComponent';
-import ErrorBoundary from './components/ErrorBoundary/errorBoundarySFC';
 import App from './app';
 import { LOG } from './utils';
 
@@ -50,20 +48,6 @@ const TestAll:React.SFC<object> = () =>
         <Label>simple label</Label>
         <Button label='Button' onClick={LOG}></Button>
     </TestElement>
-    
-    <TestElement name='ErrorBoundary tester'>
-        <label></label>
-        <BuggyComponent enable={enableBuggyComponent}/>
-    </TestElement>
-    
-    <TestElement
-        name='ErrorBoundarySFC tester'
-        disableErrorCatching={true}>
-        <ErrorBoundary>
-            <BuggyComponent enable={enableBuggyComponent}/>
-        </ErrorBoundary>
-    </TestElement>
-    
 </div>;
 
 export default TestAll;

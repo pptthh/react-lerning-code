@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ErrorBoundary from './components/ErrorBoundary';
 
 export interface TestElementProps {
     name: string;
@@ -15,13 +14,13 @@ const listChildren = (props: TestElementProps) =>
 
 const showChild = ({children, disableErrorCatching = false}:TestElementProps) =>
 <div className="content">
-    {disableErrorCatching ? children : <ErrorBoundary>{children}</ErrorBoundary>}
+    {disableErrorCatching ? children : <>{children}</>}
 </div>
 
 const showChildren = (children:JSX.Element[], disableErrorCatching=false) =>
 children.map((child, index): JSX.Element =>
     <div className="content" key={`${child.key}_${index}`}>
-        {disableErrorCatching ? children : <ErrorBoundary>{children}</ErrorBoundary>}
+        {disableErrorCatching ? children : <>{children}</>}
     </div>
 );
 
