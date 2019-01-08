@@ -17,7 +17,9 @@
     "cypress": "cypress",
     "e2e": "npm run cypress run",
     "e2e:open": "npm run cypress open",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "tslint": "tslint",
+    "lint": "npm run tslint --project src/**/*.ts"
   },
   "jest": {
     "bail": true,
@@ -99,6 +101,7 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.3",
+    "tslint": "^5.12.0",
     "typescript": "^3.2.2",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.28.3",
