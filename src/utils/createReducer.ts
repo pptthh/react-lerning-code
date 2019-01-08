@@ -1,4 +1,4 @@
-import { IActions } from "../scenes/Root/rootActions";
+import { IActions } from '../scenes/Root/rootActions';
 
 export interface ICase<T> {
     state: T;
@@ -12,7 +12,7 @@ export interface ISwitch<T> {
 
 // fixme: rename Switch to SwitchMap
 export const createReducer =
-    <T>(Switch: ISwitch<T>, stateInit: T) => 
+    <T>(Switch: ISwitch<T>, stateInit: T) =>
         (state: T = stateInit, {type, payload}: IActions<unknown>): T => (
             Switch.hasOwnProperty(type) ? Switch[type]({state, payload}) :
                 state

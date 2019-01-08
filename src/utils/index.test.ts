@@ -1,24 +1,24 @@
-import { NOOP, throwError, EVENT_VALUE, EVENT_VALUE_ERROR, CLONE, DBG, LOG } from ".";
-import { IActions } from "../scenes/Root/rootActions";
+import { CLONE, DBG, EVENT_VALUE, EVENT_VALUE_ERROR, LOG, NOOP, throwError } from '.';
+import { IActions } from '../scenes/Root/rootActions';
 
-export interface ReducerTest <State = unknown>{
-    action:IActions,
-    expectedState?:State,
-    initState?:State,
-    skip?:boolean,
-};
+export interface ReducerTest <State = unknown> {
+    action: IActions;
+    expectedState?: State;
+    initState?: State;
+    skip?: boolean;
+}
 
 export const createReducerTestRunner =
-(Reducer:any) =>
-(test:ReducerTest) => {
+(Reducer: Function) =>
+(test: ReducerTest) => {
     test.skip ?
-        xit(test.action.type, () => {}) :
+        xit(test.action.type, NOOP) :
         it(test.action.type, () => {
             !test.expectedState ?
                 Reducer(test.initState, test.action) :
                 expect(Reducer(test.initState, test.action)).toEqual(test.expectedState);
-        })
-}
+        });
+};
 
 describe('utils testing', () => {
     it('NOOP', () => {
@@ -35,12 +35,12 @@ describe('utils testing', () => {
         expect(EVENT_VALUE({}))
             .toEqual(EVENT_VALUE_ERROR);
         const readedValue = 0;
-        expect(EVENT_VALUE({target:{value:readedValue}}))
-            .toEqual(readedValue)
+        expect(EVENT_VALUE({target: {value: readedValue}}))
+            .toEqual(readedValue);
     });
 
     it('CLONE', () => {
-        const obj = {value:'value'};
+        const obj = {value: 'value'};
         expect(CLONE(obj)).toEqual(obj);
         expect(CLONE(obj) === obj).toEqual(false);
     });
@@ -49,8 +49,8 @@ describe('utils testing', () => {
         expect(EVENT_VALUE({}))
             .toEqual(EVENT_VALUE_ERROR);
         const readedValue = 0;
-        expect(EVENT_VALUE({target:{value:readedValue}}))
-            .toEqual(readedValue)
+        expect(EVENT_VALUE({target: {value: readedValue}}))
+            .toEqual(readedValue);
     });
 
     it('DBG', () => {

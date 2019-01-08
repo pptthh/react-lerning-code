@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { Movie } from '../../services/rest/movie';
 
-export interface ResultItemProps extends Movie{
+export interface ResultItemProps extends Movie {
     release_year: string;
 }
-export interface ResultItemActions {
+export interface ResultItemFnCalls {
     itemClick: (id: number) => void;
 }
-const ResultItem: React.SFC<ResultItemProps & ResultItemActions> = ({
+const ResultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     id,
     poster_path,
     title,
     release_year,
     genres,
     itemClick,
-}: ResultItemProps & ResultItemActions) =>
+}: ResultItemProps & ResultItemFnCalls) =>
 <div className='ResultItem' key={id}
     onClick={() => itemClick(id)}>
     <img src={poster_path} width='100%'/>

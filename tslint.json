@@ -1,4 +1,5 @@
 {
+    "defaultSeverity": "warn",
     "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
     "linterOptions": {
         "exclude": [
@@ -28,7 +29,7 @@
         "forin": true,
         "import-spacing": true,
         "indent": [true, "spaces", 4],
-        "interface-name": [ true, "always-prefix" ],
+        "interface-name": [ false, "always-prefix" ],
         "interface-over-type-literal": true,
         "jsdoc-format": true,
         "jsx-key": true,
@@ -88,11 +89,11 @@
         "no-string-literal": true,
         "no-switch-case-fall-through": true,
         "no-trailing-whitespace": true,
-        "no-unused-expression": true,
+        "no-unused-expression": [true, "allow-fast-null-checks"],
         "no-unnecessary-callback-wrapper": true,
         "no-use-before-declare": true,
         "object-literal-shorthand": true,
-        "object-literal-sort-keys": true,
+        "object-literal-sort-keys": false,   //  alphabetically
         "one-line": [
             true,
             "check-catch",

@@ -1,41 +1,41 @@
-import { connect } from "react-redux";
-import DetailedViewUI, { dvUIActions } from "./dvUI";
-import RootState from "../Root/rootState";
-import DetailedViewState from "./dvState";
-import { IActions } from "../Root/rootActions";
-import DetailedViewActions from "./dvActions";
-import { Dispatch } from "redux";
-import NetUtils from "../../utils/NetUtils";
-import Movies from "../../services/rest/movie";
-import FetchProps from "../../services/rest/FetchProps";
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import FetchProps from '../../services/rest/fetchProps';
+import Movies from '../../services/rest/movie';
+import netUtils from '../../utils/netUtils';
+import { IActions } from '../Root/rootActions';
+import RootState from '../Root/rootState';
+import DetailedViewActions from './dvActions';
+import DetailedViewState from './dvState';
+import DetailedViewUI, { DvUiFnCalls } from './dvUI';
 
-export const fetchGenre = (dispatch:Dispatch, id:number): FetchProps<Movies> => ({
-    request: NetUtils.MOVIES_URL,
-    success: (data: Movies) => dispatch({type:DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
-    fail: (e: unknown) => dispatch({type:DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
-    id:id,
+export const fetchGenre = (dispatch: Dispatch, id: number): FetchProps<Movies> => ({
+    request: netUtils.MOVIES_URL,
+    success: (data: Movies) => dispatch({type: DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
+    fail: (e: unknown) => dispatch({type: DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
+    id,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch):dvUIActions => ({
-    resultsItemAction: {
+const mapDispatchToProps = (dispatch: Dispatch): DvUiFnCalls => ({
+    resultsItemfnCalls: {
         itemClick: (id: number) =>
             dispatch({
-                type:DetailedViewActions.MOVIE_CLICKED,
+                type: DetailedViewActions.MOVIE_CLICKED,
                 payload: fetchGenre(dispatch, id),
             }),
-    }
-})
+    },
+});
 
 const mapSubdictsToProps = (state: RootState): DetailedViewState => ({
-    ... state.detailedView,
+    ...state.detailedView,
     data: state.searchResult.moviesData.data,
 });
 
-const mapStateToProps = (state: RootState) => mapSubdictsToProps(state);
+const mapStateToProps = mapSubdictsToProps;
 
 const DetailedView = connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
 )(DetailedViewUI);
 
 export default DetailedView;

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import SortBy from './sortBy';
 import RadioBar from '../RadioBar/radioBar';
+import sortByEnum from './sortBy';
 
 export interface SearchSummaryProps {
     resultCount: number;
-    resultSort: SortBy;
+    resultSort: sortByEnum;
 }
 export interface SearchSummaryAction {
     changeSortBy: (e: unknown) => void;
 }
-const moviesFound: React.SFC<number> = (n:number) =>
+const moviesFound: React.SFC<number> = (n: number) =>
 n === 1 ? <>1 movie found</> :
 <>{n} movies found</>;
 
@@ -32,8 +32,8 @@ const SearchSummary: React.SFC<SearchSummaryProps & SearchSummaryAction> = ({
             onChange={changeSortBy}
             selected={resultSort}
             labels={[
-                SortBy.RELEASE_DATE,
-                SortBy.RATING,
+                sortByEnum.RELEASE_DATE,
+                sortByEnum.RATING,
             ]}
         />
     </div>

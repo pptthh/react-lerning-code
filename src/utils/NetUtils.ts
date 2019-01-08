@@ -1,4 +1,4 @@
-const NetUtils = {
+const netUtils = {
 
     getJsonResponse : (response: Response) => response.json(),
 
@@ -9,7 +9,7 @@ const NetUtils = {
         throw Error('missing status code');
     },
 
-    MOVIES_URL:'http://react-cdp-api.herokuapp.com/movies',
+    MOVIES_URL: 'http://react-cdp-api.herokuapp.com/movies',
 };
 
-export default NetUtils;
+export default netUtils;

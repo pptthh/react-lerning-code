@@ -1,4 +1,4 @@
-enum SortBy{
+enum sortByEnum {
     RELEASE_DATE = 'release date',
     RATING = 'rating',
     VOTES = '#votes',
@@ -6,12 +6,12 @@ enum SortBy{
     RUNTIME = 'runtime',
 }
 
-export default SortBy;
+export default sortByEnum;
 
 export const SortByRestTranslator = {
-    [SortBy.RELEASE_DATE]: 'release_date',
-    [SortBy.RATING]: 'vote_average',
-    [SortBy.VOTES]: 'vote_count',
-    [SortBy.BUDGET]: 'budget',
-    [SortBy.RUNTIME]: 'runtime',
-}
+    [sortByEnum.RELEASE_DATE]: 'release_date',
+    [sortByEnum.RATING]: 'vote_average',
+    [sortByEnum.VOTES]: 'vote_count',
+    [sortByEnum.BUDGET]: 'budget',
+    [sortByEnum.RUNTIME]: 'runtime',
+};
