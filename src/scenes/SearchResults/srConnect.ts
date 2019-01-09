@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import FetchProps from '../../services/rest/fetchProps';
@@ -71,8 +72,8 @@ const mapSubdictsToProps =
 
 const mapStateToProps = mapSubdictsToProps;
 
-const SearchResults = connect(
+const SearchResults = (connect(
     mapStateToProps,
     mapDispatchToProps,
-)(searchResultsUI);
+)(searchResultsUI));
 export default SearchResults;
