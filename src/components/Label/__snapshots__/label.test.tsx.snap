@@ -9,10 +9,7 @@ exports[`describe Label Shallow render example 1`] = `
 `;
 
 exports[`describe Label renders correctly with Text only 1`] = `
-<span
-  class=""
-  title=""
->
+<span>
   simple text22
 </span>
 `;

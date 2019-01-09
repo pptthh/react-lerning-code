@@ -64,6 +64,7 @@
     }
   },
   "dependencies": {
+    "@redux-offline/redux-offline": "^2.5.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
@@ -98,11 +99,11 @@
     "style-loader": "^0.23.1",
     "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.1",
-    "typescript": "^3.2.1",
+    "typescript": "^3.2.2",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.1.4"
   }
 }

@@ -1,16 +1,85 @@
 body {
+    background-color: #222;
+    color: #FFF;
     font-family: sans-serif;
+    margin: 10px;
+    padding: 5px;
+    left: 5%;
+    right: 5%;
 }
-
+.Footer{
+    color: #F33;
+    background-color: #000;
+    padding: 15px;
+}
+.SearchForm{
+    font-size: 8pt;
+    font-weight: bold;
+}
 .SearchForm .search-input-field {
-    min-width: 400px;
-    width: 100%;
+    background-color: #000;
+    color: #CCC;
+    border: none;
+    border-bottom: 1px solid #F33;
+    min-width: 200px;
+    width: 98%;
+    padding: 10px;
 }
 
 .SearchForm .properties {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
     padding-top: 10px;
+}
+
+.SearchForm .searchButton,
+.SearchForm input[type=radio] ~ label{
+    border: none;
+    background: #333;
+    padding: 2px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 5px;
+    text-transform: uppercase;
+}
+.SearchForm .searchButton,
+.SearchForm input[type=radio]:checked ~ label{
+    background-color: #F66;
+    color: #FFF;
+}
+.SearchForm input[type=radio].search-by{
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+}
+.SearchForm .searchButton{
+    font-size: 8pt;
+    font-weight: bold;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.SearchForm .searchButton:disabled{
+    background-color: #999;
+}
+
+.header{
+    color: #F33;
+    width: 100%;
+}
+
+.header button{
+    background-color: #FFF;
+    border: 1px solid #F33;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #F33;
+    right: 75px;
+    position: absolute;
+    vertical-align: bottom;
 }
 
 .ResultsBody {
@@ -21,35 +90,98 @@ body {
 }
 .ResultsBody .ResultItem {
     border: 1px solid #FFF;
-    min-width: 150px;
+    margin: 10px;
+    width: 180px;
 }
 .ResultsBody .item-data{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 }
 .ResultsBody .item-title{
+    font-size: 12px;
+    font-weight: bold;
     text-transform: uppercase;
-    padding-left: 5px;
+    padding-left: 5px;    
 }
 .ResultsBody .item-date{
     border: 1px solid #CCC;
-    margin-right: 5px;
-    padding: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 10pt
+    font-size: 7pt;
+    font-weight: bold;
+    margin: 2px;
+    padding: 2px;
 }
 .ResultsBody .item-gerne{
+    font-size: 10px;
     padding: 5px;
 }
+.genreListHeader,
 .SearchSummary {
     background: #EEE;
     color: #333;
     padding: 5px;
+    font-size: 8pt;
     font-weight: bold;
     min-height: 20px;
     min-width: 600px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.genreListHeader{
+    padding-left: 80px;
+}
+
+.SearchSummary input[type=radio] ~ label{
+    border: 1px solid #CCC;
+    padding: 2px;
+}
+.SearchSummary input[type=radio]:checked ~ label{
+    border: 1px solid #F33;
+    color: #F33;
+}
+.SearchSummary input[type=radio].sort-by{
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+}
+
+.DetailedPanel {
+    background-color: #000;
+    display: flex;
+    justify-content: space-around;
+}
+.DetailedPanel img {
+    height: 250px;
+}
+
+.DetailedPanel .fimlData {
+    width: 500px;
+}
+
+#filmTitle {
+    color: #F33;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+#filmRating {
+    border: 1px solid #090;
+    border-radius: 25px;
+    color: #090;
+    font-size: 10pt;
+    margin: 10px;
+    padding: 10px;
+}
+#filmYear, #filmDuration {
+    font-size: 8pt;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+#fimlDescription {
+    color: #CCC;
+    font-size: 10pt;
 }

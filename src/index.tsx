@@ -3,10 +3,16 @@ import * as ReactDOM from "react-dom";
 import { hot } from 'react-hot-loader'
 import TestAll from "./TestAll";
 import './styles.css';
+import { PROD, TEST, DEV } from "./utils";
+import App from "./app";
 
-setTimeout(() => { // fixme: during TESTing find a solution to remove this dilay 
-    const AppWithHot = hot(module)(TestAll);
-    ReactDOM.render(<AppWithHot/>, document.getElementById("root"));
-}, 0);
+const rootDiv = document.getElementById("root");
+const AppWithHot = hot(module)(
+    App
+);
+const DomRender = () => ReactDOM.render(<AppWithHot/>, rootDiv);
 
-export default TestAll;
+// fixme: during TESTing find a solution to remove this delay 
+setTimeout(DomRender, 0);
+
+export default AppWithHot;

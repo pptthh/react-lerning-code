@@ -1,29 +1,45 @@
 import * as React from 'react';
+import { ECHO } from '../../utils';
 
-interface RadioBarProps{
+interface RadioBarProps {
     labels: string[];
     name: string;
     selected?: string;
     className?: string;
+    labelTransform?: (label:string) => string;
+    onChange: (e: unknown) => void;
 }
 
-const RadioBar = ({labels, name, selected, className}: RadioBarProps) =>
+const RadioBar = ({
+    labels,
+    name,
+    selected,
+    className,
+    onChange,
+    labelTransform = ECHO
+}: RadioBarProps) =>
 <>
 {
     labels.map(
-        (label: string) =>
-        <label key={label}>
+        (value, i) =>
+        <span key={value}>
             <input
                 type="radio"
-                id={label}
+                id={value}
                 name={name}
-                value={label}
+                value={value}
                 className={className}
-                defaultChecked={selected === label}
+                defaultChecked={selected === value}
+                onChange={onChange}
+                />
+            <label
+                key={value}
+                htmlFor={value}
+                className={className}
                 >
-            </input>
-            {label}
-        </label>
+                {labelTransform(value)}
+            </label>
+        </span>
     )
 }
 </>

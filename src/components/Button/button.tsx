@@ -3,15 +3,17 @@ import * as React from 'react';
 export interface IButton {
     name?: string;
     label: string;
-    title?: string;
+    tooltip?: string;
+    className?: string;
     disabled?: boolean;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button = ({disabled= false, name, label, onClick, title = ''}: IButton) =>
+const Button = ({disabled=false, name, label, onClick, className, tooltip}: IButton) =>
     <button
+        className={className}
         name={name}
-        title={title}
+        title={tooltip}
         onClick={onClick}
         disabled={disabled}
         >{label}</button>;

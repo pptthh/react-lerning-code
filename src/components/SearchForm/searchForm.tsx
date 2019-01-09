@@ -3,33 +3,54 @@ import Header from '../Header/header';
 import TextInput from '../TextInput/textInput';
 import Button from '../Button/button';
 import RadioBar from '../RadioBar/radioBar';
-import ResultSort from '../SearchSummary/ResultSort';
+import SearchBy from './searchBy';
 
 export interface SearchFormProps {
+    searchBy: SearchBy;
     searchField: string;
-    searchBy: string;
-    searchAction: () => void;
+    searchDisabled?: boolean;
 }
 
-const SearchForm: React.SFC<SearchFormProps> = () =>
+export interface SearchFormActions {
+    searchFieldTypeAction: (e: unknown) => void;
+    searchByAction: (e: unknown) => void;
+    searchAction: (e: unknown) => void;
+}
+
+const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
+    searchBy,
+    searchField,
+    searchDisabled = false,
+    searchFieldTypeAction,
+    searchByAction,
+    searchAction,
+}) =>
 <div className='SearchForm'>
-    <Header>netflixroulette</Header>
     <div>FIND YOUR MOVIE</div>
     <TextInput
+        value={searchField}
         className='search-input-field'
         placeholder='search'
+        onChange={searchFieldTypeAction}
+        onEnter={searchAction}
     />
     <div className='properties'>
         <span>
             SEARCH BY
             <RadioBar
-                className='movie-sort-by'
-                labels={[ResultSort.RELEASE_DATE, ResultSort.RATING]}
-                selected={ResultSort.RELEASE_DATE}
-                name='radioBar'                
+                className='search-by'
+                labels={[SearchBy.TITLE, SearchBy.GERNE]}
+                onChange={searchByAction}
+                selected={searchBy}
+                name='radioBar'
             />
         </span>
-        <Button label='SEARCH' onClick={console.log}/>
+        <Button
+            className='searchButton'
+            label='SEARCH'
+            onClick={searchAction}
+            disabled={searchDisabled}
+        />
     </div>
 </div>;
 
