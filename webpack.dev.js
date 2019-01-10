@@ -7,4 +7,7 @@ module.exports = merge(common, {
     output: {
         filename: '[name].[hash].js',
     },
+    devServer: {
+        historyApiFallback: true,
+    },
 });

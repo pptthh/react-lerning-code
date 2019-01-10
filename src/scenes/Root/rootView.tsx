@@ -28,8 +28,8 @@ const Root = () =>
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
         <Route path='/search(/:query)?' component={search} />
-        <Route path='/film(/:id)?' component={film} />
-        {/* <Route path='*' component={NotFound} /> */}
+        <Route path='/film/:id' component={film} />
+        <Route path='*' component={NotFound} />
     </Switch>
 </>
 </Router>;
