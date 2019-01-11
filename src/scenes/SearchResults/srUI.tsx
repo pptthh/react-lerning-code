@@ -1,13 +1,9 @@
 import * as React from 'react';
-import { Provider } from 'react-redux';
-import Button from '../../components/Button/button';
 import FoundMovies from '../../components/FoundMovies';
 import { ResultItemFnCalls } from '../../components/FoundMovies/resultItem';
 import Header from '../../components/Header/header';
 import SearchForm, { SearchFormFnCalls } from '../../components/SearchForm/searchForm';
 import SearchSummary, { SearchSummaryAction } from '../../components/SearchSummary/searchSummary';
-import DetailedView from '../DetaildView/dvConnect';
-import store from '../Root/rootStore';
 import SearchResultState from './srState';
 import SrUrlProps from './srUrlProps';
 
@@ -18,21 +14,6 @@ export interface SrUiFnCalls {
 }
 
 const searchResultsUI = (props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
-props.details ?
-<>
-    <Header>
-    netflixroulette
-        <Button
-            className='showSearch'
-            tooltip='Show Search Form'
-            label='SEARCH'
-            onClick={() => props.resultsItemAction.itemClick(0)}
-        />
-    </Header>
-    <Provider store={store}>
-        <DetailedView />
-    </Provider>
-</> :
 <>
     <Header>
         netflixroulette
@@ -53,3 +34,22 @@ props.details ?
 </>;
 
 export default searchResultsUI;
+
+/*
+props.details ?
+<>
+    <Header>
+    netflixroulette
+        <Button
+            className='showSearch'
+            tooltip='Show Search Form'
+            label='SEARCH'
+            onClick={() => props.resultsItemAction.itemClick(0)}
+        />
+    </Header>
+    <Provider store={store}>
+        <DetailedView />
+    </Provider>
+</> :
+
+*/
