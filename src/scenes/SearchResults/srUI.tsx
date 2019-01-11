@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
 import Button from '../../components/Button/button';
 import FoundMovies from '../../components/FoundMovies';
 import { ResultItemFnCalls } from '../../components/FoundMovies/resultItem';
@@ -16,7 +17,7 @@ export interface SrUiFnCalls {
     resultsItemAction: ResultItemFnCalls;
 }
 
-const searchResultsUI = (props: SearchResultState & SrUiFnCalls) =>
+const searchResultsUI = (props: SearchResultState & SrUiFnCalls & RouteComponentProps) =>
 props.details ?
 <>
     <Header>

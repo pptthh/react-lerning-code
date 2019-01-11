@@ -60,7 +60,8 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
 });
 
 const mapSubdictsToProps =
-    (state: RootState): SearchResultState => ({
+    // (state: RootState): SearchResultState => ({
+       (state: RootState, match: {params: {topicid: string}}): SearchResultState => ({
         ...state.searchResult,
         searchSummary: {
             ...state.searchResult.searchSummary,
@@ -68,11 +69,16 @@ const mapSubdictsToProps =
                     state.searchResult.moviesData.total,
         },
         results: state.searchResult.moviesData.data,
+        searchForm: {
+            ...state.searchResult.searchForm,
+            searchField: state.searchResult.searchForm.searchField +
+                (match && match.params && match.params.topicid ? match.params.topicid : ''),
+        },
     });
 
 const mapStateToProps = mapSubdictsToProps;
 
-const SearchResults = (connect(
+const SearchResults = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
 )(searchResultsUI));

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import DetailedView from '../DetaildView/dvConnect';
 import SearchResults from '../SearchResults/srConnect';
 import store from './rootStore';
 
-const search = () => <Provider store={store}><SearchResults/></Provider>;
-const film = () => <Provider store={store}><DetailedView/></Provider>;
+const search = (props:any) => <Provider store={store}><SearchResults {...props}/></Provider>;
+const film = (props:any) => <Provider store={store}><DetailedView  {...props}/></Provider>;
 
 const Home = () => <div><h2>Home</h2></div>;
 const NotFound = () => <div><h2>page not found</h2></div>;
@@ -27,9 +27,9 @@ const Root = () =>
     <hr/>
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
-        <Route path='/search(/:query)?' component={search} />
+        <Route path='/search/:query?' component={search} />
         <Route path='/film/:id' component={film} />
-        <Route path='*' component={NotFound} />
+        <Route component={NotFound} />
     </Switch>
 </>
 </Router>;
