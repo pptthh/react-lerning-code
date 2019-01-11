@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { MemoryRouter as Router, Route, Switch } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router';
+import { HashRouter as Router, Link } from 'react-router-dom';
 import DetailedView from '../DetaildView/dvConnect';
 import DvUrlProps, { dvUrlPath } from '../DetaildView/dvUrlProps';
 import SearchResults from '../SearchResults/srConnect';
