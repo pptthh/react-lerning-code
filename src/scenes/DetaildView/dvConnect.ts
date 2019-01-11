@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Dispatch } from 'redux';
 import FetchProps from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
-import { IActions } from '../Root/rootActions';
 import RootState from '../Root/rootState';
 import DetailedViewActions from './dvActions';
 import DetailedViewState from './dvState';
 import DetailedViewUI, { DvUiFnCalls } from './dvUI';
-import { withRouter } from 'react-router';
+import DvUrlProps from './dvUrlProps';
 
 export const fetchGenre = (dispatch: Dispatch, id: number): FetchProps<Movies> => ({
     request: netUtils.MOVIES_URL,
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DvUiFnCalls => ({
     },
 });
 
-const mapSubdictsToProps = (state: RootState): DetailedViewState => ({
+const mapSubdictsToProps = (state: RootState, match: DvUrlProps): DetailedViewState => ({
     ...state.detailedView,
     data: state.searchResult.moviesData.data,
 });

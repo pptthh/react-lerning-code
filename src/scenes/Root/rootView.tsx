@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { HashRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Link, Route, RouteComponentProps, Switch } from 'react-router-dom';
 import DetailedView from '../DetaildView/dvConnect';
+import DvUrlProps, { dvUrlPath } from '../DetaildView/dvUrlProps';
 import SearchResults from '../SearchResults/srConnect';
+import SrUrlProps, { srUrlPath } from '../SearchResults/srUrlProps';
 import store from './rootStore';
 
-const search = (props:any) => <Provider store={store}><SearchResults {...props}/></Provider>;
-const film = (props:any) => <Provider store={store}><DetailedView  {...props}/></Provider>;
+const search = (props: SrUrlProps) => <Provider store={store}><SearchResults {...props}/></Provider>;
+const film = (props: DvUrlProps) => <Provider store={store}><DetailedView  {...props}/></Provider>;
 
 const Home = () => <div><h2>Home</h2></div>;
 const NotFound = () => <div><h2>page not found</h2></div>;
@@ -27,8 +29,8 @@ const Root = () =>
     <hr/>
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
-        <Route path='/search/:query?' component={search} />
-        <Route path='/film/:id' component={film} />
+        <Route path={srUrlPath} component={search} />
+        <Route path={dvUrlPath} component={film} />
         <Route component={NotFound} />
     </Switch>
 </>

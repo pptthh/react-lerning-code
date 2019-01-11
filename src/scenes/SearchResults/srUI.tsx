@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
 import Button from '../../components/Button/button';
 import FoundMovies from '../../components/FoundMovies';
 import { ResultItemFnCalls } from '../../components/FoundMovies/resultItem';
@@ -10,6 +9,7 @@ import SearchSummary, { SearchSummaryAction } from '../../components/SearchSumma
 import DetailedView from '../DetaildView/dvConnect';
 import store from '../Root/rootStore';
 import SearchResultState from './srState';
+import SrUrlProps from './srUrlProps';
 
 export interface SrUiFnCalls {
     searchFormActions: SearchFormFnCalls;
@@ -17,7 +17,7 @@ export interface SrUiFnCalls {
     resultsItemAction: ResultItemFnCalls;
 }
 
-const searchResultsUI = (props: SearchResultState & SrUiFnCalls & RouteComponentProps) =>
+const searchResultsUI = (props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
 props.details ?
 <>
     <Header>

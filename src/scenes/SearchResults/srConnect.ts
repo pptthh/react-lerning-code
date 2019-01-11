@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import FetchProps from '../../services/rest/fetchProps';
@@ -12,6 +12,7 @@ import RootState from '../Root/rootState';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
 import searchResultsUI, { SrUiFnCalls } from './srUI';
+import SrUrlProps from './srUrlProps';
 
 const fetchMovies = (dispatch: Dispatch): FetchProps<Movies> => ({
     request: netUtils.MOVIES_URL,
@@ -60,8 +61,7 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
 });
 
 const mapSubdictsToProps =
-    // (state: RootState): SearchResultState => ({
-       (state: RootState, match: {params: {topicid: string}}): SearchResultState => ({
+       (state: RootState, match: SrUrlProps): SearchResultState => ({
         ...state.searchResult,
         searchSummary: {
             ...state.searchResult.searchSummary,
@@ -71,8 +71,7 @@ const mapSubdictsToProps =
         results: state.searchResult.moviesData.data,
         searchForm: {
             ...state.searchResult.searchForm,
-            searchField: state.searchResult.searchForm.searchField +
-                (match && match.params && match.params.topicid ? match.params.topicid : ''),
+            searchField: state.searchResult.searchForm.searchField,
         },
     });
 
