@@ -24,17 +24,14 @@ const links = () =>
 const Home = () => <div><h2>Home</h2>{links()}</div>;
 const NotFound = () => <div><h2>The linked page was not found</h2>{links()}</div>;
 
-const Root = () => <>
+const Root = () =>
 <Router>
-    <>
-    {/* <Route component={urlView} /> */}
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
         <Route path={srUrlPath} component={search} />
         <Route path={dvUrlPath} component={film} />
         <Route component={NotFound} />
     </Switch>
-    </>
-</Router></>;
+</Router>;
 
 export default Root;

@@ -1,3 +1,5 @@
+import { EVENT_VALUE } from '.';
+
 const netUtils = {
 
     getJsonResponse : (response: Response) => response.json(),
@@ -10,6 +12,14 @@ const netUtils = {
     },
 
     MOVIES_URL: 'http://react-cdp-api.herokuapp.com/movies',
+
+    setUrlPath: (path: string) => {
+        // props.history.push('/foo')
+        // return;
+        // !location.hash ?
+        //     location.pathname = '/' + path :
+        //     location.hash = '#/' + path;
+    },
 };
 
 export default netUtils;

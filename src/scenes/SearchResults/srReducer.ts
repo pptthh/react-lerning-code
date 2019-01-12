@@ -5,6 +5,7 @@ import FetchProps from '../../services/rest/fetchProps';
 import Movies, { EmptyMovieList } from '../../services/rest/movie';
 import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
+import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import RootActions from '../Root/rootActions';
 import SearchResultActions from './srActions';
@@ -33,11 +34,13 @@ const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultSta
     moviesData: payload as Movies,
 });
 
-const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
-    ...state,
-    searchForm: {
-        ...state.searchForm,
-        searchField: EVENT_VALUE(payload) as string,
+const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+    netUtils.setUrlPath('search/'),
+    {
+        ...state,
+        searchForm: {
+            ...state.searchForm,
+            searchField: EVENT_VALUE(payload) as string,
     },
 });
 
@@ -58,6 +61,7 @@ const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResult
 });
 
 const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+netUtils.setUrlPath('search/' + state.searchForm.searchField),
 FetchMovies({
     ...payload,
     request: getRequest(state),
@@ -92,6 +96,14 @@ const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResul
     details: GET_ID(payload),
 });
 
+const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+    ...state,
+    searchForm: {
+        ...state.searchForm,
+        searchField: payload as string,
+    },
+});
+
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
     [SearchResultActions.CHANGE_SEARCH_BY]: changeSearchBy,
@@ -102,6 +114,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
+    [RootActions.URL_SEARCH]: urlSearch,
     [RootActions.INIT]: rootInit,
 };
 

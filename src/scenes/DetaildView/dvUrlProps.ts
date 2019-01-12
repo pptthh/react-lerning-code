@@ -6,8 +6,6 @@ interface Params {
     id: string;
 }
 
-interface DvUrlProps extends RouteComponentProps {
-    params: { [K in keyof Params]: string};
-}
+interface DvUrlProps extends RouteComponentProps<Params> {}
 
 export default DvUrlProps;
