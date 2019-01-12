@@ -6,13 +6,10 @@ import DetailedView from '../DetaildView/dvConnect';
 import DvUrlProps, { dvUrlPath } from '../DetaildView/dvUrlProps';
 import SearchResults from '../SearchResults/srConnect';
 import SrUrlProps, { srUrlPath } from '../SearchResults/srUrlProps';
-import UrlView from '../URL/urlConnect';
-import UrlProps from '../URL/urlProps';
 import store from './rootStore';
 
 const search = (props: SrUrlProps) => <Provider store={store}><SearchResults {...props}/></Provider>;
 const film = (props: DvUrlProps) => <Provider store={store}><DetailedView  {...props}/></Provider>;
-// const urlView = (props: UrlProps) => <Provider store={store}><UrlView  {...props}/></Provider>;
 const links = () =>
 <ul>
     <li><Link to='/'>home</Link></li>
