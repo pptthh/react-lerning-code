@@ -12,6 +12,7 @@ import RootState from './rootState';
 const rootReducers: ReducersMapObject = {
     detailedView: DetailedViewReducer,
     searchResult: SearchResultReducer,
+    // url: UrlReducer
 };
 const RootReducer: Reducer<RootState> = combineReducers(rootReducers);
 export default RootReducer;

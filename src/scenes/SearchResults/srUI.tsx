@@ -13,43 +13,27 @@ export interface SrUiFnCalls {
     resultsItemAction: ResultItemFnCalls;
 }
 
-const searchResultsUI = (props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
+const srUI: React.SFC<SearchResultState & SrUiFnCalls & SrUrlProps> =
+(props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
 <>
     <Header>
         netflixroulette
     </Header>
+
     <SearchForm
         {...props.searchForm}
         {...props.searchFormActions}
     />
 
-    {props.searchSummary && <SearchSummary
+    <SearchSummary
         {...props.searchSummary}
         {...props.searchSummaryAction}
-    />}
+    />
+
     <FoundMovies
         results={props.results}
         fnCalls={props.resultsItemAction}
     />
 </>;
 
-export default searchResultsUI;
-
-/*
-props.details ?
-<>
-    <Header>
-    netflixroulette
-        <Button
-            className='showSearch'
-            tooltip='Show Search Form'
-            label='SEARCH'
-            onClick={() => props.resultsItemAction.itemClick(0)}
-        />
-    </Header>
-    <Provider store={store}>
-        <DetailedView />
-    </Provider>
-</> :
-
-*/
+export default srUI;

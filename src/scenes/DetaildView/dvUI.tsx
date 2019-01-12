@@ -10,7 +10,7 @@ export interface DvUiFnCalls {
     resultsItemfnCalls: ResultItemFnCalls;
 }
 
-const DetailedViewUI =
+const dvUI =
 (props: DetailedViewState & DvUiFnCalls & DvUrlProps) =>
 !props.detailedPanel ? <>id not found</> :
 <div>
@@ -28,4 +28,4 @@ const DetailedViewUI =
     />
 </div>;
 
-export default DetailedViewUI;
+export default dvUI;

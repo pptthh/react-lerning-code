@@ -7,7 +7,7 @@ import netUtils from '../../utils/netUtils';
 import RootState from '../Root/rootState';
 import DetailedViewActions from './dvActions';
 import DetailedViewState from './dvState';
-import DetailedViewUI, { DvUiFnCalls } from './dvUI';
+import dvUI, { DvUiFnCalls } from './dvUI';
 import DvUrlProps from './dvUrlProps';
 
 export const fetchGenre = (dispatch: Dispatch, id: number): FetchProps<Movies> => ({
@@ -37,6 +37,6 @@ const mapStateToProps = mapSubdictsToProps;
 const DetailedView = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(DetailedViewUI));
+)(dvUI));
 
 export default DetailedView;

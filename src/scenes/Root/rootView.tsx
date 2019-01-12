@@ -6,10 +6,13 @@ import DetailedView from '../DetaildView/dvConnect';
 import DvUrlProps, { dvUrlPath } from '../DetaildView/dvUrlProps';
 import SearchResults from '../SearchResults/srConnect';
 import SrUrlProps, { srUrlPath } from '../SearchResults/srUrlProps';
+import UrlView from '../URL/urlConnect';
+import UrlProps from '../URL/urlProps';
 import store from './rootStore';
 
 const search = (props: SrUrlProps) => <Provider store={store}><SearchResults {...props}/></Provider>;
 const film = (props: DvUrlProps) => <Provider store={store}><DetailedView  {...props}/></Provider>;
+const urlView = (props: UrlProps) => <Provider store={store}><UrlView  {...props}/></Provider>;
 const links = () =>
 <ul>
     <li><Link to='/'>home</Link></li>
@@ -24,7 +27,8 @@ const links = () =>
 const Home = () => <div><h2>Home</h2>{links()}</div>;
 const NotFound = () => <div><h2>The linked page was not found</h2>{links()}</div>;
 
-const Root = () =>
+const Root = () => <>
+{urlView}
 <Router>
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
@@ -32,6 +36,6 @@ const Root = () =>
         <Route path={dvUrlPath} component={film} />
         <Route component={NotFound} />
     </Switch>
-</Router>;
+</Router></>;
 
 export default Root;

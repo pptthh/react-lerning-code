@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import FetchProps from '../../services/rest/fetchProps';
-import Movies, { Movie } from '../../services/rest/movie';
+import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import { fetchGenre } from '../DetaildView/dvConnect';
@@ -11,7 +10,7 @@ import { IActions } from '../Root/rootActions';
 import RootState from '../Root/rootState';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
-import searchResultsUI, { SrUiFnCalls } from './srUI';
+import srUI, { SrUiFnCalls } from './srUI';
 import SrUrlProps from './srUrlProps';
 
 const fetchMovies = (dispatch: Dispatch): FetchProps<Movies> => ({
@@ -80,5 +79,5 @@ const mapStateToProps = mapSubdictsToProps;
 const SearchResults = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(searchResultsUI));
+)(srUI));
 export default SearchResults;

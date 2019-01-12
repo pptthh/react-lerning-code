@@ -1,13 +1,11 @@
 import searchByEnum from '../../components/SearchForm/searchBy';
-import sortByEnum, { SortByRestTranslator } from '../../components/SearchSummary/sortBy';
-import FetchMovies, { getRequest, getRequest4Genre } from '../../services/rest/fetchMovies';
+import sortByEnum from '../../components/SearchSummary/sortBy';
+import FetchMovies, { getRequest } from '../../services/rest/fetchMovies';
 import FetchProps from '../../services/rest/fetchProps';
 import Movies, { EmptyMovieList } from '../../services/rest/movie';
 import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
-import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
-import DetailedView from '../DetaildView/dvConnect';
 import RootActions from '../Root/rootActions';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
