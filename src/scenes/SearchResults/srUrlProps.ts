@@ -6,8 +6,6 @@ interface Params {
     query: string;
 }
 
-interface SrUrlProps extends RouteComponentProps {
-    params: { [K in keyof Params]: string};
-}
+interface SrUrlProps extends RouteComponentProps<Params> {}
 
 export default SrUrlProps;

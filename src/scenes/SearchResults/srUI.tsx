@@ -8,13 +8,15 @@ import SearchResultState from './srState';
 import SrUrlProps from './srUrlProps';
 
 export interface SrUiFnCalls {
+    searchMatchQuery: (props: SearchResultState & SrUiFnCalls & SrUrlProps) => boolean;
     searchFormActions: SearchFormFnCalls;
     searchSummaryAction: SearchSummaryAction;
     resultsItemAction: ResultItemFnCalls;
 }
 
 const srUI: React.SFC<SearchResultState & SrUiFnCalls & SrUrlProps> =
-(props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
+(props) =>
+!props.searchMatchQuery(props) ? <></> :
 <>
     <Header>
         netflixroulette

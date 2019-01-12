@@ -12,7 +12,7 @@ import store from './rootStore';
 
 const search = (props: SrUrlProps) => <Provider store={store}><SearchResults {...props}/></Provider>;
 const film = (props: DvUrlProps) => <Provider store={store}><DetailedView  {...props}/></Provider>;
-const urlView = (props: UrlProps) => <Provider store={store}><UrlView  {...props}/></Provider>;
+// const urlView = (props: UrlProps) => <Provider store={store}><UrlView  {...props}/></Provider>;
 const links = () =>
 <ul>
     <li><Link to='/'>home</Link></li>
@@ -28,14 +28,16 @@ const Home = () => <div><h2>Home</h2>{links()}</div>;
 const NotFound = () => <div><h2>The linked page was not found</h2>{links()}</div>;
 
 const Root = () => <>
-{urlView}
 <Router>
+    <>
+    {/* <Route component={urlView} /> */}
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
         <Route path={srUrlPath} component={search} />
         <Route path={dvUrlPath} component={film} />
         <Route component={NotFound} />
     </Switch>
+    </>
 </Router></>;
 
 export default Root;
