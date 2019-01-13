@@ -35,7 +35,7 @@ export const dvFnCalls = {
     }),
     [RootActions.URL_FILM_ID]:
         (dispatch: Dispatch) =>
-        (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean => 
+        (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean =>
             !!props.detailedPanel ? true :
             (dispatch({
                 type: DetailedViewActions.URL_FETCH_MOVIE,

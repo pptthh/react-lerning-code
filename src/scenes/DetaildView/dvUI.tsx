@@ -5,6 +5,7 @@ import FoundMovies from '../../components/FoundMovies';
 import { ResultItemFnCalls } from '../../components/FoundMovies/resultItem';
 import Header from '../../components/Header/header';
 import Label from '../../components/Label/label';
+import { pageNotFound } from '../Root/rootView';
 import DetailedViewState from './dvState';
 import DvUrlProps from './dvUrlProps';
 
@@ -15,7 +16,7 @@ export interface DvUiFnCalls {
 
 const dvUI =
 (props: DetailedViewState & DvUiFnCalls & DvUrlProps) =>
-props.filedId === props.match.params.id ? <>movie not found</> :
+props.filedId === props.match.params.id ? <>movie not found {pageNotFound()}</> :
 !props.urlOpenedFnCalls(props) ? <>loading movie ...</> :
 !props.detailedPanel ? <>loading movie ...</> :
 <div>
