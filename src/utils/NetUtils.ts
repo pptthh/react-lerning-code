@@ -1,7 +1,4 @@
-import { EVENT_VALUE } from '.';
-
 const netUtils = {
-
     getJsonResponse : (response: Response) => response.json(),
 
     checkStatus: (response: Response) => {
@@ -12,6 +9,13 @@ const netUtils = {
     },
 
     MOVIES_URL: 'http://react-cdp-api.herokuapp.com/movies',
+
+    requestInit: {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+        },
+    } as RequestInit,
 
     setUrlPath: (path: string) => {
         setTimeout(() => {

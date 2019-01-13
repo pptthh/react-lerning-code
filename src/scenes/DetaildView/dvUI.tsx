@@ -9,21 +9,23 @@ import DetailedViewState from './dvState';
 import DvUrlProps from './dvUrlProps';
 
 export interface DvUiFnCalls {
-    resultsItemfnCalls: ResultItemFnCalls;
+    resultsItemFnCalls: ResultItemFnCalls;
+    urlOpenedFnCalls: (props: DetailedViewState & DvUiFnCalls & DvUrlProps) => boolean;
 }
 
 const dvUI =
 (props: DetailedViewState & DvUiFnCalls & DvUrlProps) =>
-!props.detailedPanel ? <>id not found</> :
+!props.urlOpenedFnCalls(props) ? <>loading movie</> :
+!props.detailedPanel ? <>not found</> :
 <div>
     <Header>
         netflixroulette
-            <Button
-                className='showSearch'
-                tooltip='Show Search Form'
-                label='SEARCH'
-                onClick={() => props.resultsItemfnCalls.itemClick(0)}
-            />
+        <Button
+            className='showSearch'
+            tooltip='Show Search Form'
+            label='SEARCH'
+            onClick={() => props.resultsItemFnCalls.itemClick(0)}
+        />
     </Header>
     <DetailedPanel
         {...props.detailedPanel}
@@ -35,7 +37,7 @@ const dvUI =
 
     <FoundMovies
         results={props.results}
-        fnCalls={props.resultsItemfnCalls}
+        fnCalls={props.resultsItemFnCalls}
     />
 </div>;
 

@@ -4,8 +4,9 @@ import { Dispatch } from 'redux';
 import FetchProps from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
+import RootActions from '../Root/rootActions';
 import RootState from '../Root/rootState';
-import DetailedViewActions from './dvActions';
+import DetailedViewActions, { dvFnCalls } from './dvActions';
 import DetailedViewState from './dvState';
 import dvUI, { DvUiFnCalls } from './dvUI';
 import DvUrlProps from './dvUrlProps';
@@ -18,7 +19,8 @@ export const fetchGenre = (dispatch: Dispatch, id: number): FetchProps<Movies> =
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DvUiFnCalls => ({
-    resultsItemfnCalls: {
+    urlOpenedFnCalls: dvFnCalls[RootActions.URL_FILM_ID],
+    resultsItemFnCalls: {
         itemClick: (id: number) =>
             dispatch({
                 type: DetailedViewActions.MOVIE_CLICKED,
