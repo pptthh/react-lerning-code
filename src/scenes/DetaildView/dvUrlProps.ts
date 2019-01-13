@@ -1,6 +1,7 @@
 import { RouteComponentProps } from 'react-router';
 
-export const dvUrlPath = '/film/:id';
+export const dvUrlPathBase = 'film/';
+export const dvUrlPath = `/${dvUrlPathBase}:id`;
 
 interface Params {
     id: string;

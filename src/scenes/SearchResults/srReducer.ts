@@ -7,9 +7,11 @@ import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
+import { dvUrlPathBase } from '../DetaildView/dvUrlProps';
 import RootActions from '../Root/rootActions';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
+import { srUrlPathBase } from './srUrlProps';
 
 const stateInit: SearchResultState = {
     searchSummary: {
@@ -90,7 +92,13 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
     },
 });
 
-const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+    netUtils.setUrlPath(
+        GET_ID(payload) ?
+            dvUrlPathBase + GET_ID(payload) :
+            srUrlPathBase,
+        ),
+    {
     ...state,
     details: GET_ID(payload),
 });

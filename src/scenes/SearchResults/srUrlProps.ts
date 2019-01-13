@@ -1,6 +1,7 @@
 import { RouteComponentProps } from 'react-router';
 
-export const srUrlPath = '/search/:query?';
+export const srUrlPathBase = 'search/';
+export const srUrlPath = `/${srUrlPathBase}:query?`;
 
 interface Params {
     query: string;
