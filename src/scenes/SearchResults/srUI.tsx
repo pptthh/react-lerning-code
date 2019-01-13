@@ -6,7 +6,6 @@ import SearchForm, { SearchFormFnCalls } from '../../components/SearchForm/searc
 import SearchSummary, { SearchSummaryAction } from '../../components/SearchSummary/searchSummary';
 import SearchResultState from './srState';
 import SrUrlProps from './srUrlProps';
-import { Redirect } from 'react-router';
 
 export interface SrUiFnCalls {
     searchMatchQuery: (props: SearchResultState & SrUiFnCalls & SrUrlProps) => boolean;
@@ -17,13 +16,12 @@ export interface SrUiFnCalls {
 
 const srUI: React.SFC<SearchResultState & SrUiFnCalls & SrUrlProps> =
 (props) =>
-// !props.searchMatchQuery(props) ? <></> :
+!props.searchMatchQuery(props) ? <></> :
 <>
     <Header>
         netflixroulette
     </Header>
 
-    {props.searchMatchQuery(props)}
     <SearchForm
         {...props.searchForm}
         {...props.searchFormActions}

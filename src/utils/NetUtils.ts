@@ -14,11 +14,11 @@ const netUtils = {
     MOVIES_URL: 'http://react-cdp-api.herokuapp.com/movies',
 
     setUrlPath: (path: string) => {
-        // props.history.push('/foo')
-        // return;
-        // !location.hash ?
-        //     location.pathname = '/' + path :
-        //     location.hash = '#/' + path;
+        setTimeout(() => {
+            !location.hash ?
+                location.pathname = '/' + path :
+                location.hash = '#/' + path;
+        }, 0);
     },
 };
 

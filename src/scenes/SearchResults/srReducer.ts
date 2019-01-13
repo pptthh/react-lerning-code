@@ -34,9 +34,7 @@ const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultSta
     moviesData: payload as Movies,
 });
 
-const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
-    netUtils.setUrlPath('search/'),
-    {
+const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
         ...state,
         searchForm: {
             ...state.searchForm,
@@ -67,6 +65,7 @@ FetchMovies({
     request: getRequest(state),
 } as FetchProps<Movies>),
 {   ...state,
+    oldQuery: state.searchForm.searchField,
     searchForm: {
         ...state.searchForm,
         searchDisabled: true,
@@ -98,6 +97,7 @@ const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResul
 
 const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ...state,
+    oldQuery: payload as string,
     searchForm: {
         ...state.searchForm,
         searchField: payload as string,

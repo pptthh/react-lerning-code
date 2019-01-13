@@ -3,13 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import FetchProps from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
-import { NOOP } from '../../utils';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import { fetchGenre } from '../DetaildView/dvConnect';
-import RootActions, { IActions, rootFnCalls } from '../Root/rootActions';
+import RootActions, { IActions } from '../Root/rootActions';
 import RootState from '../Root/rootState';
-import SearchResultActions from './srActions';
+import SearchResultActions, { srFnCalls } from './srActions';
 import SearchResultState from './srState';
 import srUI, { SrUiFnCalls } from './srUI';
 import SrUrlProps from './srUrlProps';
@@ -42,7 +41,7 @@ const offlineActions = {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
-    searchMatchQuery: rootFnCalls[RootActions.URL_SEARCH](dispatch),
+    searchMatchQuery: srFnCalls[RootActions.URL_SEARCH](dispatch),
     searchSummaryAction: {
         changeSortBy: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SORT_BY, payload: e}),
     },

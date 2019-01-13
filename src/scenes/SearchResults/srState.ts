@@ -9,5 +9,6 @@ interface SearchResultState {
     results: ResultItemProps[];
     moviesData: Movies;
     details: number;
+    oldQuery?: string;
 }
 export default SearchResultState;
