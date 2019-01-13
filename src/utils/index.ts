@@ -12,7 +12,7 @@ export const LOG_INFO = cnsl.info;
 export const LOG_WARNING = cnsl.warn;
 export const LOG_ERROR = cnsl.error;
 
-export const throwError = (message?: string): object => { throw new Error(message); };
+export const throwError = (message?: string): object => { DBG(); throw new Error(message); };
 
 export const ECHO = <T>(value: T) => value;
 

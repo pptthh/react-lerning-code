@@ -71,7 +71,7 @@ const urlFetchMovieSuccess = ({ state, payload }: ICase<DetailedViewState>): Det
         detailedPanel: GET_PROP(payload, 'movie'),
     },
     FetchMovies({
-        ...payload,
+        ...GET_PROP(payload, 'genreFetchProps'),
         request: getRequest4Genre(state),
     } as FetchProps<Movies>),
     state

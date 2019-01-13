@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import DetailedViewActions from '../../scenes/DetaildView/dvActions';
+import DetailedViewActions, { fetchGenre } from '../../scenes/DetaildView/dvActions';
 import SearchResultActions from '../../scenes/SearchResults/srActions';
 import netUtils from '../../utils/netUtils';
 import Movies, { Movie } from './movie';
@@ -42,7 +42,10 @@ export const fetchMovieById = ({
     request: netUtils.MOVIES_URL + '/' + id,
     success: (data: Movie) => dispatch({
         type: DetailedViewActions.URL_FETCH_MOVIE_SUCCESS,
-        payload: data,
+        payload: {
+            movie: data,
+            genreFetchProps: fetchGenre(dispatch, String(id)),
+        },
     }),
     fail: (e: unknown) => dispatch({
         type: DetailedViewActions.URL_FETCH_MOVIE_FAILED,

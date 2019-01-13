@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux';
 import FetchProps, { fetchMovieById } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
-import { LOG_DEBUG } from '../../utils';
 import netUtils from '../../utils/netUtils';
 import RootActions from '../Root/rootActions';
 import DetailedViewState from './dvState';
@@ -37,17 +36,13 @@ export const dvFnCalls = {
     [RootActions.URL_FILM_ID]:
         (dispatch: Dispatch) =>
         (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean => {
-            LOG_DEBUG('RootActions.URL_FILM_ID', props);
-            // return !props.match.params.id ? false :
-            //     !props.detailedPanel ? false : (
-            props.match.params.id && dispatch({
+            dispatch({
                 type: DetailedViewActions.URL_FETCH_MOVIE,
                 payload: fetchMovieById({
                     dispatch,
-                    id: props.match.params.id ? props.match.params.id : ''}),
+                    id: props.match.params.id ? props.match.params.id : '',
+                }),
             });
-                    // true
-                // ),
             return true;
         },
 };
