@@ -8,7 +8,7 @@ interface FetchProps <T> {
     success?: (data: T) => void;
     fail?: (...msg: unknown[]) => void;
     request: string;
-    id?: number;
+    id?: string;
     query?: string;
 }
 export default FetchProps;
@@ -16,7 +16,7 @@ export default FetchProps;
 interface FetchPropsCreator {
     dispatch: Dispatch;
     query?: string;
-    id?: number;
+    id?: string;
 }
 
 export const fetchMovies = ({

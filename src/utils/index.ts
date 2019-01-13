@@ -36,3 +36,9 @@ export const GET_ID = (p: unknown): number =>
         throwError('does not contains id property' + p);
 
 export const DBG = (): boolean => {if (DEV) { debugger; } return true; };
+
+export const GET_PROP = <T>(p: unknown, propName: string): T =>
+    typeof p === 'object' &&
+    Object(p).hasOwnProperty(propName) ?
+        Object(p)[propName] :
+        throwError('does not contains id property' + p);

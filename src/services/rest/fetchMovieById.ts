@@ -9,7 +9,6 @@ const FetchMovieById = ({
     fail = LOG_ERROR,
     request,
 }: FetchProps<Movie>) => {
-
     // fix me: remove next line find a solutom to testing Reducers
     TEST ? NOOP() :
     fetch(request, netUtils.requestInit)

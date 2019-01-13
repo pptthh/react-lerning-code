@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import DetailedViewActions from '../DetaildView/dvActions';
-import { fetchGenre } from '../DetaildView/dvConnect';
-import RootActions, { IActions } from '../Root/rootActions';
+import DetailedViewActions, { fetchGenre } from '../DetaildView/dvActions';
+import RootActions from '../Root/rootActions';
 import RootState from '../Root/rootState';
 import SearchResultActions, { srFnCalls } from './srActions';
 import SearchResultState from './srState';
@@ -25,7 +24,7 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     resultsItemAction: {
         itemClick: (id: number) => dispatch({
             type: DetailedViewActions.MOVIE_CLICKED,
-            payload: fetchGenre(dispatch, id),
+            payload: fetchGenre(dispatch, String(id)),
         }),
     },
 });
