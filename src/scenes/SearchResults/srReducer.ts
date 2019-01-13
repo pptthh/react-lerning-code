@@ -95,14 +95,22 @@ const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResul
     details: GET_ID(payload),
 });
 
-const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
-    ...state,
-    oldQuery: payload as string,
-    searchForm: {
-        ...state.searchForm,
-        searchField: payload as string,
-    },
-});
+const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => {
+    state = {
+        ...state,
+        oldQuery: (payload as FetchProps<Movies>).query,
+        searchForm: {
+            ...state.searchForm,
+            searchField: (payload as FetchProps<Movies>).query || '',
+            searchDisabled: true,
+        },
+    };
+    FetchMovies({
+        ...payload,
+        request: getRequest(state),
+    } as FetchProps<Movies>);
+    return state;
+};
 
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,

@@ -1,4 +1,8 @@
+import { string } from 'prop-types';
 import { Dispatch } from 'redux';
+import FetchProps, { fetchMovies } from '../../services/rest/fetchProps';
+import Movies from '../../services/rest/movie';
+import netUtils from '../../utils/netUtils';
 import RootActions, { IActions } from '../Root/rootActions';
 import SearchResultState from './srState';
 import { SrUiFnCalls } from './srUI';
@@ -17,17 +21,39 @@ enum SearchResultActions {
 export default SearchResultActions;
 
 export const srFnCalls = {
-    [RootActions.URL_SEARCH]:
+    [RootActions.URL_SEARCH]: (
         (dispatch: Dispatch<IActions>) =>
         (props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
         !props.match.params || !props.match.params.query ||
-        props.match.params.query === props.oldQuery ?
-            true :
-            (setTimeout(() => {
-                dispatch({
-                    type: RootActions.URL_SEARCH,
-                    payload: props.match.params.query,
-                });
-            }, 0),
-            false),
+        props.match.params.query === props.oldQuery ? true :
+            (dispatch({
+                type: RootActions.URL_SEARCH,
+                payload: fetchMovies({
+                    dispatch,
+                    query: props.match.params.query,
+                }),
+            }),
+            false
+            )
+    ),
+    offlineActions: {
+        searchAction: (dispatch: Dispatch): IActions<FetchProps<Movies>> => ({
+            type: SearchResultActions.CLICK_SEARCH,
+            payload: fetchMovies({dispatch}),
+            meta: {
+                offline: {
+                    effect: {
+                        url: netUtils.MOVIES_URL,
+                        method: 'GET',
+                    },
+                    commit: {
+                        type: SearchResultActions.CLICK_SEARCH_SUCCESS,
+                    },
+                    rollback: {
+                        type: SearchResultActions.CLICK_SEARCH_FAILED,
+                    },
+                },
+            },
+        }),
+    },
 };

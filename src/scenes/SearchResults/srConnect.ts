@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
-import FetchProps from '../../services/rest/fetchProps';
-import Movies from '../../services/rest/movie';
-import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import { fetchGenre } from '../DetaildView/dvConnect';
 import RootActions, { IActions } from '../Root/rootActions';
@@ -13,33 +10,6 @@ import SearchResultState from './srState';
 import srUI, { SrUiFnCalls } from './srUI';
 import SrUrlProps from './srUrlProps';
 
-const fetchMovies = (dispatch: Dispatch): FetchProps<Movies> => ({
-    request: netUtils.MOVIES_URL,
-    success: (data: Movies) => dispatch({type: SearchResultActions.CLICK_SEARCH_SUCCESS, payload: data}),
-    fail: (e: unknown) => dispatch({type: SearchResultActions.CLICK_SEARCH_FAILED, payload: e}),
-});
-
-const offlineActions = {
-    searchAction: (dispatch: Dispatch): IActions<FetchProps<Movies>> => ({
-        type: SearchResultActions.CLICK_SEARCH,
-        payload: fetchMovies(dispatch),
-        meta: {
-            offline: {
-                effect: {
-                    url: netUtils.MOVIES_URL,
-                    method: 'GET',
-                },
-                commit: {
-                    type: SearchResultActions.CLICK_SEARCH_SUCCESS,
-                },
-                rollback: {
-                    type: SearchResultActions.CLICK_SEARCH_FAILED,
-                },
-            },
-        },
-    }),
-};
-
 const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     searchMatchQuery: srFnCalls[RootActions.URL_SEARCH](dispatch),
     searchSummaryAction: {
@@ -47,7 +17,7 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     },
     searchFormActions: {
         searchAction: (e: unknown) => dispatch(
-            offlineActions.searchAction(dispatch),
+            srFnCalls.offlineActions.searchAction(dispatch),
         ),
         searchByAction: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SEARCH_BY, payload: e}),
         searchFieldTypeAction: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SEARCH_TEXT, payload: e}),
@@ -60,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     },
 });
 
-const mapSubdictsToProps =
+const mapStateToProps =
        (state: RootState, match: SrUrlProps): SearchResultState => ({
         ...state.searchResult,
         searchSummary: {
@@ -74,8 +44,6 @@ const mapSubdictsToProps =
             searchField: state.searchResult.searchForm.searchField,
         },
     });
-
-const mapStateToProps = mapSubdictsToProps;
 
 const SearchResults = withRouter(connect(
     mapStateToProps,
