@@ -76,6 +76,12 @@ const urlFetchMovieSuccess = ({ state, payload }: ICase<DetailedViewState>): Det
     } as FetchProps<Movies>),
     state
 );
+
+const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
+    ...state,
+    filedId: GET_PROP(payload, 'id'),
+});
+
 const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.INIT_DETAILED_VIEW]: initDetailedView,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
@@ -85,7 +91,7 @@ const SWITCH: ISwitch<DetailedViewState> = {
     [RootActions.URL_FILM_ID]: urlFilmId,
     [DetailedViewActions.URL_FETCH_MOVIE]: urlFetchMovie,
     [DetailedViewActions.URL_FETCH_MOVIE_SUCCESS]: urlFetchMovieSuccess,
-    [DetailedViewActions.URL_FETCH_MOVIE_FAILED]: loadFail,
+    [DetailedViewActions.URL_FETCH_MOVIE_FAILED]: urlFetchMovieFailed,
 };
 
 const DetailedViewReducer = createReducer(SWITCH, stateInit);

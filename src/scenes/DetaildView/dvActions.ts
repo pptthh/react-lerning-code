@@ -35,14 +35,13 @@ export const dvFnCalls = {
     }),
     [RootActions.URL_FILM_ID]:
         (dispatch: Dispatch) =>
-        (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean => {
-            dispatch({
+        (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean => 
+            (dispatch({
                 type: DetailedViewActions.URL_FETCH_MOVIE,
                 payload: fetchMovieById({
                     dispatch,
                     id: props.match.params.id ? props.match.params.id : '',
                 }),
-            });
-            return true;
-        },
+            }),
+            true),
 };

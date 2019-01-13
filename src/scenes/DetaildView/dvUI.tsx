@@ -15,8 +15,9 @@ export interface DvUiFnCalls {
 
 const dvUI =
 (props: DetailedViewState & DvUiFnCalls & DvUrlProps) =>
-!props.urlOpenedFnCalls(props) ? <>loading movie</> :
-!props.detailedPanel ? <>not found</> :
+props.filedId === props.match.params.id ? <>movie not found</> :
+!props.urlOpenedFnCalls(props) ? <>loading movie ...</> :
+!props.detailedPanel ? <>loading movie ...</> :
 <div>
     <Header>
         netflixroulette
