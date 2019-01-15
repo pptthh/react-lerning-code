@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ResultItem, { ResultItemFnCalls, ResultItemProps } from './resultItem';
+import resultItem, { ResultItemFnCalls, ResultItemProps } from './resultItem';
 
 export interface IResultsBody {
     results: ResultItemProps[];
@@ -8,7 +8,7 @@ export interface IResultsBody {
 
 const ResultsBody: React.SFC<IResultsBody> = (props: IResultsBody) =>
 <div className='ResultsBody'>
-    {props.results.map(item => ResultItem({...item, ...props.fnCalls}))}
+    {props.results.map(item => resultItem({...item, ...props.fnCalls}))}
 </div>;
 
 export default ResultsBody;

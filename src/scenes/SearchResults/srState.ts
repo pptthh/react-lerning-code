@@ -1,6 +1,6 @@
 import { ResultItemProps } from '../../components/FoundMovies/resultItem';
-import { SearchFormFnCalls, SearchFormProps } from '../../components/SearchForm/searchForm';
-import { SearchSummaryAction, SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
+import { SearchFormProps } from '../../components/SearchForm/searchForm';
+import { SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
 import Movies from '../../services/rest/movie';
 
 interface SearchResultState {
@@ -9,5 +9,6 @@ interface SearchResultState {
     results: ResultItemProps[];
     moviesData: Movies;
     details: number;
+    oldQuery?: string;
 }
 export default SearchResultState;

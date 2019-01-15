@@ -35,6 +35,8 @@ const config = {
     devServer: {
         contentBase: './dist',
         hot: true,
+        historyApiFallback: true,
+        index: 'index.html',
     },
     plugins: [
         new CleanWebpackPlugin(['dist', 'coverage']),

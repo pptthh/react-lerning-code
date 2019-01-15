@@ -7,7 +7,7 @@ export interface ResultItemProps extends Movie {
 export interface ResultItemFnCalls {
     itemClick: (id: number) => void;
 }
-const ResultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
+const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     id,
     poster_path,
     title,
@@ -25,4 +25,4 @@ const ResultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     <div className='item-gerne'>{genres.join(' ')}</div>
 </div>;
 
-export default ResultItem;
+export default resultItem;

@@ -1,16 +1,17 @@
 import searchByEnum from '../../components/SearchForm/searchBy';
-import sortByEnum, { SortByRestTranslator } from '../../components/SearchSummary/sortBy';
-import FetchMovies, { getRequest, getRequest4Genre } from '../../services/rest/fetchMovies';
+import sortByEnum from '../../components/SearchSummary/sortBy';
+import FetchMovies, { getRequest } from '../../services/rest/fetchMovies';
 import FetchProps from '../../services/rest/fetchProps';
 import Movies, { EmptyMovieList } from '../../services/rest/movie';
 import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
-import DetailedView from '../DetaildView/dvConnect';
+import { dvUrlPathBase } from '../DetaildView/dvUrlProps';
 import RootActions from '../Root/rootActions';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
+import { srUrlPathBase } from './srUrlProps';
 
 const stateInit: SearchResultState = {
     searchSummary: {
@@ -36,10 +37,10 @@ const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultSta
 });
 
 const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
-    ...state,
-    searchForm: {
-        ...state.searchForm,
-        searchField: EVENT_VALUE(payload) as string,
+        ...state,
+        searchForm: {
+            ...state.searchForm,
+            searchField: EVENT_VALUE(payload) as string,
     },
 });
 
@@ -60,11 +61,13 @@ const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResult
 });
 
 const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+netUtils.setUrlPath('search/' + state.searchForm.searchField),
 FetchMovies({
     ...payload,
     request: getRequest(state),
 } as FetchProps<Movies>),
 {   ...state,
+    oldQuery: state.searchForm.searchField,
     searchForm: {
         ...state.searchForm,
         searchDisabled: true,
@@ -89,10 +92,33 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
     },
 });
 
-const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+    netUtils.setUrlPath(
+        Number(GET_ID(payload)) ?
+            dvUrlPathBase + GET_ID(payload) :
+            srUrlPathBase,
+        ),
+    {
     ...state,
-    details: GET_ID(payload),
+    details: Number(GET_ID(payload)),
 });
+
+const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => {
+    state = {
+        ...state,
+        oldQuery: (payload as FetchProps<Movies>).query,
+        searchForm: {
+            ...state.searchForm,
+            searchField: (payload as FetchProps<Movies>).query || '',
+            searchDisabled: true,
+        },
+    };
+    FetchMovies({
+        ...payload,
+        request: getRequest(state),
+    } as FetchProps<Movies>);
+    return state;
+};
 
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
@@ -104,6 +130,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
+    [RootActions.URL_SEARCH]: urlSearch,
     [RootActions.INIT]: rootInit,
 };
 

@@ -17,7 +17,7 @@ netUtils.MOVIES_URL +
 export const getRequest4Genre = (state: DetailedViewState) =>
 netUtils.MOVIES_URL +
 '?search=' + (state.detailedPanel && state.detailedPanel.genres[0]) +
-'&searchBy=' + searchByEnum.GERNE +
+'&searchBy=' + searchByEnum.GENRE +
 '&sortBy=' + SortByRestTranslator[sortByEnum.RATING] +
 '&sortOrder=desc' +
 '';
@@ -27,7 +27,6 @@ const FetchMovies = ({
     fail = LOG_ERROR,
     request,
 }: FetchProps<Movies>) => {
-
     // fix me: remove next line find a solutom to testing Reducers
     TEST ? NOOP() :
     fetch(request, requestInit)

@@ -1,41 +1,30 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Dispatch } from 'redux';
-import FetchProps from '../../services/rest/fetchProps';
-import Movies from '../../services/rest/movie';
-import netUtils from '../../utils/netUtils';
-import { IActions } from '../Root/rootActions';
+import RootActions from '../Root/rootActions';
 import RootState from '../Root/rootState';
-import DetailedViewActions from './dvActions';
+import DetailedViewActions, { dvFnCalls } from './dvActions';
 import DetailedViewState from './dvState';
-import DetailedViewUI, { DvUiFnCalls } from './dvUI';
-
-export const fetchGenre = (dispatch: Dispatch, id: number): FetchProps<Movies> => ({
-    request: netUtils.MOVIES_URL,
-    success: (data: Movies) => dispatch({type: DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
-    fail: (e: unknown) => dispatch({type: DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
-    id,
-});
+import dvUI, { DvUiFnCalls } from './dvUI';
+import DvUrlProps from './dvUrlProps';
 
 const mapDispatchToProps = (dispatch: Dispatch): DvUiFnCalls => ({
-    resultsItemfnCalls: {
-        itemClick: (id: number) =>
-            dispatch({
-                type: DetailedViewActions.MOVIE_CLICKED,
-                payload: fetchGenre(dispatch, id),
-            }),
+    urlOpenedFnCalls: dvFnCalls[RootActions.URL_FILM_ID](dispatch),
+    resultsItemFnCalls: {
+        itemClick: dvFnCalls[DetailedViewActions.MOVIE_CLICKED](dispatch),
     },
 });
 
-const mapSubdictsToProps = (state: RootState): DetailedViewState => ({
+const mapSubdictsToProps = (state: RootState, match: DvUrlProps): DetailedViewState => ({
     ...state.detailedView,
     data: state.searchResult.moviesData.data,
 });
 
 const mapStateToProps = mapSubdictsToProps;
 
-const DetailedView = connect(
+const DetailedView = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(DetailedViewUI);
+)(dvUI));
 
 export default DetailedView;

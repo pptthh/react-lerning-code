@@ -5,5 +5,7 @@ interface DetailedViewState {
     detailedPanel?: Movie;
     data: Movie[];
     results: ResultItemProps[];
+    id?: number;
+    filedId?: string;
 }
 export default DetailedViewState;

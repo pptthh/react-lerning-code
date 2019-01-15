@@ -1,5 +1,5 @@
 // tslint:disable-next-line
-export const NOOP = () => {};
+export const NOOP = (a?:any) => {};
 
 export const TEST = process.env.NODE_ENV === 'test';
 export const PROD = process.env.NODE_ENV === 'poduction';
@@ -12,7 +12,7 @@ export const LOG_INFO = cnsl.info;
 export const LOG_WARNING = cnsl.warn;
 export const LOG_ERROR = cnsl.error;
 
-export const throwError = (message?: string): object => { throw new Error(message); };
+export const throwError = (message?: string): object => { DBG(); throw new Error(message); };
 
 export const ECHO = <T>(value: T) => value;
 
@@ -36,3 +36,9 @@ export const GET_ID = (p: unknown): number =>
         throwError('does not contains id property' + p);
 
 export const DBG = (): boolean => {if (DEV) { debugger; } return true; };
+
+export const GET_PROP = <T>(p: unknown, propName: string): T =>
+    typeof p === 'object' &&
+    Object(p).hasOwnProperty(propName) ?
+        Object(p)[propName] :
+        throwError('does not contains id property' + p);

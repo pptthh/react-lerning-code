@@ -9,4 +9,4 @@ const FoundMovies: React.SFC<IResultsBody> = (props: IResultsBody) =>
     <Footer/>
 </div>;
 
-export default FoundMovies; 
+export default FoundMovies;
