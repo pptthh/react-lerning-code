@@ -94,13 +94,13 @@ const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): Search
 
 const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
     netUtils.setUrlPath(
-        GET_ID(payload) ?
+        Number(GET_ID(payload)) ?
             dvUrlPathBase + GET_ID(payload) :
             srUrlPathBase,
         ),
     {
     ...state,
-    details: GET_ID(payload),
+    details: Number(GET_ID(payload)),
 });
 
 const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => {

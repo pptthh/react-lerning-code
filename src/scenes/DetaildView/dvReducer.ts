@@ -40,7 +40,7 @@ const movieClicked = ({ state, payload }: ICase<DetailedViewState>): DetailedVie
             state.data.find(matchId(GET_ID(payload))) ||
             state.results.find(matchId(GET_ID(payload))),
     },
-    FetchMovies({
+    Number(GET_ID(payload)) && FetchMovies({
         ...payload,
         request: getRequest4Genre(state),
     } as FetchProps<Movies>),
