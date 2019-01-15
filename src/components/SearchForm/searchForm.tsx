@@ -38,7 +38,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormFnCalls> = ({
             SEARCH BY
             <RadioBar
                 className='search-by'
-                labels={[searchByEnum.TITLE, searchByEnum.GERNE]}
+                labels={[searchByEnum.TITLE, searchByEnum.GENRE]}
                 onChange={searchByAction}
                 selected={searchBy}
                 name='radioBar'

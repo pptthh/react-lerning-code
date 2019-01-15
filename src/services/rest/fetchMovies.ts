@@ -17,7 +17,7 @@ netUtils.MOVIES_URL +
 export const getRequest4Genre = (state: DetailedViewState) =>
 netUtils.MOVIES_URL +
 '?search=' + (state.detailedPanel && state.detailedPanel.genres[0]) +
-'&searchBy=' + searchByEnum.GERNE +
+'&searchBy=' + searchByEnum.GENRE +
 '&sortBy=' + SortByRestTranslator[sortByEnum.RATING] +
 '&sortOrder=desc' +
 '';
