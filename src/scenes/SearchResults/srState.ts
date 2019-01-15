@@ -1,7 +1,7 @@
-import { SearchFormProps, SearchFormActions } from "../../components/SearchForm/searchForm";
-import { SearchSummaryProps, SearchSummaryAction } from "../../components/SearchSummary/searchSummary";
-import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
-import Movies from "../../services/rest/movie";
+import { ResultItemProps } from '../../components/FoundMovies/resultItem';
+import { SearchFormFnCalls, SearchFormProps } from '../../components/SearchForm/searchForm';
+import { SearchSummaryAction, SearchSummaryProps } from '../../components/SearchSummary/searchSummary';
+import Movies from '../../services/rest/movie';
 
 interface SearchResultState {
     searchSummary: SearchSummaryProps;

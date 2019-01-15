@@ -1,25 +1,25 @@
-import createReducer, { ISwitch, ICase } from "../../utils/createReducer";
-import SearchResultState from "./srState";
-import SearchResultActions from "./srActions";
-import SearchBy from "../../components/SearchForm/searchBy";
-import RootActions from "../Root/rootActions";
-import Movies, { EmptyMovieList } from "../../services/rest/movie";
-import { EVENT_VALUE, GET_ID, DBG } from "../../utils";
-import FetchMovies, { getRequest4Genre, getRequest } from "../../services/rest/FetchMovies";
-import FetchProps from "../../services/rest/FetchProps";
-import NetUtils from "../../utils/NetUtils";
-import DetailedViewActions from "../DetaildView/dvActions";
-import DetailedView from "../DetaildView/dvConnect";
-import SortBy, { SortByRestTranslator } from "../../components/SearchSummary/sortBy";
+import searchByEnum from '../../components/SearchForm/searchBy';
+import sortByEnum, { SortByRestTranslator } from '../../components/SearchSummary/sortBy';
+import FetchMovies, { getRequest, getRequest4Genre } from '../../services/rest/fetchMovies';
+import FetchProps from '../../services/rest/fetchProps';
+import Movies, { EmptyMovieList } from '../../services/rest/movie';
+import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
+import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
+import netUtils from '../../utils/netUtils';
+import DetailedViewActions from '../DetaildView/dvActions';
+import DetailedView from '../DetaildView/dvConnect';
+import RootActions from '../Root/rootActions';
+import SearchResultActions from './srActions';
+import SearchResultState from './srState';
 
 const stateInit: SearchResultState = {
     searchSummary: {
-        resultSort: SortBy.RELEASE_DATE,
+        resultSort: sortByEnum.RELEASE_DATE,
         resultCount: 0,
     },
     searchForm: {
         searchField: '',
-        searchBy: SearchBy.TITLE,
+        searchBy: searchByEnum.TITLE,
     },
     results: [],
     moviesData: EmptyMovieList,
@@ -27,7 +27,7 @@ const stateInit: SearchResultState = {
 };
 
 const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
-    ...state
+    ...state,
 });
 
 const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
@@ -38,59 +38,59 @@ const rootInit = ({ state, payload }: ICase<SearchResultState>): SearchResultSta
 const changeSearchText = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ...state,
     searchForm: {
-        ... state.searchForm,
+        ...state.searchForm,
         searchField: EVENT_VALUE(payload) as string,
-    }
+    },
 });
 
 const changeSearchBy = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
-    ... state,
+    ...state,
     searchForm: {
-        ... state.searchForm,
-        searchBy: EVENT_VALUE(payload) as SearchBy,
-    }
+        ...state.searchForm,
+        searchBy: EVENT_VALUE(payload) as searchByEnum,
+    },
 });
 
 const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
     ...state,
     searchSummary: {
         ...state.searchSummary,
-        resultSort: EVENT_VALUE(payload) as SortBy,
-    }
+        resultSort: EVENT_VALUE(payload) as sortByEnum,
+    },
 });
 
 const clickSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
 FetchMovies({
-    ... payload,
+    ...payload,
     request: getRequest(state),
 } as FetchProps<Movies>),
-{   ... state,
+{   ...state,
     searchForm: {
-        ... state.searchForm,
+        ...state.searchForm,
         searchDisabled: true,
-    }
+    },
 });
 
 const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
-    ... state,
+    ...state,
     moviesData: payload as Movies,
     searchForm: {
-        ... state.searchForm,
+        ...state.searchForm,
         searchDisabled: false,
     },
 });
 
-const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (DBG(),{
-    ... state,
+const clickSearchFailed = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (DBG(), {
+    ...state,
     moviesData: EmptyMovieList,
     searchForm: {
-        ... state.searchForm,
+        ...state.searchForm,
         searchDisabled: false,
-    }
+    },
 });
 
 const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
-    ... state,
+    ...state,
     details: GET_ID(payload),
 });
 

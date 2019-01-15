@@ -1,22 +1,22 @@
-import createReducer, { ICase, ISwitch } from "../../utils/createReducer";
-import DetailedViewActions from "./dvActions";
-import DetailedViewState from "./dvState";
-import Movies, { Movie } from "../../services/rest/movie";
-import SearchResultActions from "../SearchResults/srActions";
-import FetchMovies, { getRequest4Genre } from "../../services/rest/FetchMovies";
-import FetchProps from "../../services/rest/FetchProps";
-import { DBG, GET_ID } from "../../utils";
+import FetchMovies, { getRequest4Genre } from '../../services/rest/fetchMovies';
+import FetchProps from '../../services/rest/fetchProps';
+import Movies, { Movie } from '../../services/rest/movie';
+import { DBG, GET_ID } from '../../utils';
+import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
+import SearchResultActions from '../SearchResults/srActions';
+import DetailedViewActions from './dvActions';
+import DetailedViewState from './dvState';
 
 const stateInit: DetailedViewState = {
-    data:[],
-    results:[],
+    data: [],
+    results: [],
 };
 
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
 });
 
-const matchId = (id:number) => (movie:Movie) => movie.id === id;
+const matchId = (id: number) => (movie: Movie) => movie.id === id;
 
 const movieClicked = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => {
     const newState = {
@@ -26,18 +26,18 @@ const movieClicked = ({ state, payload }: ICase<DetailedViewState>): DetailedVie
             state.results.find(matchId(GET_ID(payload))),
     };
     GET_ID(payload) && FetchMovies({
-        ... payload,
+        ...payload,
         request: getRequest4Genre(newState),
     } as FetchProps<Movies>);
     return newState;
-}
+};
 const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
-    ... state,
+    ...state,
     data: (payload as Movies).data,
 });
 
 const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
-    ... state,
+    ...state,
     results: (payload as Movies).data,
 });
 const genreLoadFail = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (

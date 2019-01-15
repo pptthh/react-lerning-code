@@ -1,22 +1,22 @@
 import * as React from 'react';
-import SearchSummary, { SearchSummaryAction } from '../../components/SearchSummary/searchSummary';
-import SearchForm, { SearchFormActions } from '../../components/SearchForm/searchForm';
-import FoundMovies from '../../components/FoundMovies';
-import SearchResultState from './srState';
-import { ResultItemActions } from '../../components/FoundMovies/ResultItem';
 import { Provider } from 'react-redux';
-import store from '../Root/rootStore';
-import DetailedView from '../DetaildView/dvConnect';
-import Header from '../../components/Header/header';
 import Button from '../../components/Button/button';
+import FoundMovies from '../../components/FoundMovies';
+import { ResultItemFnCalls } from '../../components/FoundMovies/resultItem';
+import Header from '../../components/Header/header';
+import SearchForm, { SearchFormFnCalls } from '../../components/SearchForm/searchForm';
+import SearchSummary, { SearchSummaryAction } from '../../components/SearchSummary/searchSummary';
+import DetailedView from '../DetaildView/dvConnect';
+import store from '../Root/rootStore';
+import SearchResultState from './srState';
 
-export interface srUIActions {
-    searchFormActions: SearchFormActions;
+export interface SrUiFnCalls {
+    searchFormActions: SearchFormFnCalls;
     searchSummaryAction: SearchSummaryAction;
-    resultsItemAction: ResultItemActions;
+    resultsItemAction: ResultItemFnCalls;
 }
 
-const searchResultsUI = (props: SearchResultState & srUIActions) =>
+const searchResultsUI = (props: SearchResultState & SrUiFnCalls) =>
 props.details ?
 <>
     <Header>
@@ -36,7 +36,7 @@ props.details ?
     <Header>
         netflixroulette
     </Header>
-    <SearchForm 
+    <SearchForm
         {...props.searchForm}
         {...props.searchFormActions}
     />
@@ -47,7 +47,7 @@ props.details ?
     />}
     <FoundMovies
         results={props.results}
-        actions={props.resultsItemAction}
+        fnCalls={props.resultsItemAction}
     />
 </>;
 

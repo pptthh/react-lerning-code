@@ -6,7 +6,7 @@ interface RadioBarProps {
     name: string;
     selected?: string;
     className?: string;
-    labelTransform?: (label:string) => string;
+    labelTransform?: (label: string) => string;
     onChange: (e: unknown) => void;
 }
 
@@ -16,7 +16,7 @@ const RadioBar = ({
     selected,
     className,
     onChange,
-    labelTransform = ECHO
+    labelTransform = ECHO,
 }: RadioBarProps) =>
 <>
 {
@@ -24,7 +24,7 @@ const RadioBar = ({
         (value, i) =>
         <span key={value}>
             <input
-                type="radio"
+                type='radio'
                 id={value}
                 name={name}
                 value={value}
@@ -39,9 +39,9 @@ const RadioBar = ({
                 >
                 {labelTransform(value)}
             </label>
-        </span>
+        </span>,
     )
 }
-</>
+</>;
 
 export default RadioBar;

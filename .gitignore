@@ -4,7 +4,7 @@
 dist
 node_modules
 generated
-coverage
+coverage/
 debug
 prod
 cypress/videos/

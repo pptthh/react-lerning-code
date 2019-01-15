@@ -1,15 +1,15 @@
-import NetUtils from "./NetUtils";
+import netUtils from './netUtils';
 
 describe('NetUtils testing', () => {
 
     it('getJsonResponse', () => {
-        expect(NetUtils.getJsonResponse).toThrowError();
+        expect(netUtils.getJsonResponse).toThrowError();
     });
 
     it('checkStatus', () => {
-        const statusNone = {status: ''} as any;
-        const status500 = {status: 500} as any;
-        expect(NetUtils.checkStatus(status500)).toEqual(status500);
-        expect(() => NetUtils.checkStatus(statusNone)).toThrowError();
+        const statusNone = {status: NaN};
+        const status500 = {status: 500};
+        expect(netUtils.checkStatus(status500 as Response)).toEqual(status500);
+        expect(() => netUtils.checkStatus(statusNone as Response)).toThrowError();
     });
 });

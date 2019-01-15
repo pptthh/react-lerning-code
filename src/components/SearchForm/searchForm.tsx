@@ -1,23 +1,22 @@
 import * as React from 'react';
-import Header from '../Header/header';
-import TextInput from '../TextInput/textInput';
 import Button from '../Button/button';
 import RadioBar from '../RadioBar/radioBar';
-import SearchBy from './searchBy';
+import TextInput from '../TextInput/textInput';
+import searchByEnum from './searchBy';
 
 export interface SearchFormProps {
-    searchBy: SearchBy;
+    searchBy: searchByEnum;
     searchField: string;
     searchDisabled?: boolean;
 }
 
-export interface SearchFormActions {
+export interface SearchFormFnCalls {
     searchFieldTypeAction: (e: unknown) => void;
     searchByAction: (e: unknown) => void;
     searchAction: (e: unknown) => void;
 }
 
-const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
+const SearchForm: React.SFC<SearchFormProps & SearchFormFnCalls> = ({
     searchBy,
     searchField,
     searchDisabled = false,
@@ -39,7 +38,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormActions> = ({
             SEARCH BY
             <RadioBar
                 className='search-by'
-                labels={[SearchBy.TITLE, SearchBy.GERNE]}
+                labels={[searchByEnum.TITLE, searchByEnum.GERNE]}
                 onChange={searchByAction}
                 selected={searchBy}
                 name='radioBar'

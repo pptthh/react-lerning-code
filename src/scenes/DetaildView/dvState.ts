@@ -1,5 +1,5 @@
-import { Movie } from "../../services/rest/movie";
-import { ResultItemProps } from "../../components/FoundMovies/ResultItem";
+import { ResultItemProps } from '../../components/FoundMovies/resultItem';
+import { Movie } from '../../services/rest/movie';
 
 interface DetailedViewState {
     detailedPanel?: Movie;
