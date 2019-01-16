@@ -4,7 +4,7 @@ const HtmlWebpackRootPlugin = require('html-webpack-root-plugin');
 const path = require('path');
 
 const config = {
-    entry: './src/index.tsx',
+    entry: '../src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
