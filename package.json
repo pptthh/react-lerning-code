@@ -8,9 +8,9 @@
   "license": "ISC",
   "scripts": {
     "clean": "rm dist coverage cypress/videos cypress/screenshots -rf",
-    "build": "webpack -p --mode production --config webpack.prod.js",
-    "build-dev": "webpack -d --mode development --config webpack.dev.js",
-    "start": "webpack-dev-server --hot --mode development --config webpack.dev.js",
+    "build": "webpack -p --mode production --config ./webpack/webpack.prod.js",
+    "build-dev": "webpack -d --mode development --config ./webpack/webpack.dev.js",
+    "start": "webpack-dev-server --hot --mode development --config ./webpack/webpack.dev.js",
     "xstart": "cross-env NODE_ENV=development  node ./server",
     "xbuild": "cross-env NODE_ENV=production webpack --config ./webpack",
     "xprod": "cross-env NODE_ENV=production  node ./server",
@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "@redux-offline/redux-offline": "^2.5.1",
+    "express": "^4.16.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-hot-loader": "^4.6.3",
