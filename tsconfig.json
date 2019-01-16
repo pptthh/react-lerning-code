@@ -13,6 +13,6 @@
         "jsx": "react",
     },
     "include": [
-        "./src/**/*", "webpack.common.js"
+        "./src/**/*", "webpack/webpack.common.js"
     ]
 }
