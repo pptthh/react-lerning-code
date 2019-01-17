@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import { Redirect, Route, Switch } from 'react-router';
-import { HashRouter as Router, Link } from 'react-router-dom';
+import { Redirect, Route, StaticRouterProps, Switch, MemoryRouterProps } from 'react-router';
+import { BrowserRouterProps, HashRouterProps, Link, HashRouter } from 'react-router-dom';
+import { AnyAction, Store } from 'redux';
 import DetailedView from '../DetaildView/dvConnect';
 import DvUrlProps, { dvUrlPath } from '../DetaildView/dvUrlProps';
 import SearchResults from '../SearchResults/srConnect';
@@ -24,7 +25,7 @@ const links = () =>
 const Home = () => <Redirect to='/search'/>;
 export const pageNotFound = () => <div><h2>The linked page was not found</h2>{links()}</div>;
 
-const Root = () =>
+const Root = (Router: React.Component<any, any, any>) =>
 <Router>
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
