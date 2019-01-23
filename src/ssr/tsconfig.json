@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": "../../dist/",
+        "sourceMap": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "esModuleInterop": false,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "esnext",
+        "allowJs": true,
+        "jsx": "react",
+        "downlevelIteration": true
+    },
+    "files": [
+        "server.ts"
+    ],
+    "include": [
+        "./*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -7,9 +7,11 @@
     "author": "",
     "license": "ISC",
     "scripts": {
-        "ssr-build": "babel src/server.ts -d dist",
-        "ssr-serve": "npm run ssr-build && node dist/server.js",
-        "ssr": "npm run ssr-build && nodemon dist/server.js",
+        "ssr-tsc": "tsc --build src/ssr/tsconfig.json",
+        "ssr-w": "tsc --build src/ssr/tsconfig.json --watch",
+        "ssr-serve": "npm run ssr-tsc && node dist/ssr/server.js",
+        "ssr": "set NODE_ENV=development&& nodemon dist/ssr/server.js",
+
         "clean": "rm dist coverage cypress/videos cypress/screenshots -rf",
         "build": "webpack -p --mode production --config webpack.prod.js",
         "build-dev": "webpack -d --mode development --config webpack.dev.js",
@@ -17,9 +19,11 @@
         "coverage": "npm run jest -- --coverage",
         "test": "npm run jest -- --watch",
         "jest": "jest",
+        
         "cypress": "cypress",
         "e2e": "npm run cypress run",
         "e2e:open": "npm run cypress open",
+        
         "tsc": "tsc",
         "tslint": "tslint",
         "checkStyle": "npm run tslint --project src/**/*.ts"
@@ -118,9 +122,9 @@
         "babel-jest": "23.6.0",
         "babel-loader": "8.0.5",
         "babel-preset-env": "1.7.0",
+        "babel-preset-es2015": "6.24.1",
         "clean-webpack-plugin": "1.0.0",
         "css-loader": "2.1.0",
-        "cypress": "3.1.4",
         "enzyme": "3.8.0",
         "enzyme-adapter-react-16": "1.7.1",
         "enzyme-to-json": "3.3.5",
