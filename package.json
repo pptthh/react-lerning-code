@@ -7,6 +7,9 @@
     "author": "",
     "license": "ISC",
     "scripts": {
+        "ssr-build": "babel src/server.ts -d dist",
+        "ssr-serve": "npm run ssr-build && node dist/server.js",
+        "ssr": "npm run ssr-build && nodemon dist/server.js",
         "clean": "rm dist coverage cypress/videos cypress/screenshots -rf",
         "build": "webpack -p --mode production --config webpack.prod.js",
         "build-dev": "webpack -d --mode development --config webpack.dev.js",
@@ -24,14 +27,18 @@
     "babel": {
         "presets": [
             [
-                "@babel/preset-env",{
+                "@babel/preset-env",
+                {
                     "modules": false
                 }
             ],
-            "@babel/preset-react",{
+            "@babel/preset-react",
+            {
                 "pragma": "React.createElement",
                 "pragmaFrag": "React.Fragment",
-                "throwIfNamespace": true
+                "throwIfNamespace": true,
+                "useBuiltIns": false,
+                "development": true
             }
         ],
         "plugins": [
@@ -85,7 +92,6 @@
     "dependencies": {
         "@redux-offline/redux-offline": "2.5.1",
         "express": "4.16.4",
-        "nodemon": "1.18.9",
         "react": "16.7.0",
         "react-dom": "16.7.0",
         "react-hot-loader": "4.6.3",
@@ -100,6 +106,7 @@
         "@babel/preset-react": "7.0.0",
         "@types/enzyme": "3.1.15",
         "@types/enzyme-adapter-react-16": "1.0.3",
+        "@types/express": "^4.16.1",
         "@types/jest": "23.3.12",
         "@types/node": "10.12.18",
         "@types/react": "16.7.20",
@@ -107,8 +114,10 @@
         "@types/react-redux": "7.0.0",
         "@types/react-router": "4.4.3",
         "@types/react-router-dom": "4.3.1",
+        "babel-cli": "6.26.0",
         "babel-jest": "23.6.0",
         "babel-loader": "8.0.5",
+        "babel-preset-env": "1.7.0",
         "clean-webpack-plugin": "1.0.0",
         "css-loader": "2.1.0",
         "cypress": "3.1.4",
@@ -120,6 +129,7 @@
         "identity-obj-proxy": "3.0.0",
         "jest": "23.6.0",
         "style-loader": "0.23.1",
+        "nodemon": "1.18.9",
         "ts-jest": "23.10.5",
         "ts-loader": "5.3.3",
         "tslint": "5.12.1",
