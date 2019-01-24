@@ -12,7 +12,7 @@
         "target": "esnext",
         "allowJs": true,
         "jsx": "react",
-        "downlevelIteration": true
+        "downlevelIteration": true,
     },
     "files": [
         "server.ts"

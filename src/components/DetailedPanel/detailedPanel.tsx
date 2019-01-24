@@ -2,9 +2,7 @@ import * as React from 'react';
 import { Movie } from '../../services/rest/movie';
 import Label from '../Label/label';
 
-export interface DetailedPanelProps{}
-
-const DetailedPanel = (props: Movie) =>
+const DetailedPanel: React.SFC<Movie> = (props: Movie) =>
 <div className='DetailedPanel'>
     <img src={props.poster_path} />
     <div className='fimlData'>
@@ -25,4 +23,4 @@ const DetailedPanel = (props: Movie) =>
         </div>
     </div>
 </div>;
-export default DetailedPanel
+export default DetailedPanel;

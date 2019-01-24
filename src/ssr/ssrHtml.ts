@@ -1,3 +1,5 @@
+import 'style.css' as style;
+
 const htmlWrapper = (app: string, preloadedState: object) => `
 <!DOCTYPE html>
 <html>
@@ -13,6 +15,7 @@ const htmlWrapper = (app: string, preloadedState: object) => `
         }
     </script>
     <script src="/static/bundle.js"></script>
+    <style>${style}</style>
     </body>
 </html>`;
 
