@@ -9,14 +9,10 @@ const port = process.env.port || Number('8888');
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
-    const html: string = ssrApp;
+    const html: string = ssrApp || '<h1>500 Big Error happened</h1>';
     LOG(html);
     res.send(html);
     return next;
-};
-
-const renderFullPage = (html: undefined, preloadedState: unknown) => {
-    /* ... */
 };
 
 const app = Express();

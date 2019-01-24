@@ -29,23 +29,29 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     },
 });
 
-const mapStateToProps =
-       (state: RootState, match: SrUrlProps): SearchResultState => ({
-        ...state.searchResult,
-        searchSummary: {
-            ...state.searchResult.searchSummary,
-            resultCount: !state.searchResult.moviesData ? 0 :
-                    state.searchResult.moviesData.total,
-        },
-        results: state.searchResult.moviesData.data,
-        searchForm: {
-            ...state.searchResult.searchForm,
-            searchField: state.searchResult.searchForm.searchField,
-        },
-    });
+const mapStateToProps = (
+        state: RootState,
+        match: SrUrlProps,
+    ): SearchResultState => ({
+    ...state.searchResult,
+    searchSummary: {
+        ...state.searchResult.searchSummary,
+        resultCount: !state.searchResult.moviesData ? 0 :
+                state.searchResult.moviesData.total,
+    },
+    results: state.searchResult.moviesData.data,
+    searchForm: {
+        ...state.searchResult.searchForm,
+        searchField: state.searchResult.searchForm.searchField,
+    },
+});
 
-const SearchResults = withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(srUI));
+const SearchResults =
+// withRouter
+(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(srUI)
+);
 export default SearchResults;

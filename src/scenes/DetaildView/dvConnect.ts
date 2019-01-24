@@ -15,16 +15,20 @@ const mapDispatchToProps = (dispatch: Dispatch): DvUiFnCalls => ({
     },
 });
 
-const mapSubdictsToProps = (state: RootState, match: DvUrlProps): DetailedViewState => ({
+const mapStateToProps = (
+    state: RootState,
+    match: DvUrlProps,
+    ): DetailedViewState => ({
     ...state.detailedView,
     data: state.searchResult.moviesData.data,
 });
 
-const mapStateToProps = mapSubdictsToProps;
-
-const DetailedView = withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(dvUI));
-
+const DetailedView =
+// withRouter
+(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(dvUI)
+);
 export default DetailedView;
