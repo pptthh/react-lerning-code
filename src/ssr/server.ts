@@ -9,6 +9,8 @@ const port = process.env.port || Number('8888');
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
     LOG('handleRender', 'req', 'res');
+    // const html = renderToString(<App />);
+
     res.send('Hello World!');
     return next;
 };
@@ -20,9 +22,10 @@ const renderFullPage = (html: undefined, preloadedState: unknown) => {
 const app = Express();
 // Serve static files
 app.use('/public', Express.static('public'));
+app.get('/test', (req: Request, res: Response, next: NextFunction) => res.send('Testing'));
 app.use(handleRender);
 app.listen(
     port,
-    () => LOG(`Start listening on port: ${port}!`),
+    () => LOG(`SSR started listening on port: ${port}`),
 );
-LOG('SSR started');
+LOG('SSR starting ...');

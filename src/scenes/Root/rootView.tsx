@@ -6,6 +6,7 @@ import DetailedView from '../DetaildView/dvConnect';
 import DvUrlProps, { dvUrlPath } from '../DetaildView/dvUrlProps';
 import SearchResults from '../SearchResults/srConnect';
 import SrUrlProps, { srUrlPath } from '../SearchResults/srUrlProps';
+import RootState from './rootState';
 import store from './rootStore';
 
 const search = (props: SrUrlProps) => <Provider store={store}><SearchResults {...props}/></Provider>;
@@ -24,7 +25,7 @@ const links = () =>
 const Home = () => <Redirect to='/search'/>;
 export const pageNotFound = () => <div><h2>The linked page was not found</h2>{links()}</div>;
 
-const Root = () =>
+const Root = (store: RootState) =>
 <Router>
     <Switch>
         <Route path='/' component={Home}  exact={true}/>
