@@ -38,15 +38,12 @@ const links = () =>
 const Home = () => <Redirect to='/search'/>;
 export const pageNotFound = () => <div><h2>The linked page was not found</h2>{links()}</div>;
 
-// const Root = ({Router, store}: {Router: React.Component<RouterProps>, store: Store<RootState, AnyAction>}) =>
-const Root = ({Router, store}: {Router?: any, store: Store<RootState, AnyAction>}) =>
-<Router>
-    <Switch>
-        <Route path='/' component={Home}  exact={true}/>
-        <Route path={srUrlPath} component={search(store)} />
-        <Route path={dvUrlPath} component={film(store)} />
-        <Route component={pageNotFound} />
-    </Switch>
-</Router>;
+const RouterSwitch = ({store}: {store: Store<RootState, AnyAction>}) =>
+<Switch>
+    <Route path='/' component={Home}  exact={true}/>
+    <Route path={srUrlPath} component={search(store)} />
+    <Route path={dvUrlPath} component={film(store)} />
+    <Route component={pageNotFound} />
+</Switch>;
 
-export default Root;
+export default RouterSwitch;

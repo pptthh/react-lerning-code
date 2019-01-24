@@ -1,6 +1,6 @@
 **/*.log
 **/*.tmp
-
+SSR-next
 dist
 node_modules
 generated

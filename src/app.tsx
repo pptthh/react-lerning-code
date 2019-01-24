@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { HashRouter } from 'react-router-dom';
 import store from './scenes/Root/rootStore';
-import Root from './scenes/Root/rootView';
+import RouterSwitch from './scenes/Root/rootView';
+import BrowserRouter from './utils/browserRouter';
 
-const App = () => <Root
-    store={store}
-    Router={undefined}
-    />;
+const App: React.SFC = () =>
+<BrowserRouter>
+    <RouterSwitch store={store}/>
+</BrowserRouter>;
 
 export default App;
