@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { LOG } from '../utils';
+import ssrApp from './ssrApp';
 
 // tslint:disable-next-line
 const Express = require('express');
@@ -8,10 +9,9 @@ const port = process.env.port || Number('8888');
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
-    LOG('handleRender', 'req', 'res');
-    // const html = renderToString(<App />);
-
-    res.send('Hello World!');
+    const html: string = ssrApp;
+    LOG(html);
+    res.send(html);
     return next;
 };
 

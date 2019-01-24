@@ -8,7 +8,7 @@
     "license": "ISC",
     "scripts": {
         "ssr-tsc": "tsc --build src/ssr/tsconfig.json",
-        "ssr-w": "tsc --build src/ssr/tsconfig.json --watch",
+        "ssr-w": "npm run clean && tsc --build src/ssr/tsconfig.json --watch",
         "ssr-serve": "npm run ssr-tsc && node dist/ssr/server.js",
         "ssr": "set NODE_ENV=development&& nodemon dist/ssr/server.js",
         "clean": "rm dist coverage cypress/videos cypress/screenshots -rf",

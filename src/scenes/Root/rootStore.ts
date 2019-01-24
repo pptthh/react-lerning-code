@@ -1,9 +1,10 @@
 import { offline } from '@redux-offline/redux-offline';
 import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
-import { applyMiddleware, compose, createStore } from 'redux';
+import { AnyAction, applyMiddleware, compose, createStore, Store } from 'redux';
 import LoggerMiddleware from '../../services/middleware/loggerMiddleware';
 import { DEV, PROD, TEST } from '../../utils';
 import RootReducer from './rootReducer';
+import RootState from './rootState';
 
 const createStore4Prod = () =>
 createStore(
@@ -24,7 +25,13 @@ createStore(
 
 const createStore4Dev = () => {
     // tslint:disable-next-line
-    const win = window as any;
+    const win:any = (
+        () =>
+            global ? global :
+            window ? window :
+            {}
+    )();
+
     const composeEnhancers =
         typeof win === 'object' &&
         win.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -41,7 +48,7 @@ const createStore4Dev = () => {
     );
 };
 
-const store =
+const store: Store<RootState, AnyAction> =
     DEV ? createStore4Dev() :
     TEST ? createStore4Test() :
     PROD ? createStore4Prod() :
