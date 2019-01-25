@@ -89,7 +89,7 @@
             "enzyme-to-json/serializer"
         ],
         "moduleNameMapper": {
-            "\\.(css|sess|less)$": "identity-obj-proxy"
+            "\\.(css|scss|less)$": "identity-obj-proxy"
         }
     },
     "dependencies": {
