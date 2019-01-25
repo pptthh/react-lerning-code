@@ -6,9 +6,22 @@ import { DEV, PROD, TEST } from '../../utils';
 import RootReducer from './rootReducer';
 import RootState from './rootState';
 
+// tslint:disable-next-line
+const win:any = (() =>
+    global ? global :
+    window ? window :
+    {}
+)();
+
+const preloadedState = win.__PRELOADED_STATE__;
+if (preloadedState) {
+    delete win.__PRELOADED_STATE__;
+}
+
 const createStore4Prod = () =>
 createStore(
     RootReducer,
+    preloadedState,
     compose(
         applyMiddleware(),
         // offline(offlineConfig),
@@ -18,20 +31,13 @@ createStore(
 const createStore4Test = () =>
 createStore(
     RootReducer,
+    preloadedState,
     compose(
         applyMiddleware(LoggerMiddleware),
     ),
 );
 
 const createStore4Dev = () => {
-    // tslint:disable-next-line
-    const win:any = (
-        () =>
-            global ? global :
-            window ? window :
-            {}
-    )();
-
     const composeEnhancers =
         typeof win === 'object' &&
         win.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -41,6 +47,7 @@ const createStore4Dev = () => {
 
     return createStore(
         RootReducer,
+        preloadedState,
         composeEnhancers(
             applyMiddleware(LoggerMiddleware),
             // offline(offlineConfig),
