@@ -1,12 +1,11 @@
-import 'style.css' as style;
-
-const htmlWrapper = (app: string, preloadedState: object) => `
-<!DOCTYPE html>
+const htmlWrapper = (app: string, preloadedState: object) =>
+`<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>React-Typescript Training App - Movie Search</title>
-    <link rel="shortcut icon" href="movie.ico"></head>
+        <link rel="stylesheet" type="text/css" href="/public/generated/style.css">
+        <link rel="shortcut icon" href="/public/movie.ico"></head>
     <body>
     <div id="root">${app}</div>
     <script>
@@ -14,8 +13,7 @@ const htmlWrapper = (app: string, preloadedState: object) => `
             JSON.stringify(preloadedState).replace(/</g, '\\u003c')
         }
     </script>
-    <script src="/static/bundle.js"></script>
-    <style>${style}</style>
+    <script src="/public/generated/client.js"></script>
     </body>
 </html>`;
 

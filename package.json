@@ -9,8 +9,8 @@
     "scripts": {
         "css": "sass src/style.scss public/generated/style.css",
         "css-w": "sass --watch src/style.scss public/generated/style.css",
-        "ssr-tsc": "tsc --build src/ssr/tsconfig.json",
-        "ssr-w": "npm run clean && npm run css && tsc --build src/ssr/tsconfig.json --watch",
+        "ssr-tsc": "tsc --build src/ssr/tsc.server.json src/ssr/tsc.client.json",
+        "ssr-w": "npm run clean && npm run css && tsc --build src/ssr/tsc.server.json src/ssr/tsc.client.json --watch",
         "ssr-serve": "npm run ssr-tsc && npm run css && node dist/ssr/server.js",
         "ssr": "set NODE_ENV=development&& npm run css && nodemon dist/ssr/server.js",
         "clean": "rm dist public/generated coverage cypress/videos cypress/screenshots -rf",

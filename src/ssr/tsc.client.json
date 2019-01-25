@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outFile":"../../public/generated/client.js",
+        "sourceMap": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "esModuleInterop": false,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "module": "system",
+        "moduleResolution": "node",
+        "target": "ESNext",
+        "allowJs": true,
+        "jsx": "react",
+        "downlevelIteration": true
+    },
+    "files": [
+        "client.tsx"
+    ],
+    "include": [
+        "./*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
