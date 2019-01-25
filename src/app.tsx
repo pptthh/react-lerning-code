@@ -1,11 +1,11 @@
 import * as React from 'react';
 import store from './scenes/Root/rootStore';
 import RouterSwitch from './scenes/Root/rootView';
-import BrowserRouter from './utils/browserRouter';
+import { BrowserRouter as Router } from './utils/browserRouter';
 
 const App: React.SFC = () =>
-<BrowserRouter>
+<Router>
     <RouterSwitch store={store}/>
-</BrowserRouter>;
+</Router>;
 
 export default App;
