@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 import App from './app';
-import './styles.css';
+import './style.scss';
 
 const rootDiv = document.getElementById('root');
 const AppWithHot = hot(module)(
