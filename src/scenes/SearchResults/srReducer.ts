@@ -1,7 +1,7 @@
 import searchByEnum from '../../components/SearchForm/searchBy';
 import sortByEnum from '../../components/SearchSummary/sortBy';
-import FetchMovies, { getRequest } from '../../services/rest/fetchMovies';
-import FetchProps from '../../services/rest/fetchProps';
+import { FetchMovies, getRequest } from '../../services/rest/fetchMovies';
+import { FetchProps } from '../../services/rest/fetchProps';
 import Movies, { EmptyMovieList } from '../../services/rest/movie';
 import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';

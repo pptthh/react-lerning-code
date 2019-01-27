@@ -1,6 +1,5 @@
-import { string } from 'prop-types';
 import { Dispatch } from 'redux';
-import FetchProps, { fetchMovies } from '../../services/rest/fetchProps';
+import { fetchMovies, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
 import RootActions, { IActions } from '../Root/rootActions';

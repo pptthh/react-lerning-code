@@ -1,6 +1,6 @@
 import FetchMovieById from '../../services/rest/fetchMovieById';
-import FetchMovies, { getRequest4Genre } from '../../services/rest/fetchMovies';
-import FetchProps from '../../services/rest/fetchProps';
+import { FetchMovies, getRequest4Genre } from '../../services/rest/fetchMovies';
+import { FetchProps } from '../../services/rest/fetchProps';
 import Movies, { Movie } from '../../services/rest/movie';
 import { DBG, GET_ID, GET_PROP } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';

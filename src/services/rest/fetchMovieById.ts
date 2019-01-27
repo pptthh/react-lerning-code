@@ -1,7 +1,7 @@
 
 import { LOG_ERROR, LOG_WARNING, NOOP, TEST } from '../../utils';
 import netUtils from '../../utils/netUtils';
-import FetchProps from './fetchProps';
+import { FetchProps } from './fetchProps';
 import { Movie } from './movie';
 
 const FetchMovieById = ({

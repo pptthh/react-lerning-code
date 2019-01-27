@@ -4,8 +4,10 @@ import DetailedViewState from '../../scenes/DetaildView/dvState';
 import SearchResultState from '../../scenes/SearchResults/srState';
 import { LOG_ERROR, LOG_WARNING, NOOP, TEST } from '../../utils';
 import netUtils from '../../utils/netUtils';
-import FetchProps from './fetchProps';
+import { FetchProps } from './fetchProps';
 import Movies, { transformMoviesData, validateMovies } from './movie';
+// tslint:disable-next-line
+const fetchAPI = require('node-fetch');
 
 export const getRequest = (state: SearchResultState) =>
 netUtils.MOVIES_URL +
@@ -21,21 +23,20 @@ netUtils.MOVIES_URL +
 '&sortBy=' + SortByRestTranslator[sortByEnum.RATING] +
 '&sortOrder=desc' +
 '';
-
-const FetchMovies = ({
+export const FetchMovies = ({
     success = LOG_WARNING,
     fail = LOG_ERROR,
     request,
 }: FetchProps<Movies>) => {
     // fix me: remove next line find a solutom to testing Reducers
     TEST ? NOOP() :
-    fetch(request, requestInit)
+    fetchAPI(request, requestInit)
     .then(netUtils.checkStatus)
     .then(netUtils.getJsonResponse)
     .then(transformMoviesData)
     .then(validateMovies)
     .then(success)
-    .catch(e => (fail(e), e));
+    .catch((e: unknown) => (fail(e), e));
 };
 
 const requestInit: RequestInit = {
@@ -45,5 +46,3 @@ const requestInit: RequestInit = {
         // 'Authorization': 'Basic ' + base64Encode('admin:admin'),
     },
 };
-
-export default FetchMovies;

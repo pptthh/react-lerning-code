@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import FetchProps, { fetchMovieById } from '../../services/rest/fetchProps';
+import { fetchMovieById, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
 import RootActions from '../Root/rootActions';
