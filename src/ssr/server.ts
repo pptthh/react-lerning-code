@@ -7,19 +7,30 @@ import htmlWrapper from './ssrHtml';
 
 // tslint:disable-next-line
 const Express = require('express');
-
 const port = process.env.port || Number('8888');
+
+const asyncHadler = (res: Response, html: string) =>
+res.send(
+    htmlWrapper(
+        html,
+        store.getState(),
+    ),
+);
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
-    const html: string = renderToString(ssrApp(req)) || '<h1>500 Big Error happened</h1>';
+    const renderedHtml: unknown = ssrApp(req);
+    const html: string = renderToString(renderedHtml as any) || '<h1>500 Big Error happened</h1>';
+
+    LOG('\t\t===============================');
+    LOG(typeof renderedHtml);
+    LOG('\t\tJSON.stringify');
+    LOG(JSON.stringify(renderedHtml));
     LOG(html);
-    res.send(
-        htmlWrapper(
-            html,
-            store.getState(),
-        ),
-    );
+    LOG('\t\t===============================');
+
+    asyncHadler(res, html);
+
     return next;
 };
 
