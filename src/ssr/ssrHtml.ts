@@ -6,14 +6,22 @@ const htmlWrapper = (app: string, preloadedState: object) =>
         <title>React-Typescript Training App - Movie Search</title>
         <link rel="stylesheet" type="text/css" href="/public/generated/style.css">
         <link rel="shortcut icon" href="/public/movie.ico"></head>
-    <body>
-    <div id="root">${app}</div>
-    <script>
+        <script src="/public/require.2.3.6.js" data-main="ssr/client"></script>
+        <script src="/public/generated/client.js"></script>
+        <script>
         window.__PRELOADED_STATE__ = ${
             JSON.stringify(preloadedState).replace(/</g, '\\u003c')
         }
+        requirejs.config({
+            basePath: "/"
+        });
+        function startApp(){
+            console.log('started');
+            require('ssr/client');
+        }
     </script>
-    <script src="/public/generated/client.js"></script>
+    <body onload="startApp()">
+    <div id="root">${app}</div>
     </body>
 </html>`;
 

@@ -4,9 +4,7 @@ import { hot } from 'react-hot-loader';
 import App from '../app';
 import { DEV } from '../utils';
 
-const AppWithHot = hot(module)(
-    App,
-);
+const AppWithHot = DEV && hot(module)(App);
 
 ReactDOM.hydrate(
     // DEV ? <AppWithHot /> :
