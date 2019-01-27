@@ -32,6 +32,7 @@ export interface IActions<T = unknown> {
 
 enum RootActions {
     INIT = 'init',
+    INIT_SERVER = 'initServer',
     URL_CHANGED = 'urlChanged',
     URL_FILM_ID = 'urlFilmId',
     URL_SEARCH = 'urlSearch',

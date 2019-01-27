@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import * as React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import store from '../scenes/Root/rootStore';

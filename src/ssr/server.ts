@@ -1,35 +1,47 @@
-import { NextFunction, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { renderToString } from 'react-dom/server';
+import RootActions, { IActions } from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import { LOG } from '../utils';
+import ServerState from './serverState';
 import ssrApp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
 // tslint:disable-next-line
 const Express = require('express');
 const port = process.env.port || Number('8888');
+process.env.NODE_SIDE = 'server';
 
-const asyncHadler = (res: Response, html: string) =>
-res.send(
-    htmlWrapper(
-        html,
-        store.getState(),
+const asyncHadler = (
+    next: NextFunction,
+    res: Response,
+    html: string,
+) => (
+    res.send(
+        htmlWrapper(
+            html,
+            store.getState(),
+        ),
     ),
+    next
 );
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
-    const renderedHtml: unknown = ssrApp(req);
-    const html: string = renderToString(renderedHtml as any) || '<h1>500 Big Error happened</h1>';
-
+    const html: string = renderToString(ssrApp(req));
     LOG('\t\t===============================');
-    LOG(typeof renderedHtml);
-    LOG('\t\tJSON.stringify');
-    LOG(JSON.stringify(renderedHtml));
+    LOG(typeof html);
     LOG(html);
     LOG('\t\t===============================');
 
-    asyncHadler(res, html);
+    if (html) {
+        return asyncHadler(next, res, html);
+    }
+
+    store.dispatch({
+        type: RootActions.INIT_SERVER,
+        payload: {req, res, next},
+    } as IActions<ServerState>);
 
     return next;
 };

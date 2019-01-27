@@ -97,6 +97,7 @@
     },
     "dependencies": {
         "@redux-offline/redux-offline": "2.5.1",
+        "dotenv": "^6.2.0",
         "express": "4.16.4",
         "node-fetch": "2.3.0",
         "react": "16.7.0",
