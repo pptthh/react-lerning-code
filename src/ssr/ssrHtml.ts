@@ -1,5 +1,5 @@
-const htmlWrapper = (app: string, preloadedState: object) =>
-`<!DOCTYPE html>
+const htmlWrapper = (app: string, preloadedState: object) => `
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">

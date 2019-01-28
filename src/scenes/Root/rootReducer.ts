@@ -17,7 +17,7 @@ const rootReducers: ReducersMapObject = {
     // server: ServerReducer,
 };
 
-if (IS_SERVER) {
+if (IS_SERVER()) {
     rootReducers.server = ServerReducer;
 }
 

@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { renderToString } from 'react-dom/server';
 import RootActions, { IActions } from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import { LOG } from '../utils';
 import ServerState from './serverState';
-import ssrApp from './ssrApp';
+import SSRapp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
 process.env.NODE_SERVER = 'true';
@@ -13,11 +12,12 @@ process.env.NODE_SERVER = 'true';
 const Express = require('express');
 const port = process.env.port || Number('8888');
 
-const asyncHadler = (
+export const asyncHadler = (
     next: NextFunction,
     res: Response,
     html: string,
 ) => (
+    LOG('\t\tasyncHadler'),
     res.send(
         htmlWrapper(
             html,
@@ -27,21 +27,17 @@ const asyncHadler = (
     next
 );
 
-
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
     store.dispatch({
         type: RootActions.INIT_SERVER,
-        payload: {req, res, next},
+        payload: {req, res},
     } as IActions<ServerState>);
 
-    const html: string = renderToString(ssrApp(req));
-    LOG('\t\t===============================');
-    LOG(typeof html);
-    LOG(html);
-    LOG('\t\t===============================');
+    const html = SSRapp(req);
 
-    return !!html ? next : asyncHadler(next, res, html);
+    return typeof html !== 'string' || !html ? next :
+        asyncHadler(next, res, html);
 };
 
 const app = Express();

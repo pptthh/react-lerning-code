@@ -10,8 +10,8 @@ export default (store: unknown) =>
         (action: IActions) => {
             // dispatch to the next reducer
             const nextAction = next(action);
-            IS_SERVER ?
-                LOG_DEBUG('\t\t', 'Action:', action) :
+            IS_SERVER() ?
+                LOG_DEBUG('\t\t', 'Action:', action.type) :
                 LOG_DEBUG('\t\t',
                     'Action:', action, '\n\t\t',
                     ' State:', (store as Store).getState(),
