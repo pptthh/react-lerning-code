@@ -13,10 +13,10 @@ const Express = require('express');
 const port = process.env.port || Number('8888');
 
 export const asyncHadler = (
-    next: NextFunction,
     res: Response,
     html: string,
-) => (
+    next: NextFunction,
+    ) => (
     LOG('\t\tasyncHadler'),
     res.send(
         htmlWrapper(
@@ -36,8 +36,9 @@ const handleRender = (req: Request, res: Response, next: NextFunction): NextFunc
 
     const html = SSRapp(req);
 
-    return typeof html !== 'string' || !html ? next :
-        asyncHadler(next, res, html);
+    LOG('\thandleRender');
+    return !html ? next :
+        asyncHadler(res, html, next);
 };
 
 const app = Express();
