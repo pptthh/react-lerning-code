@@ -47,11 +47,11 @@ const mapStateToProps = (
 });
 
 const SearchResults =
-// withRouter
+withRouter
 (
     connect(
         mapStateToProps,
         mapDispatchToProps,
-    )(srUI)
+    )(srUI),
 );
 export default SearchResults;

@@ -24,11 +24,11 @@ const mapStateToProps = (
 });
 
 const DetailedView =
-// withRouter
+withRouter
 (
     connect(
         mapStateToProps,
         mapDispatchToProps,
-    )(dvUI)
+    )(dvUI),
 );
 export default DetailedView;

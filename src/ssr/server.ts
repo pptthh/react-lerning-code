@@ -7,10 +7,11 @@ import ServerState from './serverState';
 import ssrApp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
+process.env.NODE_SERVER = 'true';
+
 // tslint:disable-next-line
 const Express = require('express');
 const port = process.env.port || Number('8888');
-process.env.NODE_SIDE = 'server';
 
 const asyncHadler = (
     next: NextFunction,
@@ -28,22 +29,19 @@ const asyncHadler = (
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
+    store.dispatch({
+        type: RootActions.INIT_SERVER,
+        payload: {req, res, next},
+    } as IActions<ServerState>);
+
     const html: string = renderToString(ssrApp(req));
     LOG('\t\t===============================');
     LOG(typeof html);
     LOG(html);
     LOG('\t\t===============================');
 
-    if (html) {
-        return asyncHadler(next, res, html);
-    }
-
-    store.dispatch({
-        type: RootActions.INIT_SERVER,
-        payload: {req, res, next},
-    } as IActions<ServerState>);
-
-    return next;
+    return typeof html !== 'string' ? next :
+        asyncHadler(next, res, html);
 };
 
 const app = Express();
