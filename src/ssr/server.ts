@@ -27,6 +27,7 @@ const asyncHadler = (
     next
 );
 
+
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
     store.dispatch({
@@ -40,8 +41,7 @@ const handleRender = (req: Request, res: Response, next: NextFunction): NextFunc
     LOG(html);
     LOG('\t\t===============================');
 
-    return typeof html !== 'string' ? next :
-        asyncHadler(next, res, html);
+    return !!html ? next : asyncHadler(next, res, html);
 };
 
 const app = Express();

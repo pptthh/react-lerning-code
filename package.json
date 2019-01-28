@@ -10,10 +10,12 @@
         "css": "sass src/style.scss public/generated/style.css",
         "css-w": "sass --watch src/style.scss public/generated/style.css",
         "ssr-tsc": "tsc --build src/ssr/tsc.server.json src/ssr/tsc.client.json",
-        "ssr-w": "npm run clean && npm run css && tsc --build src/ssr/tsc.server.json src/ssr/tsc.client.json --watch",
+        "ssr-w": "tsc --build src/ssr/tsc.server.json --watch",
         "ssr-serve": "npm run ssr-tsc && npm run css && node dist/ssr/server.js",
-        "ssr": "set NODE_ENV=development&& npm run css && nodemon --delay 1 dist/ssr/server.js",
-        "clean": "rm dist public/generated coverage cypress/videos cypress/screenshots -rf",
+        "ssr-client": "webpack --config src/ssr/webpack.js",
+        "server-w": "nodemon --inspect dist/ssr/server.js",
+        "dev": "npm-run-all css --parallel ssr-client ssr-w server-w",
+        "clean": "rm dist public/generated coverage cypress/videos cypress/screenshots -rf dist/",
         "build": "webpack -p --mode production --config webpack.prod.js",
         "build-dev": "webpack -d --mode development --config webpack.dev.js",
         "start": "webpack-dev-server --hot --mode development --config webpack.dev.js",
@@ -97,6 +99,7 @@
     },
     "dependencies": {
         "@redux-offline/redux-offline": "2.5.1",
+        "cross-env": "^5.2.0",
         "dotenv": "^6.2.0",
         "express": "4.16.4",
         "node-fetch": "2.3.0",
@@ -106,7 +109,8 @@
         "react-redux": "6.0.0",
         "react-router": "4.3.1",
         "react-router-dom": "4.3.1",
-        "redux": "4.0.1"
+        "redux": "4.0.1",
+        "ts-node": "^8.0.2"
     },
     "devDependencies": {
         "@babel/core": "7.2.2",
@@ -140,6 +144,7 @@
         "mocha": "5.2.0",
         "node-sass": "4.11.0",
         "nodemon": "1.18.9",
+        "npm-run-all": "^4.1.5",
         "sass": "1.16.1",
         "sass-loader": "7.1.0",
         "style-loader": "0.23.1",
