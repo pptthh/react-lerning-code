@@ -1,4 +1,3 @@
-import { LOG_DEBUG } from '../../utils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import SearchResultActions from '../SearchResults/srActions';
 import store from './rootStore';
@@ -46,7 +45,6 @@ export default RootActions;
 export const dispatchAction =
     (type: RootActions | DetailedViewActions | SearchResultActions, payload?: unknown) => (
     setTimeout(() => {
-        LOG_DEBUG('dispatchAction', type);
         store.dispatch({type, payload});
     }, 0)
 );

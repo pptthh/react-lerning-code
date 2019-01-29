@@ -21,14 +21,7 @@ const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): Detaile
 
 const matchId = (id: number) => (movie: Movie) => movie.id === id;
 
-const urlFilmId = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
-    // state = {
-    //     ...state,
-    //     id: GET_ID(payload),
-    // },
-    // FetchMovieById(payload as FetchProps<Movie>),
-    // state
-{
+const urlFilmId = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
     id: GET_ID(payload),
 });
@@ -54,12 +47,12 @@ const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): Detai
 });
 
 const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
-    LOG_DEBUG('genreLoadSuccess'),
-    IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
-    {
+IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
+{
     ...state,
     results: (payload as Movies).data,
 });
+
 const loadFail = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
     DBG(),
     state
@@ -81,13 +74,10 @@ const urlFetchMovieSuccess = ({ state, payload }: ICase<DetailedViewState>): Det
     state
 );
 
-const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
-    LOG_DEBUG('urlFetchMovieFailed', payload),
-    {
-        ...state,
-        filedId: GET_PROP(payload, 'id'),
-    }
-);
+const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
+    ...state,
+    filedId: GET_PROP(payload, 'id'),
+});
 
 const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.INIT_DETAILED_VIEW]: initDetailedView,

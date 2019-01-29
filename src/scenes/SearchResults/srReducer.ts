@@ -105,7 +105,7 @@ const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResul
     details: Number(GET_ID(payload)),
 });
 
-const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => {
+const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
     state = {
         ...state,
         oldQuery: (payload as FetchProps<Movies>).query,
@@ -114,13 +114,13 @@ const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultSt
             searchField: (payload as FetchProps<Movies>).query || '',
             searchDisabled: true,
         },
-    };
+    },
     FetchMovies({
         ...payload,
         request: getRequest(state),
-    } as FetchProps<Movies>);
-    return state;
-};
+    } as FetchProps<Movies>),
+    state
+);
 
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,

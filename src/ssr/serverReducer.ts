@@ -8,45 +8,35 @@ import SSRapp from './ssrApp';
 
 const stateInit: ServerState = {isServer: IS_SERVER()};
 
-const initServer = ({ state, payload }: ICase<ServerState>): ServerState => (
-    LOG('serverReducer.init - clear Server', typeof payload),
-    payload as ServerState
-);
+const initServer = ({ state, payload }: ICase<ServerState>): ServerState =>
+    payload as ServerState;
 
-const rootInit = ({ state, payload }: ICase<ServerState>): ServerState => (
-    LOG('serverReducer.rootInit', '\n=============\npayload:', payload),
+const rootInit = ({ state, payload }: ICase<ServerState>): ServerState =>
+    stateInit;
+
+const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
+    setTimeout(() => {
+        LOG('\t after handleSuccess');
+        store.dispatch({type: SearchResultActions.CLOSE_REQUEST});
+    }, 0),
+    state
+);
+const closeRequest = ({ state, payload }: ICase<ServerState>): ServerState => (
+    setTimeout(() => {
+        LOG('\tafter closeRequest');
+        IS_SERVER() && state.props && state.callBack &&
+        state.callBack(SSRapp(state.props.req));
+    }, 0),
     stateInit
 );
 
-const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
-    LOG('handleSuccess'),
-    // LOG('serverReducer.handleSuccess', '\n=============\npayload:', payload),
+const handleFail = ({ state, payload }: ICase<ServerState>): ServerState => (
     setTimeout(() => {
-        LOG('handleSuccess.setTimeout'),
-        state.props && LOG(SSRapp(state.props.req));
-        store.dispatch({type: SearchResultActions.CLOSE_REQUEST});
-    }, Number('1')),
-    state
-);
-const closeRequest = ({ state, payload }: ICase<ServerState>): ServerState => {
-    LOG('closeRequest');
-    setTimeout(() => {
-        LOG('closeRequest.setTimeout');
+        LOG('\tafter handleFail');
         IS_SERVER() && state.props && state.callBack &&
-        state.callBack(SSRapp(state.props.req));
-    }, 0);
-    return stateInit;
-};
-
-const handleFail = ({ state, payload }: ICase<ServerState>): ServerState =>
-(
-    LOG('handleFail'),
-    // LOG('serverReducer.handleFail', '\n=============\n', payload),
-    setTimeout(() => {
-        LOG('handleFail.setTimeout');
-        state.props && state.props.res.send('some error happened');
+        state.callBack('some error happened');
     }, 0),
-    state
+    stateInit
 );
 
 const SWITCH: ISwitch<ServerState> = {
@@ -57,6 +47,5 @@ const SWITCH: ISwitch<ServerState> = {
     [RootActions.INIT]: rootInit,
 };
 
-// tslint:disable-next-line
 const ServerReducer = createReducer(SWITCH, stateInit);
 export default ServerReducer;
