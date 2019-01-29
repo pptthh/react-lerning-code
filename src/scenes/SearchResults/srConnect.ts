@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
 import DetailedViewActions, { fetchGenre } from '../DetaildView/dvActions';
-import RootActions from '../Root/rootActions';
 import RootState from '../Root/rootState';
 import SearchResultActions, { srFnCalls } from './srActions';
 import SearchResultState from './srState';

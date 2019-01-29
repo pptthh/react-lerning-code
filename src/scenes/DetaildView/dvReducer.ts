@@ -4,7 +4,7 @@ import { FetchProps } from '../../services/rest/fetchProps';
 import Movies, { Movie } from '../../services/rest/movie';
 import { DBG, GET_ID, GET_PROP, IS_SERVER, LOG_DEBUG } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
-import RootActions, { dispatchAction } from '../Root/rootActions';
+import { dispatchAction, RootActions } from '../Root/rootActions';
 import store from '../Root/rootStore';
 import SearchResultActions from '../SearchResults/srActions';
 import DetailedViewActions from './dvActions';
@@ -14,6 +14,9 @@ const stateInit: DetailedViewState = {
     data: [],
     results: [],
 };
+
+const reset = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState =>
+    stateInit;
 
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
@@ -89,6 +92,7 @@ const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.URL_FETCH_MOVIE]: urlFetchMovie,
     [DetailedViewActions.URL_FETCH_MOVIE_SUCCESS]: urlFetchMovieSuccess,
     [DetailedViewActions.URL_FETCH_MOVIE_FAILED]: urlFetchMovieFailed,
+    [DetailedViewActions.RESET]: reset,
 };
 
 const DetailedViewReducer = createReducer(SWITCH, stateInit);

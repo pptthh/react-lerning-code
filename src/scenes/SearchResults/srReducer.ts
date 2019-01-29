@@ -8,7 +8,7 @@ import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import { dvUrlPathBase } from '../DetaildView/dvUrlProps';
-import RootActions, { dispatchAction } from '../Root/rootActions';
+import { dispatchAction, RootActions } from '../Root/rootActions';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
 import { srUrlPathBase } from './srUrlProps';
@@ -26,6 +26,9 @@ const stateInit: SearchResultState = {
     moviesData: EmptyMovieList,
     details: 0,
 };
+
+const reset = ({state, payload}: ICase<SearchResultState>): SearchResultState =>
+    stateInit;
 
 const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
     ...state,
@@ -133,7 +136,8 @@ const SWITCH: ISwitch<SearchResultState> = {
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
     [SearchResultActions.URL_SEARCH]: urlSearch,
-    [RootActions.INIT]: rootInit,
+    [DetailedViewActions.INIT]: rootInit,
+    [DetailedViewActions.RESET]: reset,
 };
 
 const SearchResultReducer = createReducer(SWITCH, stateInit);

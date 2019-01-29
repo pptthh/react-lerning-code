@@ -1,4 +1,5 @@
-import RootActions from '../scenes/Root/rootActions';
+import DetailedViewActions from '../scenes/DetaildView/dvActions';
+import { RootActions } from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import SearchResultActions from '../scenes/SearchResults/srActions';
 import { IS_SERVER, LOG } from '../utils';
@@ -7,6 +8,8 @@ import ServerState from './serverState';
 import SSRapp from './ssrApp';
 
 const stateInit: ServerState = {isServer: IS_SERVER()};
+
+const reset = ({ state, payload }: ICase<ServerState>): ServerState => stateInit;
 
 const initServer = ({ state, payload }: ICase<ServerState>): ServerState =>
     payload as ServerState;
@@ -44,7 +47,8 @@ const SWITCH: ISwitch<ServerState> = {
     [SearchResultActions.CLICK_SEARCH_FAILED]: handleFail,
     [SearchResultActions.CLOSE_REQUEST]: closeRequest,
     [SearchResultActions.INIT_SERVER]: initServer,
-    [RootActions.INIT]: rootInit,
+    [DetailedViewActions.INIT]: rootInit,
+    [DetailedViewActions.RESET]: reset,
 };
 
 const ServerReducer = createReducer(SWITCH, stateInit);

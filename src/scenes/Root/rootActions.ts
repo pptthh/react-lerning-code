@@ -31,16 +31,15 @@ export interface IActions<T = unknown> {
     };
 }
 
-enum RootActions {
-    INIT = 'init',
+export enum RootActions {
+    // RESET = 'reset',
+    // INIT = 'init',
     // INIT_SERVER = 'initServer',
     // CLOSE_REQUEST = 'closeRequest',
     URL_CHANGED = 'urlChanged',
     // URL_FILM_ID = 'urlFilmId',
     // URL_SEARCH = 'urlSearch',
 }
-
-export default RootActions;
 
 export const dispatchAction =
     (type: RootActions | DetailedViewActions | SearchResultActions, payload?: unknown) => (

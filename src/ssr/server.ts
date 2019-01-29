@@ -1,7 +1,8 @@
 process.env.NODE_SERVER = 'true';
 
 import { NextFunction, Request, Response } from 'express';
-import { IActions } from '../scenes/Root/rootActions';
+import DetailedViewActions from '../scenes/DetaildView/dvActions';
+import { dispatchAction, IActions, RootActions } from '../scenes/Root/rootActions';
 import RootState from '../scenes/Root/rootState';
 import store from '../scenes/Root/rootStore';
 import SearchResultActions from '../scenes/SearchResults/srActions';
@@ -29,6 +30,7 @@ export const asyncHadler = <T>(
                 exportState(),
             ),
         ),
+        dispatchAction(DetailedViewActions.RESET),
         next
 );
 
