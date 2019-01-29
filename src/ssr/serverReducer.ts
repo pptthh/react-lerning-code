@@ -1,5 +1,4 @@
 import DetailedViewActions from '../scenes/DetaildView/dvActions';
-import { RootActions } from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import SearchResultActions from '../scenes/SearchResults/srActions';
 import { IS_SERVER, LOG } from '../utils';
