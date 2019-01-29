@@ -3,11 +3,10 @@ import sortByEnum, { SortByRestTranslator } from '../../components/SearchSummary
 import DetailedViewState from '../../scenes/DetaildView/dvState';
 import SearchResultState from '../../scenes/SearchResults/srState';
 import { LOG_ERROR, LOG_WARNING, NOOP, TEST } from '../../utils';
+import fetchAPI from '../../utils/fetchAPI';
 import netUtils from '../../utils/netUtils';
 import { FetchProps } from './fetchProps';
 import Movies, { transformMoviesData, validateMovies } from './movie';
-// tslint:disable-next-line
-const fetchAPI = require('node-fetch');
 
 export const getRequest = (state: SearchResultState) =>
 netUtils.MOVIES_URL +

@@ -14,7 +14,7 @@
         "ssr-serve": "npm run ssr-tsc && npm run css && node dist/ssr/server.js",
         "ssr-client": "webpack --config src/ssr/webpack.js",
         "server-w": "nodemon --inspect dist/ssr/server.js",
-        "dev": "npm-run-all css --parallel ssr-client ssr-w server-w",
+        "dev": "set NODE_ENV=development&& npm-run-all css --parallel ssr-client ssr-w server-w",
         "clean": "rm dist public/generated coverage cypress/videos cypress/screenshots -rf dist/",
         "build": "webpack -p --mode production --config webpack.prod.js",
         "build-dev": "webpack -d --mode development --config webpack.dev.js",

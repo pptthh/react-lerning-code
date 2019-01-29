@@ -2,14 +2,11 @@ import { NextFunction, Request, Response } from 'express';
 import RootActions, { IActions } from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import { LOG } from '../utils';
+import Express from '../utils/Express';
 import ServerState from './serverState';
 import SSRapp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
-process.env.NODE_SERVER = 'true';
-
-// tslint:disable-next-line
-const Express = require('express');
 const port = process.env.port || Number('8888');
 
 export const asyncHadler = (
@@ -44,7 +41,8 @@ const handleRender = (req: Request, res: Response, next: NextFunction): NextFunc
 const app = Express();
 // Serve static files
 app.use('/public', Express.static('public'));
-app.get('/test', (req: Request, res: Response, next: NextFunction) => res.send('Testing'));
+app.get('/', (req: Request, res: Response, next: NextFunction) => res.redirect('/search'));
+app.get('/test', (req: Request, res: Response, next: NextFunction) => res.send('Testing ...'));
 app.use(handleRender);
 app.listen(
     port,
