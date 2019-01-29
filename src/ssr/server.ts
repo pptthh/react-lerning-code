@@ -23,12 +23,14 @@ export const asyncHadler = <T>(
     next: T,
     ) => (
     LOG('\t\tasyncHadler'),
-    res.send(
-        htmlWrapper(
-            html,
-            exportState(),
+    // setTimeout(() => {
+        res.send(
+            htmlWrapper(
+                html,
+                exportState(),
+            ),
         ),
-    ),
+    // }, 0),
     next
 );
 

@@ -32,9 +32,9 @@ const closeRequest = ({ state, payload }: ICase<ServerState>): ServerState => {
     LOG('closeRequest');
     setTimeout(() => {
         LOG('closeRequest.setTimeout');
+        IS_SERVER() && state.props && state.callBack &&
+        state.callBack(SSRapp(state.props.req));
     }, 0);
-    IS_SERVER() && state.props && state.callBack &&
-    state.callBack(SSRapp(state.props.req));
     return stateInit;
 };
 
