@@ -1,8 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 interface ServerState {
-    req: Request;
-    res: Response;
-    next: NextFunction;
+    isServer: boolean;
+    props?: {
+        req: Request;
+        res: Response;
+    };
 }
 export default ServerState;

@@ -5,6 +5,7 @@ import FoundMovies from '../../components/FoundMovies';
 import { ResultItemFnCalls } from '../../components/FoundMovies/resultItem';
 import Header from '../../components/Header/header';
 import Label from '../../components/Label/label';
+import { IS_SERVER } from '../../utils';
 import { pageNotFound } from '../Root/rootView';
 import DetailedViewState from './dvState';
 import DvUrlProps from './dvUrlProps';
@@ -14,11 +15,13 @@ export interface DvUiFnCalls {
     urlOpenedFnCalls: (props: DetailedViewState & DvUiFnCalls & DvUrlProps) => boolean;
 }
 
+const LoadingMovie: React.SFC = () => IS_SERVER() ? <></> : <>loading movie ...</>;
+
 const dvUI =
 (props: DetailedViewState & DvUiFnCalls & DvUrlProps) =>
 props.filedId === props.match.params.id ? <>movie not found {pageNotFound()}</> :
-!props.urlOpenedFnCalls(props) ? <>loading movie ...</> :
-!props.detailedPanel ? <>loading movie ...</> :
+!props.urlOpenedFnCalls(props) ? <LoadingMovie/> :
+!props.detailedPanel ? <LoadingMovie/> :
 <div>
     <Header>
         netflixroulette

@@ -14,11 +14,10 @@ import RootState from './rootState';
 const rootReducers: ReducersMapObject = {
     detailedView: DetailedViewReducer,
     searchResult: SearchResultReducer,
-    // server: ServerReducer,
 };
 
 if (IS_SERVER()) {
-    rootReducers.server = ServerReducer;
+    rootReducers.ssr = ServerReducer;
 }
 
 const RootReducer: Reducer<RootState> = combineReducers(rootReducers);

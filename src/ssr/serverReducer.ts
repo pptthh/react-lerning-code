@@ -1,14 +1,13 @@
 import RootActions from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import SearchResultActions from '../scenes/SearchResults/srActions';
-import { LOG } from '../utils';
+import { IS_SERVER, LOG } from '../utils';
 import createReducer, { ICase, ISwitch } from '../utils/createReducer';
 import { asyncHadler } from './server';
 import ServerState from './serverState';
 import SSRapp from './ssrApp';
 
-// tslint:disable-next-line
-const UNDEFINED: any = undefined;
+const stateInit: ServerState = {isServer: IS_SERVER()};
 
 const initServer = ({ state, payload }: ICase<ServerState>): ServerState => (
     LOG('serverReducer.init - clear Server', typeof payload),
@@ -24,7 +23,8 @@ const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
     LOG('handleSuccess'),
     // LOG('serverReducer.handleSuccess', '\n=============\npayload:', payload),
     setTimeout(() => {
-        LOG(SSRapp(state.req));
+        LOG('handleSuccess.setTimeout'),
+        state.props && LOG(SSRapp(state.props.req));
         store.dispatch({type: RootActions.CLOSE_REQUEST});
     }, Number('1')),
     state
@@ -33,14 +33,14 @@ const closeRequest = ({ state, payload }: ICase<ServerState>): ServerState => {
     LOG('closeRequest');
     const st = state;
     setTimeout(() => {
-    // asyncHadler(
+        LOG('closeRequest.setTimeout');
+        // asyncHadler(
     //         st.res,
-            LOG(SSRapp(st.req));
+        st.props && LOG(SSRapp(st.props.req));
     //         UNDEFINED,
     //     );
     }, 0);
     return state;
-    return UNDEFINED;
 };
 
 const handleFail = ({ state, payload }: ICase<ServerState>): ServerState =>
@@ -48,7 +48,8 @@ const handleFail = ({ state, payload }: ICase<ServerState>): ServerState =>
     LOG('handleFail'),
     // LOG('serverReducer.handleFail', '\n=============\n', payload),
     setTimeout(() => {
-        state.res.send('some error happened');
+        LOG('handleFail.setTimeout');
+        state.props && state.props.res.send('some error happened');
     }, 0),
     state
 );
@@ -62,5 +63,5 @@ const SWITCH: ISwitch<ServerState> = {
 };
 
 // tslint:disable-next-line
-const ServerReducer = createReducer(SWITCH, UNDEFINED);
+const ServerReducer = createReducer(SWITCH, stateInit);
 export default ServerReducer;

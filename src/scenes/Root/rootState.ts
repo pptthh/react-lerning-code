@@ -5,7 +5,7 @@ import SearchResultState from '../SearchResults/srState';
 interface RootState {
     searchResult: SearchResultState;
     detailedView: DetailedViewState;
-    server?: ServerState;
+    ssr: ServerState;
 }
 
 export default RootState;

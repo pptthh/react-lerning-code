@@ -1,8 +1,10 @@
+process.env.NODE_SERVER = 'true';
+
 import { NextFunction, Request, Response } from 'express';
 import RootActions, { IActions } from '../scenes/Root/rootActions';
 import store from '../scenes/Root/rootStore';
 import { LOG } from '../utils';
-import Express from '../utils/Express';
+import Express from '../utils/express';
 import ServerState from './serverState';
 import SSRapp from './ssrApp';
 import htmlWrapper from './ssrHtml';
@@ -28,12 +30,12 @@ export const asyncHadler = (
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
     store.dispatch({
         type: RootActions.INIT_SERVER,
-        payload: {req, res},
+        payload: {isServer: true, props: {req, res}},
     } as IActions<ServerState>);
 
     const html = SSRapp(req);
 
-    LOG('\thandleRender');
+    LOG('\thandleRender', !html ? 'start asyncHadler' : `return ${html.length} characters`);
     return !html ? next :
         asyncHadler(res, html, next);
 };
