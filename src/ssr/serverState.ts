@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 interface ServerState {
     isServer: boolean;
-    promis?: Promise<unknown>;
+    callBack?: (html: string) => void;
     props?: {
         req: Request;
         res: Response;

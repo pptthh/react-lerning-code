@@ -36,7 +36,11 @@ const handleRender = (req: Request, res: Response, next: NextFunction): NextFunc
 
     store.dispatch({
         type: RootActions.INIT_SERVER,
-        payload: {isServer: true, props: {req, res}},
+        payload: {
+            isServer: true,
+            props: {req, res},
+            callBack: (htmlText: string) => asyncHadler(res, htmlText, undefined),
+        },
     } as IActions<ServerState>);
 
     const html = SSRapp(req);

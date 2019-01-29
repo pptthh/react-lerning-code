@@ -3,7 +3,6 @@ import store from '../scenes/Root/rootStore';
 import SearchResultActions from '../scenes/SearchResults/srActions';
 import { IS_SERVER, LOG } from '../utils';
 import createReducer, { ICase, ISwitch } from '../utils/createReducer';
-import { asyncHadler } from './server';
 import ServerState from './serverState';
 import SSRapp from './ssrApp';
 
@@ -34,11 +33,8 @@ const closeRequest = ({ state, payload }: ICase<ServerState>): ServerState => {
     setTimeout(() => {
         LOG('closeRequest.setTimeout');
     }, 0);
-    state.props && asyncHadler(
-        state.props.res,
-        SSRapp(state.props.req),
-        undefined,
-    );
+    IS_SERVER() && state.props && state.callBack &&
+    state.callBack(SSRapp(state.props.req));
     return stateInit;
 };
 
