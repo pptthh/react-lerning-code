@@ -2,6 +2,7 @@ process.env.NODE_SERVER = 'true';
 
 import { NextFunction, Request, Response } from 'express';
 import RootActions, { IActions } from '../scenes/Root/rootActions';
+import RootState from '../scenes/Root/rootState';
 import store from '../scenes/Root/rootStore';
 import { LOG } from '../utils';
 import Express from '../utils/express';
@@ -10,17 +11,21 @@ import SSRapp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
 const port = process.env.port || Number('8888');
-
-export const asyncHadler = (
+const exportState = (): RootState => {
+    const state = store.getState();
+    state.ssr.props = undefined;
+    return state;
+};
+export const asyncHadler = <T>(
     res: Response,
     html: string,
-    next: NextFunction,
+    next: T,
     ) => (
     LOG('\t\tasyncHadler'),
     res.send(
         htmlWrapper(
             html,
-            store.getState(),
+            exportState(),
         ),
     ),
     next
@@ -28,6 +33,7 @@ export const asyncHadler = (
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
+
     store.dispatch({
         type: RootActions.INIT_SERVER,
         payload: {isServer: true, props: {req, res}},
@@ -51,3 +57,27 @@ app.listen(
     () => LOG(`SSR started listening on port: ${port}`),
 );
 LOG('SSR starting ...');
+
+// // const promisHandler = (resolve: Function, reject: Function) => {};
+// // const p = new Promise(promisHandler);
+
+// const renderPromis = (req: Request, res: Response, next: NextFunction): NextFunction => {
+
+//     new Promise((resolve: Function, reject: Function) => {
+//         const html = SSRapp(req);
+//         if (!html) {
+//             next;
+//         } else {
+//             resolve(html);
+//         }
+//     });
+//     asyncHadler(res, html, next);
+//     store.dispatch({
+//         type: RootActions.INIT_SERVER,
+//         payload: {isServer: true, props: {req, res}},
+//     } as IActions<ServerState>);
+
+//     LOG('\thandleRender', !html ? 'start asyncHadler' : `return ${html.length} characters`);
+//     return !html ? next :
+//         asyncHadler(res, html, next);
+// };

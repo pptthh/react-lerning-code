@@ -2,9 +2,10 @@ import FetchMovieById from '../../services/rest/fetchMovieById';
 import { FetchMovies, getRequest4Genre } from '../../services/rest/fetchMovies';
 import { FetchProps } from '../../services/rest/fetchProps';
 import Movies, { Movie } from '../../services/rest/movie';
-import { DBG, GET_ID, GET_PROP } from '../../utils';
+import { DBG, GET_ID, GET_PROP, IS_SERVER, LOG_DEBUG } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
-import RootActions from '../Root/rootActions';
+import RootActions, { dispatchAction } from '../Root/rootActions';
+import store from '../Root/rootStore';
 import SearchResultActions from '../SearchResults/srActions';
 import DetailedViewActions from './dvActions';
 import DetailedViewState from './dvState';
@@ -52,7 +53,10 @@ const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): Detai
     data: (payload as Movies).data,
 });
 
-const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
+const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
+    LOG_DEBUG('genreLoadSuccess'),
+    IS_SERVER() && dispatchAction(RootActions.CLOSE_REQUEST),
+    {
     ...state,
     results: (payload as Movies).data,
 });
@@ -77,10 +81,13 @@ const urlFetchMovieSuccess = ({ state, payload }: ICase<DetailedViewState>): Det
     state
 );
 
-const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
-    ...state,
-    filedId: GET_PROP(payload, 'id'),
-});
+const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
+    LOG_DEBUG('urlFetchMovieFailed', payload),
+    {
+        ...state,
+        filedId: GET_PROP(payload, 'id'),
+    }
+);
 
 const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.INIT_DETAILED_VIEW]: initDetailedView,

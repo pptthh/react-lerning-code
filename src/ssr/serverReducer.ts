@@ -16,7 +16,7 @@ const initServer = ({ state, payload }: ICase<ServerState>): ServerState => (
 
 const rootInit = ({ state, payload }: ICase<ServerState>): ServerState => (
     LOG('serverReducer.rootInit', '\n=============\npayload:', payload),
-    state
+    stateInit
 );
 
 const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
@@ -31,16 +31,15 @@ const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
 );
 const closeRequest = ({ state, payload }: ICase<ServerState>): ServerState => {
     LOG('closeRequest');
-    const st = state;
     setTimeout(() => {
         LOG('closeRequest.setTimeout');
-        // asyncHadler(
-    //         st.res,
-        st.props && LOG(SSRapp(st.props.req));
-    //         UNDEFINED,
-    //     );
     }, 0);
-    return state;
+    state.props && asyncHadler(
+        state.props.res,
+        SSRapp(state.props.req),
+        undefined,
+    );
+    return stateInit;
 };
 
 const handleFail = ({ state, payload }: ICase<ServerState>): ServerState =>
