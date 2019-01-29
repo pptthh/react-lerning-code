@@ -16,6 +16,7 @@ enum DetailedViewActions {
     URL_FETCH_MOVIE = 'urlFetchFilm',
     URL_FETCH_MOVIE_SUCCESS = 'urlFetchFilmSuccess',
     URL_FETCH_MOVIE_FAILED = 'urlFetchFilmFailed',
+    URL_FILM_ID = 'urlFilmId',
 }
 
 export default DetailedViewActions;
@@ -33,7 +34,7 @@ export const dvFnCalls = {
         type: DetailedViewActions.MOVIE_CLICKED,
         payload: fetchGenre(dispatch, String(id)),
     }),
-    [RootActions.URL_FILM_ID]:
+    [DetailedViewActions.URL_FILM_ID]:
         (dispatch: Dispatch) =>
         (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean =>
             !!props.detailedPanel ? true :

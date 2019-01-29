@@ -10,7 +10,7 @@ import srUI, { SrUiFnCalls } from './srUI';
 import SrUrlProps from './srUrlProps';
 
 const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
-    searchMatchQuery: srFnCalls[RootActions.URL_SEARCH](dispatch),
+    searchMatchQuery: srFnCalls[SearchResultActions.URL_SEARCH](dispatch),
     searchSummaryAction: {
         changeSortBy: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SORT_BY, payload: e}),
     },

@@ -55,7 +55,7 @@ const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): Detai
 
 const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
     LOG_DEBUG('genreLoadSuccess'),
-    IS_SERVER() && dispatchAction(RootActions.CLOSE_REQUEST),
+    IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
     {
     ...state,
     results: (payload as Movies).data,
@@ -95,7 +95,7 @@ const SWITCH: ISwitch<DetailedViewState> = {
     [SearchResultActions.CLICK_SEARCH_SUCCESS]: clickSearchSuccess,
     [DetailedViewActions.GENRE_LOAD_SUCCESS]: genreLoadSuccess,
     [DetailedViewActions.GENRE_LOAD_FAILED]: loadFail,
-    [RootActions.URL_FILM_ID]: urlFilmId,
+    [DetailedViewActions.URL_FILM_ID]: urlFilmId,
     [DetailedViewActions.URL_FETCH_MOVIE]: urlFetchMovie,
     [DetailedViewActions.URL_FETCH_MOVIE_SUCCESS]: urlFetchMovieSuccess,
     [DetailedViewActions.URL_FETCH_MOVIE_FAILED]: urlFetchMovieFailed,

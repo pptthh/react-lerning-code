@@ -4,6 +4,7 @@ import { NextFunction, Request, Response } from 'express';
 import RootActions, { IActions } from '../scenes/Root/rootActions';
 import RootState from '../scenes/Root/rootState';
 import store from '../scenes/Root/rootStore';
+import SearchResultActions from '../scenes/SearchResults/srActions';
 import { LOG } from '../utils';
 import Express from '../utils/express';
 import ServerState from './serverState';
@@ -35,7 +36,7 @@ export const asyncHadler = <T>(
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
 
     store.dispatch({
-        type: RootActions.INIT_SERVER,
+        type: SearchResultActions.INIT_SERVER,
         payload: {
             isServer: true,
             props: {req, res},

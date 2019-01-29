@@ -24,7 +24,7 @@ const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
     setTimeout(() => {
         LOG('handleSuccess.setTimeout'),
         state.props && LOG(SSRapp(state.props.req));
-        store.dispatch({type: RootActions.CLOSE_REQUEST});
+        store.dispatch({type: SearchResultActions.CLOSE_REQUEST});
     }, Number('1')),
     state
 );
@@ -52,8 +52,8 @@ const handleFail = ({ state, payload }: ICase<ServerState>): ServerState =>
 const SWITCH: ISwitch<ServerState> = {
     [SearchResultActions.CLICK_SEARCH_SUCCESS]: handleSuccess,
     [SearchResultActions.CLICK_SEARCH_FAILED]: handleFail,
-    [RootActions.CLOSE_REQUEST]: closeRequest,
-    [RootActions.INIT_SERVER]: initServer,
+    [SearchResultActions.CLOSE_REQUEST]: closeRequest,
+    [SearchResultActions.INIT_SERVER]: initServer,
     [RootActions.INIT]: rootInit,
 };
 

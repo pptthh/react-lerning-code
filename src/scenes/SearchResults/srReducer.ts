@@ -75,7 +75,7 @@ FetchMovies({
 });
 
 const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
-IS_SERVER() && dispatchAction(RootActions.CLOSE_REQUEST), 
+IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
 {
     ...state,
     moviesData: payload as Movies,
@@ -132,7 +132,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
-    [RootActions.URL_SEARCH]: urlSearch,
+    [SearchResultActions.URL_SEARCH]: urlSearch,
     [RootActions.INIT]: rootInit,
 };
 
