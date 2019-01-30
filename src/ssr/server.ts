@@ -11,7 +11,7 @@ import ServerState from './serverState';
 import SSRapp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
-const port = '8889' || process.env.port || Number('8889');
+const port = process.env.port || Number('8888');
 const exportState = (): RootState => {
     const state = store.getState();
     delete state.ssr;
