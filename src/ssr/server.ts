@@ -36,7 +36,7 @@ export const asyncHadler = <T>(
 
 // We are going to fill these out in the sections to follow
 const handleRender = (req: Request, res: Response, next: NextFunction): NextFunction => {
-    LOG('\n----g\tstart serving for\t\t', req.url);
+    LOG('\n=>\tstart serving for\t\t', req.url);
     store.dispatch({
         type: SearchResultActions.INIT_SERVER,
         payload: {

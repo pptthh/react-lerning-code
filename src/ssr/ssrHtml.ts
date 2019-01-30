@@ -1,5 +1,4 @@
-const htmlWrapper = (app: string, preloadedState: object) => `
-<!DOCTYPE html>
+const htmlWrapper = (app: string, preloadedState: object) => `<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -17,12 +16,11 @@ const htmlWrapper = (app: string, preloadedState: object) => `
                 event.preventDefault();
                 event.stopPropagation();
                 event.stopImmediatePropagation()
-                debugger;
             }
 
-            window.addEventListener('popstate', eventHandler, true);
+            // window.addEventListener('popstate', eventHandler, true);
             // window.addEventListener('pageshow', eventHandler, true);
-            window.addEventListener('pagehide', eventHandler, true);
+            // window.addEventListener('pagehide', eventHandler, true);
         </script>
     </head>
     <body>

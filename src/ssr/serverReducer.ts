@@ -8,10 +8,8 @@ import SSRapp from './ssrApp';
 
 const stateInit: ServerState = {isServer: IS_SERVER()};
 
-const initServer = ({ state, payload }: ICase<ServerState>): ServerState => (
-    LOG('serverReducer.init - clear Server', typeof payload),
-    payload as ServerState
-);
+const initServer = ({ state, payload }: ICase<ServerState>): ServerState =>
+    payload as ServerState;
 
 const rootInit = ({ state, payload }: ICase<ServerState>): ServerState => (
     LOG('serverReducer.rootInit', '\n=============\npayload:', payload),

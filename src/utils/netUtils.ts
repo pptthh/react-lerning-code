@@ -1,3 +1,5 @@
+import { LOG } from '.';
+
 const netUtils = {
     getJsonResponse : (response: Response) => response.json(),
 
@@ -18,11 +20,9 @@ const netUtils = {
     } as RequestInit,
 
     setUrlPath: (path: string) => {
-        setTimeout(() => {
-            !location.hash ?
-                location.href = '/' + path :
-                location.hash = '#/' + path;
-        }, 0);
+        window.history.pushState({}, path, '/' + path);
+        LOG('\tsetUrlPath', path);
+        setTimeout((() => !location.hash ? location.href = '/' + path : location.hash = '#/' + path), 0);
     },
 };
 

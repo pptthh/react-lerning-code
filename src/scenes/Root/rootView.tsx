@@ -29,8 +29,13 @@ const links = () =>
     <li><Link to='/search'>search</Link></li>
     <li><Link to='/search/'>search/</Link></li>
     <li><Link to='/search/pulp'>search/pulp</Link></li>
+    <li><Link to='/search/the'>search/the</Link></li>
+    <li><Link to='/search/5'>search/5</Link></li>
     <li><Link to='/film'>film</Link></li>
     <li><Link to='/film/'>film/</Link></li>
+    <li><Link to='/film/19'>film/19</Link></li>
+    <li><Link to='/film/680'>film/680</Link></li>
+    <li><Link to='/film/185'>film/185</Link></li>
     <li><Link to='/film/353081'>film/353081</Link></li>
     <li><Link to='/404'>404 not found</Link></li>
 </ul>;
