@@ -22,7 +22,7 @@ const netUtils = {
     setUrlPath: (path: string) => {
         window.history.pushState({}, path, '/' + path);
         LOG('\tsetUrlPath', path);
-        setTimeout((() => !location.hash ? location.href = '/' + path : location.hash = '#/' + path), 0);
+        // setTimeout((() => !location.hash ? location.href = '/' + path : location.hash = '#/' + path), 0);
     },
 };
 

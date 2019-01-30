@@ -4,10 +4,10 @@ import { hot } from 'react-hot-loader';
 import App from '../app';
 import { DEV } from '../utils';
 
-const AppWithHot = DEV && hot(module)(App);
+const AppWithHot = hot(module)(App);
 
 ReactDOM.hydrate(
-    // DEV ? <AppWithHot /> :
+    DEV ? <AppWithHot /> :
         <App/>,
     document.getElementById('root'),
 );

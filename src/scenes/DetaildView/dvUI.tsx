@@ -9,6 +9,7 @@ import { IS_SERVER } from '../../utils';
 import { pageNotFound } from '../Root/rootView';
 import DetailedViewState from './dvState';
 import DvUrlProps from './dvUrlProps';
+import { Link } from 'react-router-dom';
 
 export interface DvUiFnCalls {
     resultsItemFnCalls: ResultItemFnCalls;
@@ -25,12 +26,14 @@ props.filedId === props.match.params.id ? <>movie not found {pageNotFound()}</> 
 <div>
     <Header>
         netflixroulette
+        <Link to={'/'}>
         <Button
             className='showSearch'
             tooltip='Show Search Form'
             label='SEARCH'
             onClick={() => props.resultsItemFnCalls.itemClick(0)}
         />
+        </Link>
     </Header>
     <DetailedPanel
         {...props.detailedPanel}

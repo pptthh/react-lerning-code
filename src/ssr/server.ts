@@ -1,7 +1,7 @@
 process.env.NODE_SERVER = 'true';
 
 import { NextFunction, Request, Response } from 'express';
-import RootActions, { IActions } from '../scenes/Root/rootActions';
+import { IActions } from '../scenes/Root/rootActions';
 import RootState from '../scenes/Root/rootState';
 import store from '../scenes/Root/rootStore';
 import SearchResultActions from '../scenes/SearchResults/srActions';
@@ -11,10 +11,10 @@ import ServerState from './serverState';
 import SSRapp from './ssrApp';
 import htmlWrapper from './ssrHtml';
 
-const port = process.env.port || Number('8888');
+const port = '8889' || process.env.port || Number('8889');
 const exportState = (): RootState => {
     const state = store.getState();
-    state.ssr.props = undefined;
+    delete state.ssr;
     return state;
 };
 export const asyncHadler = <T>(
@@ -64,27 +64,3 @@ app.listen(
     () => LOG(`SSR started listening on port: ${port}`),
 );
 LOG('SSR starting ...');
-
-// // const promisHandler = (resolve: Function, reject: Function) => {};
-// // const p = new Promise(promisHandler);
-
-// const renderPromis = (req: Request, res: Response, next: NextFunction): NextFunction => {
-
-//     new Promise((resolve: Function, reject: Function) => {
-//         const html = SSRapp(req);
-//         if (!html) {
-//             next;
-//         } else {
-//             resolve(html);
-//         }
-//     });
-//     asyncHadler(res, html, next);
-//     store.dispatch({
-//         type: RootActions.INIT_SERVER,
-//         payload: {isServer: true, props: {req, res}},
-//     } as IActions<ServerState>);
-
-//     LOG('\thandleRender', !html ? 'start asyncHadler' : `return ${html.length} characters`);
-//     return !html ? next :
-//         asyncHadler(res, html, next);
-// };
