@@ -2,6 +2,7 @@ import { Dispatch } from 'redux';
 import { fetchMovieById, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
+import RootActions from '../Root/rootActions';
 import DetailedViewState from './dvState';
 import { DvUiFnCalls } from './dvUI';
 import DvUrlProps from './dvUrlProps';
@@ -16,8 +17,6 @@ enum DetailedViewActions {
     URL_FETCH_MOVIE_SUCCESS = 'urlFetchFilmSuccess',
     URL_FETCH_MOVIE_FAILED = 'urlFetchFilmFailed',
     URL_FILM_ID = 'urlFilmId',
-    INIT = 'init',
-    RESET = 'reset',
 }
 
 export default DetailedViewActions;

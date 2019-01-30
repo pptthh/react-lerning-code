@@ -8,7 +8,7 @@ import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import { dvUrlPathBase } from '../DetaildView/dvUrlProps';
-import { dispatchAction, RootActions } from '../Root/rootActions';
+import RootActions, { dispatchAction } from '../Root/rootActions';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
 import { srUrlPathBase } from './srUrlProps';
@@ -26,9 +26,6 @@ const stateInit: SearchResultState = {
     moviesData: EmptyMovieList,
     details: 0,
 };
-
-const reset = ({state, payload}: ICase<SearchResultState>): SearchResultState =>
-    stateInit;
 
 const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
     ...state,
@@ -108,7 +105,7 @@ const movieClicked = ({ state, payload }: ICase<SearchResultState>): SearchResul
     details: Number(GET_ID(payload)),
 });
 
-const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => {
     state = {
         ...state,
         oldQuery: (payload as FetchProps<Movies>).query,
@@ -117,13 +114,13 @@ const urlSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultSt
             searchField: (payload as FetchProps<Movies>).query || '',
             searchDisabled: true,
         },
-    },
+    };
     FetchMovies({
         ...payload,
         request: getRequest(state),
-    } as FetchProps<Movies>),
-    state
-);
+    } as FetchProps<Movies>);
+    return state;
+};
 
 const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.CHANGE_SEARCH_TEXT]: changeSearchText,
@@ -136,8 +133,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
     [SearchResultActions.URL_SEARCH]: urlSearch,
-    [DetailedViewActions.INIT]: rootInit,
-    [DetailedViewActions.RESET]: reset,
+    [RootActions.INIT]: rootInit,
 };
 
 const SearchResultReducer = createReducer(SWITCH, stateInit);

@@ -1,3 +1,4 @@
+import { LOG_DEBUG } from '../../utils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import SearchResultActions from '../SearchResults/srActions';
 import store from './rootStore';
@@ -31,9 +32,8 @@ export interface IActions<T = unknown> {
     };
 }
 
-export enum RootActions {
-    // RESET = 'reset',
-    // INIT = 'init',
+enum RootActions {
+    INIT = 'init',
     // INIT_SERVER = 'initServer',
     // CLOSE_REQUEST = 'closeRequest',
     URL_CHANGED = 'urlChanged',
@@ -41,9 +41,12 @@ export enum RootActions {
     // URL_SEARCH = 'urlSearch',
 }
 
+export default RootActions;
+
 export const dispatchAction =
     (type: RootActions | DetailedViewActions | SearchResultActions, payload?: unknown) => (
     setTimeout(() => {
+        LOG_DEBUG('dispatchAction', type);
         store.dispatch({type, payload});
     }, 0)
 );

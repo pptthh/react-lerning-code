@@ -4,7 +4,7 @@ import { FetchProps } from '../../services/rest/fetchProps';
 import Movies, { Movie } from '../../services/rest/movie';
 import { DBG, GET_ID, GET_PROP, IS_SERVER, LOG_DEBUG } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
-import { dispatchAction, RootActions } from '../Root/rootActions';
+import RootActions, { dispatchAction } from '../Root/rootActions';
 import store from '../Root/rootStore';
 import SearchResultActions from '../SearchResults/srActions';
 import DetailedViewActions from './dvActions';
@@ -15,16 +15,20 @@ const stateInit: DetailedViewState = {
     results: [],
 };
 
-const reset = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState =>
-    stateInit;
-
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
 });
 
 const matchId = (id: number) => (movie: Movie) => movie.id === id;
 
-const urlFilmId = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
+const urlFilmId = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
+    // state = {
+    //     ...state,
+    //     id: GET_ID(payload),
+    // },
+    // FetchMovieById(payload as FetchProps<Movie>),
+    // state
+{
     ...state,
     id: GET_ID(payload),
 });
@@ -50,12 +54,12 @@ const clickSearchSuccess = ({ state, payload }: ICase<DetailedViewState>): Detai
 });
 
 const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
-IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
-{
+    LOG_DEBUG('genreLoadSuccess'),
+    IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
+    {
     ...state,
     results: (payload as Movies).data,
 });
-
 const loadFail = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
     DBG(),
     state
@@ -77,10 +81,13 @@ const urlFetchMovieSuccess = ({ state, payload }: ICase<DetailedViewState>): Det
     state
 );
 
-const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
-    ...state,
-    filedId: GET_PROP(payload, 'id'),
-});
+const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
+    LOG_DEBUG('urlFetchMovieFailed', payload),
+    {
+        ...state,
+        filedId: GET_PROP(payload, 'id'),
+    }
+);
 
 const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.INIT_DETAILED_VIEW]: initDetailedView,
@@ -92,7 +99,6 @@ const SWITCH: ISwitch<DetailedViewState> = {
     [DetailedViewActions.URL_FETCH_MOVIE]: urlFetchMovie,
     [DetailedViewActions.URL_FETCH_MOVIE_SUCCESS]: urlFetchMovieSuccess,
     [DetailedViewActions.URL_FETCH_MOVIE_FAILED]: urlFetchMovieFailed,
-    [DetailedViewActions.RESET]: reset,
 };
 
 const DetailedViewReducer = createReducer(SWITCH, stateInit);

@@ -20,7 +20,7 @@ const netUtils = {
     setUrlPath: (path: string) => {
         setTimeout(() => {
             !location.hash ?
-                location.pathname = '/' + path :
+                location.href = '/' + path :
                 location.hash = '#/' + path;
         }, 0);
     },

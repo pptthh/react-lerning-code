@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { fetchMovies, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
-import { IActions } from '../Root/rootActions';
+import RootActions, { IActions } from '../Root/rootActions';
 import SearchResultState from './srState';
 import { SrUiFnCalls } from './srUI';
 import SrUrlProps from './srUrlProps';
