@@ -1,4 +1,6 @@
 import { combineReducers, Reducer, ReducersMapObject } from 'redux';
+import ServerReducer from '../../ssr/serverReducer';
+import { IS_SERVER } from '../../utils';
 import DetailedViewReducer from '../DetaildView/dvReducer';
 import SearchResultReducer from '../SearchResults/srReducer';
 import RootState from './rootState';
@@ -13,5 +15,10 @@ const rootReducers: ReducersMapObject = {
     detailedView: DetailedViewReducer,
     searchResult: SearchResultReducer,
 };
+
+if (IS_SERVER()) {
+    rootReducers.ssr = ServerReducer;
+}
+
 const RootReducer: Reducer<RootState> = combineReducers(rootReducers);
 export default RootReducer;

@@ -4,14 +4,13 @@ import SearchResultActions from '../../scenes/SearchResults/srActions';
 import netUtils from '../../utils/netUtils';
 import Movies, { Movie } from './movie';
 
-interface FetchProps <T> {
+export interface FetchProps <T> {
     success?: (data: T) => void;
     fail?: (...msg: unknown[]) => void;
     request: string;
     id?: string;
     query?: string;
 }
-export default FetchProps;
 
 interface FetchPropsCreator {
     dispatch: Dispatch;

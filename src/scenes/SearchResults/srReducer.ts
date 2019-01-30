@@ -1,14 +1,14 @@
 import searchByEnum from '../../components/SearchForm/searchBy';
 import sortByEnum from '../../components/SearchSummary/sortBy';
-import FetchMovies, { getRequest } from '../../services/rest/fetchMovies';
-import FetchProps from '../../services/rest/fetchProps';
+import { FetchMovies, getRequest } from '../../services/rest/fetchMovies';
+import { FetchProps } from '../../services/rest/fetchProps';
 import Movies, { EmptyMovieList } from '../../services/rest/movie';
-import { DBG, EVENT_VALUE, GET_ID } from '../../utils';
+import { DBG, EVENT_VALUE, GET_ID, IS_SERVER } from '../../utils';
 import createReducer, { ICase, ISwitch } from '../../utils/createReducer';
 import netUtils from '../../utils/netUtils';
 import DetailedViewActions from '../DetaildView/dvActions';
 import { dvUrlPathBase } from '../DetaildView/dvUrlProps';
-import RootActions from '../Root/rootActions';
+import RootActions, { dispatchAction } from '../Root/rootActions';
 import SearchResultActions from './srActions';
 import SearchResultState from './srState';
 import { srUrlPathBase } from './srUrlProps';
@@ -74,7 +74,9 @@ FetchMovies({
     },
 });
 
-const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
+const clickSearchSuccess = ({ state, payload }: ICase<SearchResultState>): SearchResultState => (
+IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
+{
     ...state,
     moviesData: payload as Movies,
     searchForm: {
@@ -130,7 +132,7 @@ const SWITCH: ISwitch<SearchResultState> = {
     [SearchResultActions.INIT_SEARCH]: initSearch,
     [DetailedViewActions.MOVIE_CLICKED]: movieClicked,
     [DetailedViewActions.HIDE_DETAILS]: movieClicked,
-    [RootActions.URL_SEARCH]: urlSearch,
+    [SearchResultActions.URL_SEARCH]: urlSearch,
     [RootActions.INIT]: rootInit,
 };
 

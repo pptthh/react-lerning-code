@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Movie } from '../../services/rest/movie';
 
 export interface ResultItemProps extends Movie {
@@ -15,7 +16,8 @@ const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     genres,
     itemClick,
 }: ResultItemProps & ResultItemFnCalls) =>
-<div className='ResultItem' key={id}
+<Link to={'/film/' + id} key={id}  className='ResultItem'>
+<div
     onClick={() => itemClick(id)}>
     <img src={poster_path} width='100%'/>
     <div className='item-data'>
@@ -23,6 +25,7 @@ const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
         <div className='item-date'>{release_year}</div>
     </div>
     <div className='item-gerne'>{genres.join(' ')}</div>
-</div>;
+</div>
+</Link>;
 
 export default resultItem;

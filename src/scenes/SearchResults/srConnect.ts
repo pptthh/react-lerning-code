@@ -10,7 +10,7 @@ import srUI, { SrUiFnCalls } from './srUI';
 import SrUrlProps from './srUrlProps';
 
 const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
-    searchMatchQuery: srFnCalls[RootActions.URL_SEARCH](dispatch),
+    searchMatchQuery: srFnCalls[SearchResultActions.URL_SEARCH](dispatch),
     searchSummaryAction: {
         changeSortBy: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SORT_BY, payload: e}),
     },
@@ -29,23 +29,29 @@ const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     },
 });
 
-const mapStateToProps =
-       (state: RootState, match: SrUrlProps): SearchResultState => ({
-        ...state.searchResult,
-        searchSummary: {
-            ...state.searchResult.searchSummary,
-            resultCount: !state.searchResult.moviesData ? 0 :
-                    state.searchResult.moviesData.total,
-        },
-        results: state.searchResult.moviesData.data,
-        searchForm: {
-            ...state.searchResult.searchForm,
-            searchField: state.searchResult.searchForm.searchField,
-        },
-    });
+const mapStateToProps = (
+        state: RootState,
+        match: SrUrlProps,
+    ): SearchResultState => ({
+    ...state.searchResult,
+    searchSummary: {
+        ...state.searchResult.searchSummary,
+        resultCount: !state.searchResult.moviesData ? 0 :
+                state.searchResult.moviesData.total,
+    },
+    results: state.searchResult.moviesData.data,
+    searchForm: {
+        ...state.searchResult.searchForm,
+        searchField: state.searchResult.searchForm.searchField,
+    },
+});
 
-const SearchResults = withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(srUI));
+const SearchResults =
+withRouter
+(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps,
+    )(srUI),
+);
 export default SearchResults;

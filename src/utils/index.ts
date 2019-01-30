@@ -4,6 +4,7 @@ export const NOOP = (a?:any) => {};
 export const TEST = process.env.NODE_ENV === 'test';
 export const PROD = process.env.NODE_ENV === 'poduction';
 export const DEV = process.env.NODE_ENV === 'development';
+export const IS_SERVER = () => process.env.NODE_SERVER === 'true';
 
 const cnsl = DEV ? console : {log: NOOP, debug: NOOP, info: NOOP, warn: NOOP, error: NOOP};
 export const LOG = cnsl.log; // (msg: any) => { return; };

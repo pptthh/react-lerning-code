@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir":"../../public/generated/",
+        "sourceMap": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "esModuleInterop": false,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "target": "es6",
+        "allowJs": true,
+        "jsx": "react",
+        "downlevelIteration": true
+    },
+    "files": [
+        "client.tsx"
+    ],
+    "include": [
+        "./*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -1,6 +1,5 @@
-import { string } from 'prop-types';
 import { Dispatch } from 'redux';
-import FetchProps, { fetchMovies } from '../../services/rest/fetchProps';
+import { fetchMovies, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
 import RootActions, { IActions } from '../Root/rootActions';
@@ -16,18 +15,21 @@ enum SearchResultActions {
     CLICK_SEARCH = 'clickSearch',
     CLICK_SEARCH_SUCCESS = 'clickSearchSuccess',
     CLICK_SEARCH_FAILED = 'clickSearchFail',
+    URL_SEARCH = 'urlSearch',
+    CLOSE_REQUEST = 'closeRequest',
+    INIT_SERVER = 'initServer',
 }
 
 export default SearchResultActions;
 
 export const srFnCalls = {
-    [RootActions.URL_SEARCH]: (
+    [SearchResultActions.URL_SEARCH]: (
         (dispatch: Dispatch<IActions>) =>
         (props: SearchResultState & SrUiFnCalls & SrUrlProps) =>
         !props.match.params || !props.match.params.query ||
         props.match.params.query === props.oldQuery ? true :
             (dispatch({
-                type: RootActions.URL_SEARCH,
+                type: SearchResultActions.URL_SEARCH,
                 payload: fetchMovies({
                     dispatch,
                     query: props.match.params.query,
