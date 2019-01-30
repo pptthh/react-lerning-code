@@ -16,8 +16,8 @@ const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     genres,
     itemClick,
 }: ResultItemProps & ResultItemFnCalls) =>
-<Link to={'/film/' + id}>
-<div className='ResultItem' key={id}
+<Link to={'/film/' + id} key={id}  className='ResultItem'>
+<div
     onClick={() => itemClick(id)}>
     <img src={poster_path} width='100%'/>
     <div className='item-data'>
