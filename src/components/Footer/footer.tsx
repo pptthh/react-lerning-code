@@ -5,7 +5,7 @@ interface FooterProps {
     tooltip?: string;
 }
 
-const Footer = ({children = 'netflixroulette', tooltip = ''}: FooterProps): JSX.Element =>
+const Footer = ({ children = 'netflixroulette', tooltip = '' }: FooterProps): JSX.Element =>
     <h5 className='Footer' title={tooltip}>{children}</h5>;
 
 export default Footer;

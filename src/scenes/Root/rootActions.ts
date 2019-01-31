@@ -47,6 +47,6 @@ export const dispatchAction =
     (type: RootActions | DetailedViewActions | SearchResultActions, payload?: unknown) => (
     setTimeout(() => {
         LOG_DEBUG('dispatchAction', type);
-        store.dispatch({type, payload});
+        store.dispatch({ type, payload });
     }, 0)
 );

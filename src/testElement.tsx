@@ -12,7 +12,7 @@ const listChildren = (props: TestElementProps) =>
     !Array.isArray(props.children) ? showChild(props) :
         showChildren(props.children, props.disableErrorCatching);
 
-const showChild = ({children, disableErrorCatching = false}: TestElementProps) => (
+const showChild = ({ children, disableErrorCatching = false }: TestElementProps) => (
 <div className='content'>
     {disableErrorCatching ? children : <>{children}</>}
 </div>);

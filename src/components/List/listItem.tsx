@@ -5,6 +5,6 @@ export interface IListItem {
     time: number;
 }
 
-const ListItem = ({time, text}: IListItem) => <li className='ListItem'>{text}</li>;
+const ListItem = ({ time, text }: IListItem) => <li className='ListItem'>{text}</li>;
 
 export default ListItem;

@@ -6,7 +6,7 @@ import createReducer, { ICase, ISwitch } from '../utils/createReducer';
 import ServerState from './serverState';
 import SSRapp from './ssrApp';
 
-const stateInit: ServerState = {isServer: IS_SERVER()};
+const stateInit: ServerState = { isServer: IS_SERVER() };
 
 const initServer = ({ state, payload }: ICase<ServerState>): ServerState =>
     payload as ServerState;
@@ -19,7 +19,7 @@ const handleSuccess = ({ state, payload }: ICase<ServerState>): ServerState => (
     setTimeout(() => {
         LOG('handleSuccess.setTimeout'),
         state.props && LOG(SSRapp(state.props.req));
-        store.dispatch({type: SearchResultActions.CLOSE_REQUEST});
+        store.dispatch({ type: SearchResultActions.CLOSE_REQUEST });
     }, Number('1')),
     state
 );

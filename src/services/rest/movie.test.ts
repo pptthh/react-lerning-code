@@ -26,5 +26,4 @@ describe('movie tests:', () => {
     it('validateMovies', () => {
         validateMovies(EmptyMovieList);
     });
-
 });

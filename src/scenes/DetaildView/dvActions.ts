@@ -22,8 +22,8 @@ export default DetailedViewActions;
 
 export const fetchGenre = (dispatch: Dispatch, id: string): FetchProps<Movies> => ({
     request: netUtils.MOVIES_URL,
-    success: (data: Movies) => dispatch({type: DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
-    fail: (e: unknown) => dispatch({type: DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
+    success: (data: Movies) => dispatch({ type: DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data }),
+    fail: (e: unknown) => dispatch({ type: DetailedViewActions.GENRE_LOAD_FAILED, payload: e }),
     id,
 });
 

@@ -5,7 +5,7 @@ import * as React from 'react';
 import { NOOP } from '../../utils';
 import Button from './button';
 
-configure({adapter: new ReactSixteenAdapter()});
+configure({ adapter: new ReactSixteenAdapter() });
 
 describe('describe Button', () => {
     it('renders correctly with Label only', () => {

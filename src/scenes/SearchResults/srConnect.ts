@@ -12,14 +12,14 @@ import SrUrlProps from './srUrlProps';
 const mapDispatchToProps = (dispatch: Dispatch): SrUiFnCalls => ({
     searchMatchQuery: srFnCalls[SearchResultActions.URL_SEARCH](dispatch),
     searchSummaryAction: {
-        changeSortBy: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SORT_BY, payload: e}),
+        changeSortBy: (e: unknown) => dispatch({ type: SearchResultActions.CHANGE_SORT_BY, payload: e }),
     },
     searchFormActions: {
         searchAction: (e: unknown) => dispatch(
             srFnCalls.offlineActions.searchAction(dispatch),
         ),
-        searchByAction: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SEARCH_BY, payload: e}),
-        searchFieldTypeAction: (e: unknown) => dispatch({type: SearchResultActions.CHANGE_SEARCH_TEXT, payload: e}),
+        searchByAction: (e: unknown) => dispatch({ type: SearchResultActions.CHANGE_SEARCH_BY, payload: e }),
+        searchFieldTypeAction: (e: unknown) => dispatch({ type: SearchResultActions.CHANGE_SEARCH_TEXT, payload: e }),
     },
     resultsItemAction: {
         itemClick: (id: number) => dispatch({

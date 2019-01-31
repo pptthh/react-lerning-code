@@ -6,7 +6,7 @@ export const PROD = process.env.NODE_ENV === 'poduction';
 export const DEV = process.env.NODE_ENV === 'development';
 export const IS_SERVER = () => process.env.NODE_SERVER === 'true';
 
-const cnsl = DEV ? console : {log: NOOP, debug: NOOP, info: NOOP, warn: NOOP, error: NOOP};
+const cnsl = DEV ? console : { log: NOOP, debug: NOOP, info: NOOP, warn: NOOP, error: NOOP };
 export const LOG = cnsl.log; // (msg: any) => { return; };
 export const LOG_DEBUG = cnsl.debug;
 export const LOG_INFO = cnsl.info;

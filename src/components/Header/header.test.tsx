@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import * as React from 'react';
 import Header from './header';
 
-configure({adapter: new ReactSixteenAdapter()});
+configure({ adapter: new ReactSixteenAdapter() });
 
 it('renders correctly with Header', () => {
     const tree = render(<Header>Panel Header</Header>);

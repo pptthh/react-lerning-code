@@ -48,7 +48,7 @@ export const fetchMovieById = ({
     }),
     fail: (e: unknown) => dispatch({
         type: DetailedViewActions.URL_FETCH_MOVIE_FAILED,
-        payload: {error: e, id},
+        payload: { error: e, id },
     }),
     id,
 });

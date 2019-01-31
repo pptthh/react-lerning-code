@@ -8,7 +8,7 @@ export interface IResultsBody {
 
 const ResultsBody: React.SFC<IResultsBody> = (props: IResultsBody) => (
 <div className='ResultsBody'>
-    {props.results.map((item) => resultItem({...item, ...props.fnCalls}))}
+    {props.results.map((item) => resultItem({ ...item, ...props.fnCalls }))}
 </div>);
 
 export default ResultsBody;

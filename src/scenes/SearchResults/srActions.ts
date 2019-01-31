@@ -41,7 +41,7 @@ export const srFnCalls = {
     offlineActions: {
         searchAction: (dispatch: Dispatch): IActions<FetchProps<Movies>> => ({
             type: SearchResultActions.CLICK_SEARCH,
-            payload: fetchMovies({dispatch}),
+            payload: fetchMovies({ dispatch }),
             meta: {
                 offline: {
                     effect: {
