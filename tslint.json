@@ -1,10 +1,16 @@
 {
     "defaultSeverity": "warn",
-    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+    "extends": [
+        "tslint-eslint-rules-recommended",
+        "tslint:latest",
+        "tslint-config-prettier",
+        "tslint-config-airbnb",
+        "tslint-react"
+    ],
     "linterOptions": {
         "exclude": [
-            "config/**/*.js",
-            "node_modules/**/*.ts",
+            "config/**/*.*",
+            "node_modules/**/*.*",
             "coverage/lcov-report/*.js"
         ]
     },
