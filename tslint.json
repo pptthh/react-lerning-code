@@ -1,11 +1,11 @@
 {
     "defaultSeverity": "warn",
     "extends": [
+        "tslint-config-prettier",
         "tslint-eslint-rules-recommended",
-        "tslint-config-airbnb",
         "tslint:recommended",
         "tslint-react",
-        "tslint-config-prettier"
+        "tslint-config-airbnb",
     ],
     "linterOptions": {
         "exclude": [

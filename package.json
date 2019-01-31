@@ -29,7 +29,6 @@
         "tslint": "tslint",
         "checkStyle": "npm run tslint --project src/**/*.{ts,tsx}",
         "fixStyle": "npm run checkStyle --fix"
-        
     },
     "nodemonConfig": {
         "delay": "1000"
@@ -157,6 +156,7 @@
         "tslint-config-airbnb-base": "^0.2.0",
         "tslint-config-prettier": "1.17.0",
         "tslint-eslint-rules-recommended": "^1.2.0",
+        "tslint-language-service": "^0.9.9",
         "tslint-react": "3.6.0",
         "typescript": "3.2.4",
         "uglifyjs-webpack-plugin": "2.1.1",
