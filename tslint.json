@@ -3,10 +3,10 @@
     "extends": [
         "tslint-config-prettier",
         "tslint-eslint-rules-recommended",
-        "tslint:recommended",
-        "tslint-react"//,
         // "tslint-config-airbnb-base",
         // "tslint-config-airbnb"
+        "tslint:recommended",
+        "tslint-react"
     ],
     "linterOptions": {
         "exclude": [

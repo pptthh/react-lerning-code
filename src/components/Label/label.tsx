@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { NOOP } from '../../utils';
 
 export interface ILabel {
     id?: string;
@@ -16,11 +15,13 @@ const Label = ({
     tooltip,
     children,
     className,
-}: ILabel): JSX.Element =>
-<span id={id}
+}: ILabel): JSX.Element => (
+<span
+    id={id}
     className={className}
     title={tooltip}
-    onClick={onClick}>{children}
-</span>;
+    onClick={onClick}
+>{children}
+</span>);
 
 export default Label;

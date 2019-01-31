@@ -18,10 +18,9 @@ const SearchSummary: React.SFC<SearchSummaryProps & SearchSummaryAction> = ({
     resultSort,
     changeSortBy,
 }: SearchSummaryProps & SearchSummaryAction) =>
-!resultCount ? <div className='SearchSummary'/> :
+!resultCount ? <div className='SearchSummary'/> : (
 <div className='SearchSummary'>
-    <div
-        className='movies-found'>
+    <div className='movies-found'>
         {moviesFound(resultCount)}
     </div>
     <div>
@@ -37,6 +36,6 @@ const SearchSummary: React.SFC<SearchSummaryProps & SearchSummaryAction> = ({
             ]}
         />
     </div>
-</div>;
+</div>);
 
 export default SearchSummary;

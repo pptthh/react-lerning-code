@@ -5,9 +5,9 @@ export interface IList {
     list: IListItem[];
 }
 
-const List = ({list}: IList): JSX.Element =>
+const List = ({list}: IList): JSX.Element => (
 <ul className='list'>
     {list.map((item: IListItem) => <ListItem {...item} key={item.time}/>)}
-</ul>;
+</ul>);
 
 export default List;

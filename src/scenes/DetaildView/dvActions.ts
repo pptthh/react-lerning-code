@@ -2,7 +2,6 @@ import { Dispatch } from 'redux';
 import { fetchMovieById, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
-import RootActions from '../Root/rootActions';
 import DetailedViewState from './dvState';
 import { DvUiFnCalls } from './dvUI';
 import DvUrlProps from './dvUrlProps';
@@ -37,7 +36,7 @@ export const dvFnCalls = {
     [DetailedViewActions.URL_FILM_ID]:
         (dispatch: Dispatch) =>
         (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean =>
-            !!props.detailedPanel ? true :
+            props.detailedPanel ? true :
             (dispatch({
                 type: DetailedViewActions.URL_FETCH_MOVIE,
                 payload: fetchMovieById({

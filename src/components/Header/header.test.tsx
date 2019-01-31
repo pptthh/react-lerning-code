@@ -1,8 +1,8 @@
+import { configure, render, shallow } from 'enzyme';
+import * as ReactSixteenAdapter from 'enzyme-adapter-react-16';
+import toJson from 'enzyme-to-json';
 import * as React from 'react';
 import Header from './header';
-import toJson from 'enzyme-to-json';
-import * as ReactSixteenAdapter from 'enzyme-adapter-react-16';
-import {configure, render, shallow} from 'enzyme';
 
 configure({adapter: new ReactSixteenAdapter()});
 

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { Movie } from '../../services/rest/movie';
 
 export interface ResultItemProps extends Movie {
-    release_year: string;
+  release_year: string;
 }
 export interface ResultItemFnCalls {
-    itemClick: (id: number) => void;
+  itemClick: (id: number) => void;
 }
 const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     id,
@@ -15,10 +15,11 @@ const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     release_year,
     genres,
     itemClick,
-}: ResultItemProps & ResultItemFnCalls) =>
-<Link to={'/film/' + id} key={id}  className='ResultItem'>
+}: ResultItemProps & ResultItemFnCalls) => (
+<Link to={`/film/${id}`} key={id} className='ResultItem'>
 <div
-    onClick={() => itemClick(id)}>
+    onClick={() => itemClick(id)}
+>
     <img src={poster_path} width='100%'/>
     <div className='item-data'>
         <div className='item-title'>{title}</div>
@@ -26,6 +27,6 @@ const resultItem: React.SFC<ResultItemProps & ResultItemFnCalls> = ({
     </div>
     <div className='item-gerne'>{genres.join(' ')}</div>
 </div>
-</Link>;
+</Link>);
 
 export default resultItem;
