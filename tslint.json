@@ -4,9 +4,9 @@
         "tslint-config-prettier",
         "tslint-eslint-rules-recommended",
         "tslint:recommended",
-        "tslint-react",
-        "tslint-config-airbnb-base",
-        "tslint-config-airbnb"
+        "tslint-react"//,
+        // "tslint-config-airbnb-base",
+        // "tslint-config-airbnb"
     ],
     "linterOptions": {
         "exclude": [
@@ -42,7 +42,9 @@
         "jsx-key": true,
         "jsx-no-lambda": false,
         "jsx-no-multiline-js": false,
+        "jsx-wrap-multiline": true,
         "label-position": true,
+        "linebreak-style": [true, "CRLF"],
         "max-line-length": [ true, 200 ],
         "ordered-imports": true,
         "member-ordering": [

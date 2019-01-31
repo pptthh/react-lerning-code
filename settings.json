@@ -1,0 +1,7 @@
+{
+    "files.eol": "\r\n",
+    "editor.tabSize": 4,
+    "files.insertFinalNewline": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+}

@@ -27,7 +27,7 @@
         "e2e:open": "npm run cypress open",
         "tsc": "tsc",
         "tslint": "tslint",
-        "checkStyle": "npm run tslint --project src/**/*.{ts,tsx}",
+        "checkStyle": "npm run tslint --project src/**/*.{ts,tsx} --config tslint.json",
         "fixStyle": "npm run checkStyle --fix"
     },
     "nodemonConfig": {

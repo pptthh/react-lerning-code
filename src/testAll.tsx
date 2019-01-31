@@ -9,7 +9,7 @@ import Label from './components/Label/label';
 import SearchSummary from './components/SearchSummary/searchSummary';
 import sortByEnum from './components/SearchSummary/sortBy';
 import './TestAll.css';
-import TestElement from './TestElement';
+import TestElement from './testElement';
 import { LOG } from './utils';
 
 const enableBuggyComponent = false;
@@ -21,7 +21,7 @@ const filmResult = [/* tslint:disable */
 ]; /* tslint:enable */
 const filmResultAction: ResultItemFnCalls = {itemClick: (id: number) => {LOG(id); }};
 
-const TestAll: React.SFC<object> = () =>
+const TestAll: React.SFC<object> = () => (
 <div className='TestApp'>
     <header className='TestApp-title'>
         <h1>Welcome to Movie search test component page</h1>
@@ -40,7 +40,7 @@ const TestAll: React.SFC<object> = () =>
         <FoundMovies
             results={filmResult}
             fnCalls={filmResultAction}
-            />
+        />
     </TestElement>
     <TestElement name='Simple Components'>
         <Footer/>
@@ -48,6 +48,7 @@ const TestAll: React.SFC<object> = () =>
         <Label>simple label</Label>
         <Button label='Button' onClick={LOG}/>
     </TestElement>
-</div>;
+</div>
+);
 
 export default TestAll;
