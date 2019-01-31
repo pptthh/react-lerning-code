@@ -5,7 +5,8 @@
         "tslint-eslint-rules-recommended",
         "tslint:recommended",
         "tslint-react",
-        "tslint-config-airbnb",
+        "tslint-config-airbnb-base",
+        "tslint-config-airbnb"
     ],
     "linterOptions": {
         "exclude": [
