@@ -72,7 +72,7 @@ const urlFetchMovieSuccess = ({ state, payload }: ICase<DetailedViewState>): Det
     state
 );
 
-const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
+const urlFetchMovieFailed = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (DBG(),
     LOG_DEBUG('urlFetchMovieFailed', payload),
     {
         ...state,
