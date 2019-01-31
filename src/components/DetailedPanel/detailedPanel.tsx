@@ -2,14 +2,16 @@ import * as React from 'react';
 import { Movie } from '../../services/rest/movie';
 import Label from '../Label/label';
 
-const DetailedPanel: React.SFC<Movie> = (props: Movie) =>
+const precision = 2;
+
+const DetailedPanel: React.SFC<Movie> = (props: Movie) => (
 <div className='DetailedPanel'>
     <img src={props.poster_path} />
     <div className='fimlData'>
         <div>
             <Label id='filmTitle'>{props.title}</Label>
             {!props.vote_average ? <></> :
-                <Label id='filmRating'>{props.vote_average.toPrecision(2)}</Label>
+                <Label id='filmRating'>{props.vote_average.toPrecision(precision)}</Label>
             }
         </div>
         <span>&nbsp;</span>
@@ -22,5 +24,5 @@ const DetailedPanel: React.SFC<Movie> = (props: Movie) =>
             <Label id='fimlDescription'>{props.overview}</Label>
         </div>
     </div>
-</div>;
+</div>);
 export default DetailedPanel;

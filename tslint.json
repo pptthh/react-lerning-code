@@ -10,6 +10,7 @@
     ],
     "linterOptions": {
         "exclude": [
+            "./*.*",
             "config/**/*.*",
             "node_modules/**/*.*",
             "coverage/lcov-report/*.js"
@@ -44,7 +45,7 @@
         "jsx-no-multiline-js": false,
         "jsx-wrap-multiline": true,
         "label-position": true,
-        "linebreak-style": [true, "CRLF"],
+        "linebreak-style": [false, "LF"],
         "max-line-length": [ true, 200 ],
         "ordered-imports": true,
         "member-ordering": [
