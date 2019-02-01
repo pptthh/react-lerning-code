@@ -9,6 +9,7 @@
         "module": "esnext",
         "moduleResolution": "node",
         "target": "es6",
+        "lib": ["es5", "es6", "es7", "es2017", "dom"],
         "allowJs": true,
         "jsx": "react",
         "plugins": [
@@ -16,6 +17,12 @@
         ]
     },
     "include": [
-        "./src/**/*", "webpack.common.js"
+        "./src/**/*",
+        "webpack.common.js"
+    ],
+    "exclude": [
+        "node_modules",
+        "build",
+        "scripts"
     ]
 }
