@@ -47,14 +47,16 @@
                     "modules": false
                 }
             ],
-            "@babel/preset-react",
-            {
-                "pragma": "React.createElement",
-                "pragmaFrag": "React.Fragment",
-                "throwIfNamespace": true,
-                "useBuiltIns": false,
-                "development": true
-            }
+            [
+                "@babel/preset-react",
+                {
+                    "pragma": "React.createElement",
+                    "pragmaFrag": "React.Fragment",
+                    "throwIfNamespace": true,
+                    "useBuiltIns": false,
+                    "development": true
+                }
+            ]
         ],
         "plugins": [
             "react-hot-loader/babel"
