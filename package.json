@@ -29,7 +29,7 @@
         "tslint": "tslint",
         "checkStyle": "npm run tslint --project src/**/*.{ts,tsx} --config tslint.json",
         "fixStyle": "npm run checkStyle --fix",
-        "storybook": "start-storybook -p 8008",
+        "storybook": "start-storybook -p 8008 -c ./.storybook",
         "build-storybook": "build-storybook"
     },
     "repository": {

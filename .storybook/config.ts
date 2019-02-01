@@ -4,12 +4,12 @@ import { configure } from '@storybook/react';
 const req = require.context(
     '../stories',
     true,
-    /.stories.tsx$/
+    /.stories.tsx$/,
 );
-function loadStories() {
+const loadStories = () => {
     req.keys().forEach(
-        filename => req(filename)
+        req,
     );
-}
+};
 
 configure(loadStories, module);
