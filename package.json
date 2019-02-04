@@ -179,7 +179,7 @@
         "tslint-config-prettier": "1.17.0",
         "tslint-eslint-rules-recommended": "1.2.0",
         "tslint-react": "3.6.0",
-        "typescript": "3.2.4",
+        "typescript": "3.3.1",
         "uglifyjs-webpack-plugin": "2.1.1",
         "webpack": "4.29.0",
         "webpack-cli": "3.2.1",
