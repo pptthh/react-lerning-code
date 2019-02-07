@@ -35,12 +35,12 @@ describe('utils testing', () => {
         expect(EVENT_VALUE({}))
             .toEqual(EVENT_VALUE_ERROR);
         const readedValue = 0;
-        expect(EVENT_VALUE({target: {value: readedValue}}))
+        expect(EVENT_VALUE({ target: { value: readedValue }}))
             .toEqual(readedValue);
     });
 
     it('CLONE', () => {
-        const obj = {value: 'value'};
+        const obj = { value: 'value' };
         expect(CLONE(obj)).toEqual(obj);
         expect(CLONE(obj) === obj).toEqual(false);
     });
@@ -49,7 +49,7 @@ describe('utils testing', () => {
         expect(EVENT_VALUE({}))
             .toEqual(EVENT_VALUE_ERROR);
         const readedValue = 0;
-        expect(EVENT_VALUE({target: {value: readedValue}}))
+        expect(EVENT_VALUE({ target: { value: readedValue }}))
             .toEqual(readedValue);
     });
 

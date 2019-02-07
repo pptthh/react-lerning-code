@@ -27,14 +27,15 @@ const TextInput: React.SFC<ITextInput> = ({
     onChange,
     onEnter,
     placeholder,
-}: ITextInput): JSX.Element =>
-    <input type='text'
+}: ITextInput): JSX.Element => (
+    <input
+        type='text'
         name={name}
         value={value}
         className={className}
         onChange={onChange}
         placeholder={placeholder}
         onKeyUp={(e) => onKeyUp(e, onEnter)}
-    />;
+    />);
 
 export default TextInput;

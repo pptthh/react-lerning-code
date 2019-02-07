@@ -2,7 +2,6 @@ import { Dispatch } from 'redux';
 import { fetchMovieById, FetchProps } from '../../services/rest/fetchProps';
 import Movies from '../../services/rest/movie';
 import netUtils from '../../utils/netUtils';
-import RootActions from '../Root/rootActions';
 import DetailedViewState from './dvState';
 import { DvUiFnCalls } from './dvUI';
 import DvUrlProps from './dvUrlProps';
@@ -23,8 +22,8 @@ export default DetailedViewActions;
 
 export const fetchGenre = (dispatch: Dispatch, id: string): FetchProps<Movies> => ({
     request: netUtils.MOVIES_URL,
-    success: (data: Movies) => dispatch({type: DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data}),
-    fail: (e: unknown) => dispatch({type: DetailedViewActions.GENRE_LOAD_FAILED, payload: e}),
+    success: (data: Movies) => dispatch({ type: DetailedViewActions.GENRE_LOAD_SUCCESS, payload: data }),
+    fail: (e: unknown) => dispatch({ type: DetailedViewActions.GENRE_LOAD_FAILED, payload: e }),
     id,
 });
 
@@ -37,7 +36,7 @@ export const dvFnCalls = {
     [DetailedViewActions.URL_FILM_ID]:
         (dispatch: Dispatch) =>
         (props: DetailedViewState & DvUiFnCalls & DvUrlProps): boolean =>
-            !!props.detailedPanel ? true :
+            props.detailedPanel ? true :
             (dispatch({
                 type: DetailedViewActions.URL_FETCH_MOVIE,
                 payload: fetchMovieById({

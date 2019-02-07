@@ -16,7 +16,7 @@ export interface SrUiFnCalls {
 
 const srUI: React.SFC<SearchResultState & SrUiFnCalls & SrUrlProps> =
 (props) =>
-!props.searchMatchQuery(props) ? <></> :
+!props.searchMatchQuery(props) ? <></> : (
 <>
     <Header>
         netflixroulette
@@ -36,6 +36,6 @@ const srUI: React.SFC<SearchResultState & SrUiFnCalls & SrUrlProps> =
         results={props.results}
         fnCalls={props.resultsItemAction}
     />
-</>;
+</>);
 
 export default srUI;

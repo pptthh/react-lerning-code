@@ -27,7 +27,7 @@ const stateInit: SearchResultState = {
     details: 0,
 };
 
-const initSearch = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
+const initSearch = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ...state,
 });
 
@@ -52,7 +52,7 @@ const changeSearchBy = ({ state, payload }: ICase<SearchResultState>): SearchRes
     },
 });
 
-const changeSorthBy = ({state, payload}: ICase<SearchResultState>): SearchResultState => ({
+const changeSorthBy = ({ state, payload }: ICase<SearchResultState>): SearchResultState => ({
     ...state,
     searchSummary: {
         ...state.searchSummary,

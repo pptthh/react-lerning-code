@@ -21,7 +21,7 @@ interface Movies {
     limit: number;
 }
 
-export const EmptyMovieList: Movies = {data: [], total: 0, offset: 0, limit: 0};
+export const EmptyMovieList: Movies = { data: [], total: 0, offset: 0, limit: 0 };
 export default Movies;
 
 export const validateMovies = (movies: Movies): Movies => movies;

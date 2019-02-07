@@ -41,7 +41,7 @@ const handleRender = (req: Request, res: Response, next: NextFunction): NextFunc
         type: SearchResultActions.INIT_SERVER,
         payload: {
             isServer: true,
-            props: {req, res},
+            props: { req, res },
             callBack: (htmlText: string) => asyncHadler(res, htmlText, undefined),
         },
     } as IActions<ServerState>);

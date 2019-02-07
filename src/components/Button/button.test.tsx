@@ -2,10 +2,10 @@ import { configure, render, shallow } from 'enzyme';
 import * as ReactSixteenAdapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
 import * as React from 'react';
-import Button from './button';
 import { NOOP } from '../../utils';
+import Button from './button';
 
-configure({adapter: new ReactSixteenAdapter()});
+configure({ adapter: new ReactSixteenAdapter() });
 
 describe('describe Button', () => {
     it('renders correctly with Label only', () => {

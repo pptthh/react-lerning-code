@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/button';
 import DetailedPanel from '../../components/DetailedPanel/detailedPanel';
 import FoundMovies from '../../components/FoundMovies';
@@ -9,7 +10,6 @@ import { IS_SERVER } from '../../utils';
 import { pageNotFound } from '../Root/rootView';
 import DetailedViewState from './dvState';
 import DvUrlProps from './dvUrlProps';
-import { Link } from 'react-router-dom';
 
 export interface DvUiFnCalls {
     resultsItemFnCalls: ResultItemFnCalls;
@@ -22,7 +22,7 @@ const dvUI =
 (props: DetailedViewState & DvUiFnCalls & DvUrlProps) =>
 props.filedId === props.match.params.id ? <>movie not found {pageNotFound()}</> :
 !props.urlOpenedFnCalls(props) ? <LoadingMovie/> :
-!props.detailedPanel ? <LoadingMovie/> :
+!props.detailedPanel ? <LoadingMovie/> : (
 <div>
     <Header>
         netflixroulette
@@ -47,6 +47,6 @@ props.filedId === props.match.params.id ? <>movie not found {pageNotFound()}</> 
         results={props.results}
         fnCalls={props.resultsItemFnCalls}
     />
-</div>;
+</div>);
 
 export default dvUI;

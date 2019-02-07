@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import * as React from 'react';
 import List from './list';
 
-configure({adapter: new ReactSixteenAdapter()});
+configure({ adapter: new ReactSixteenAdapter() });
 
 it('renders correctly List with correct data', () => {
     const LIST_TEST = [

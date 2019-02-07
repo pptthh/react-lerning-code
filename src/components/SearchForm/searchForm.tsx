@@ -23,7 +23,7 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormFnCalls> = ({
     searchFieldTypeAction,
     searchByAction,
     searchAction,
-}) =>
+}) => (
 <div className='SearchForm'>
     <div>FIND YOUR MOVIE</div>
     <TextInput
@@ -51,6 +51,6 @@ const SearchForm: React.SFC<SearchFormProps & SearchFormFnCalls> = ({
             disabled={searchDisabled}
         />
     </div>
-</div>;
+</div>);
 
 export default SearchForm;

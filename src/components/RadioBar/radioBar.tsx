@@ -17,7 +17,7 @@ const RadioBar = ({
     className,
     onChange,
     labelTransform = ECHO,
-}: RadioBarProps) =>
+}: RadioBarProps) => (
 <>
 {
     labels.map(
@@ -31,17 +31,17 @@ const RadioBar = ({
                 className={className}
                 defaultChecked={selected === value}
                 onChange={onChange}
-                />
+            />
             <label
                 key={value}
                 htmlFor={value}
                 className={className}
-                >
+            >
                 {labelTransform(value)}
             </label>
         </span>,
     )
 }
-</>;
+</>);
 
 export default RadioBar;
