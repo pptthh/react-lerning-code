@@ -1,3 +1,5 @@
+import { Map, List } from 'immutable';
+import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import FetchMovieById from '../../services/rest/fetchMovieById';
 import { FetchMovies, getRequest4Genre } from '../../services/rest/fetchMovies';
 import { FetchProps } from '../../services/rest/fetchProps';
@@ -9,10 +11,10 @@ import SearchResultActions from '../SearchResults/srActions';
 import DetailedViewActions from './dvActions';
 import DetailedViewState from './dvState';
 
-const stateInit: DetailedViewState = {
-    data: [],
-    results: [],
-};
+const stateInit: DetailedViewState = Map<DetailedViewState>({
+    data: List<Movie>([]),
+    results: List<ResultItemProps>([]),
+});
 
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
