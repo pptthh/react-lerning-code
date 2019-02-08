@@ -1,5 +1,6 @@
 **/*.log
 **/*.tmp
+**/*.tmp.js
 SSR-next
 dist
 node_modules
