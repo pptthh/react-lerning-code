@@ -17,8 +17,8 @@ export interface ITextInput {
     placeholder?: string;
 }
 
-const onKeyUp = (event: React.KeyboardEvent<HTMLInputElement>, onEnter?: Function) =>
-    event.key === KeyCodes.ENTER && onEnter ? onEnter() : undefined;
+const onKeyUp = (event: React.KeyboardEvent<HTMLInputElement>, onEnter?: (e: unknown) => void) =>
+    event.key === KeyCodes.ENTER && onEnter ? onEnter(event) : undefined;
 
 const TextInput: React.SFC<ITextInput> = ({
     name,
