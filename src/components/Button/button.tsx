@@ -7,6 +7,7 @@ export interface IButton {
     className?: string;
     disabled?: boolean;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
+    children?: unknown;
 }
 
 const Button = ({ disabled= false, name, label, onClick, className, tooltip }: IButton) => (

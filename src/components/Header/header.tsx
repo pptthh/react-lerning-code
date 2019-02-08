@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface HeaderProps {
+export interface HeaderProps {
     // tslint:disable-next-line:no-any
     children: any;
     tooltip?: string;

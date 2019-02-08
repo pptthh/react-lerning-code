@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ECHO } from '../../utils';
 
-interface RadioBarProps {
+export interface RadioBarProps {
     labels: string[];
     name: string;
     selected?: string;

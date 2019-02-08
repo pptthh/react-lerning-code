@@ -1,6 +1,8 @@
+import { List } from 'immutable';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dispatch } from 'redux';
+import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import DetailedViewActions, { fetchGenre } from '../DetaildView/dvActions';
 import RootActions from '../Root/rootActions';
 import RootState from '../Root/rootState';
@@ -39,7 +41,7 @@ const mapStateToProps = (
         resultCount: !state.searchResult.moviesData ? 0 :
                 state.searchResult.moviesData.total,
     },
-    results: state.searchResult.moviesData.data,
+    results: List<ResultItemProps>(state.searchResult.moviesData.data),
     searchForm: {
         ...state.searchResult.searchForm,
         searchField: state.searchResult.searchForm.searchField,

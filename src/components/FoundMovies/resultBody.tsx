@@ -1,8 +1,9 @@
+import { List } from 'immutable';
 import * as React from 'react';
 import resultItem, { ResultItemFnCalls, ResultItemProps } from './resultItem';
 
 export interface IResultsBody {
-    results: ResultItemProps[];
+    results: List<ResultItemProps>;
     fnCalls: ResultItemFnCalls;
 }
 

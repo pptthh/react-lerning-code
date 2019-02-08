@@ -1,6 +1,8 @@
 import * as React from 'react';
+import injectSheet from 'react-jss';
 import { Movie } from '../../services/rest/movie';
 import Label from '../Label/label';
+import detailedPanelStyle from './detailedPanelStyle';
 
 const precision = 2;
 
@@ -24,5 +26,7 @@ const DetailedPanel: React.SFC<Movie> = (props: Movie) => (
             <Label id='fimlDescription'>{props.overview}</Label>
         </div>
     </div>
-</div>);
-export default DetailedPanel;
+</div>
+);
+
+export default injectSheet(detailedPanelStyle)(DetailedPanel);
