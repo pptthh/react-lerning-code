@@ -1,5 +1,5 @@
-import { Reducer, ReducersMapObject } from 'redux';
-import { combineReducers } from 'redux-immutable';
+import { combineReducers, Reducer, ReducersMapObject } from 'redux';
+// import { combineReducers } from 'redux-immutable';
 import ServerReducer from '../../ssr/serverReducer';
 import { IS_SERVER } from '../../utils';
 import DetailedViewReducer from '../DetaildView/dvReducer';

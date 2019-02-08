@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Dispatch } from 'redux';
-import { Movie } from '../../services/rest/movie';
 import RootState from '../Root/rootState';
 import DetailedViewActions, { dvFnCalls } from './dvActions';
 import DetailedViewState from './dvState';

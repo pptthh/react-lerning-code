@@ -1,3 +1,5 @@
+import { List } from 'immutable';
+import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import searchByEnum from '../../components/SearchForm/searchBy';
 import sortByEnum from '../../components/SearchSummary/sortBy';
 import { FetchMovies, getRequest } from '../../services/rest/fetchMovies';
@@ -22,7 +24,7 @@ const stateInit: SearchResultState = {
         searchField: '',
         searchBy: searchByEnum.TITLE,
     },
-    results: [],
+    results: List<ResultItemProps>(),
     moviesData: EmptyMovieList,
     details: 0,
 };

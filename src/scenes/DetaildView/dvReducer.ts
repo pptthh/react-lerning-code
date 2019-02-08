@@ -1,4 +1,4 @@
-import { Map, List } from 'immutable';
+import { List } from 'immutable';
 import { ResultItemProps } from '../../components/FoundMovies/resultItem';
 import FetchMovieById from '../../services/rest/fetchMovieById';
 import { FetchMovies, getRequest4Genre } from '../../services/rest/fetchMovies';
@@ -11,10 +11,10 @@ import SearchResultActions from '../SearchResults/srActions';
 import DetailedViewActions from './dvActions';
 import DetailedViewState from './dvState';
 
-const stateInit: DetailedViewState = Map<DetailedViewState>({
-    data: List<Movie>([]),
-    results: List<ResultItemProps>([]),
-});
+const stateInit: DetailedViewState = {
+    data: [],
+    results: List<ResultItemProps>(),
+};
 
 const initDetailedView = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => ({
     ...state,
@@ -51,7 +51,7 @@ const genreLoadSuccess = ({ state, payload }: ICase<DetailedViewState>): Detaile
     IS_SERVER() && dispatchAction(SearchResultActions.CLOSE_REQUEST),
     {
     ...state,
-    results: (payload as Movies).data,
+    results: List<ResultItemProps>((payload as Movies).data),
 });
 const loadFail = ({ state, payload }: ICase<DetailedViewState>): DetailedViewState => (
     DBG(),
