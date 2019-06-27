@@ -1,5 +1,5 @@
-// tslint:disable-next-line
-export const NOOP = (a?:any) => {};
+// tslint:disable-next-line:no-empty
+export const NOOP = (a?: unknown) => {};
 
 export const TEST = process.env.NODE_ENV === 'test';
 export const PROD = process.env.NODE_ENV === 'poduction';

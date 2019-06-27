@@ -6,8 +6,8 @@ import { DEV, PROD, TEST } from '../../utils';
 import RootReducer from './rootReducer';
 import RootState from './rootState';
 
-// tslint:disable-next-line
-const win:any = (() =>
+// tslint:disable-next-line:no-any
+const win: any = (() =>
     global ? global :
     window ? window :
     {}
